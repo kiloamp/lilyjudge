@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lily & Carlos | Wedding 2027</title>
   <meta name="description" content="Wedding travel details for Lily and Carlos in 2027.">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <style>
     :root {
@@ -240,6 +243,61 @@
       line-height: 1;
     }
 
+    .media-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(23, 31, 34, 0.72);
+    }
+
+    .media-modal.active {
+      display: flex;
+    }
+
+    .media-dialog {
+      width: min(840px, 100%);
+      max-height: min(760px, calc(100vh - 36px));
+      overflow: auto;
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .media-dialog img {
+      width: 100%;
+      max-height: 620px;
+      display: block;
+      object-fit: contain;
+      background: #111;
+    }
+
+    .media-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .modal-close {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
     .hotel-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -348,7 +406,7 @@
         <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
         <p class="intro" data-i18n-html="intro">
           We'd love for you to make it to our wedding in 2027. Due to our
-          <a href="https://www.uscis.gov/" target="_blank" rel="noopener">visa process</a>,
+          <a class="media-link" href="media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>,
           the wedding date will have short notice. We've created this website with details
           for you to review as you consider joining us and celebrating.
         </p>
@@ -379,7 +437,7 @@
         <div class="story-card" data-i18n-html="howWeMetStory">
           <p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p>
           <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
-          <p>Lily later moved to Boise, Idaho, while Carlos continued his airline transport pilot training in Europe. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
+          <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
           <p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p>
           <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p>
           <p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p>
@@ -442,6 +500,16 @@
       </section>
     </section>
   </main>
+
+  <div class="media-modal" id="mediaModal" role="dialog" aria-modal="true" aria-labelledby="mediaDescription">
+    <div class="media-dialog">
+      <img id="mediaImage" src="" alt="">
+      <div class="media-caption">
+        <span id="mediaDescription"></span>
+        <button class="modal-close" type="button" id="modalClose" aria-label="Close image popup">&times;</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const hotels = [
@@ -521,7 +589,7 @@
       en: {
         translate: "Traducir",
         headline: "We're engaged!",
-        intro: "We'd love for you to make it to our wedding in 2027. Due to our <a href=\"https://www.uscis.gov/\" target=\"_blank\" rel=\"noopener\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
+        intro: "We'd love for you to make it to our wedding in 2027. Due to our <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
         tabHowWeMet: "How we met",
         tabUsa: "USA tips and tricks",
         tabBikes: "Bike rentals",
@@ -534,7 +602,7 @@
         tabCarlos: "Carlos's top five places",
         howWeMetTitle: "How we met",
         howWeMetNote: "A little bit of our story before the party planning begins.",
-        howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while Carlos continued his airline transport pilot training in Europe. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
+        howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
         hotelsTitle: "Hotels",
         hotelsNote: "Starter list for guests. Please confirm rates, availability, and the exact wedding location before booking.",
@@ -545,7 +613,7 @@
       es: {
         translate: "Translate",
         headline: "¡Estamos comprometidos!",
-        intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a href=\"https://www.uscis.gov/\" target=\"_blank\" rel=\"noopener\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
+        intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visa\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
         tabHowWeMet: "Cómo nos conocimos",
         tabUsa: "Consejos para EE. UU.",
         tabBikes: "Alquiler de bicicletas",
@@ -558,7 +626,7 @@
         tabCarlos: "Los cinco lugares favoritos de Carlos",
         howWeMetTitle: "Cómo nos conocimos",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
-        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras Carlos continuaba su formación de piloto de transporte de línea aérea en Europa. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
+        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
         hotelsTitle: "Hoteles",
         hotelsNote: "Lista inicial para invitados. Confirma tarifas, disponibilidad y la ubicación exacta de la boda antes de reservar.",
@@ -626,6 +694,47 @@
 
     document.getElementById("languageToggle").addEventListener("click", () => {
       updateLanguage(currentLanguage === "en" ? "es" : "en");
+    });
+
+    const mediaModal = document.getElementById("mediaModal");
+    const mediaImage = document.getElementById("mediaImage");
+    const mediaDescription = document.getElementById("mediaDescription");
+    const modalClose = document.getElementById("modalClose");
+
+    function openMediaModal(image, description) {
+      mediaImage.src = image;
+      mediaImage.alt = description;
+      mediaDescription.textContent = description;
+      mediaModal.classList.add("active");
+      modalClose.focus();
+    }
+
+    function closeMediaModal() {
+      mediaModal.classList.remove("active");
+      mediaImage.src = "";
+      mediaImage.alt = "";
+    }
+
+    document.addEventListener("click", (event) => {
+      const mediaLink = event.target.closest("[data-image]");
+      if (mediaLink) {
+        event.preventDefault();
+        openMediaModal(mediaLink.dataset.image, mediaLink.dataset.description);
+      }
+    });
+
+    mediaModal.addEventListener("click", (event) => {
+      if (event.target === mediaModal) {
+        closeMediaModal();
+      }
+    });
+
+    modalClose.addEventListener("click", closeMediaModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mediaModal.classList.contains("active")) {
+        closeMediaModal();
+      }
     });
 
     renderList();
