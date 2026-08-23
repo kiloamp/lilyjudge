@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lily & Carlos | Wedding 2027</title>
   <meta name="description" content="Wedding travel details for Lily and Carlos in 2027.">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQK9d+LRF9BjE7zIRWWj9whgNLFhNc4=" crossorigin="">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <style>
     :root {
       --ink: #283034;
@@ -206,12 +205,39 @@
       display: block;
     }
 
-    #hotelMap {
-      min-height: 560px;
+    .google-map-frame {
+      width: 100%;
+      height: 560px;
+      display: block;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: var(--mist);
+    }
+
+    .story-card {
+      max-width: 880px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 4vw, 42px);
+    }
+
+    .story-card p {
+      margin: 0 0 18px;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .signature {
+      color: var(--sea);
+      font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1;
     }
 
     .hotel-grid {
@@ -255,11 +281,6 @@
       font-weight: 700;
     }
 
-    .leaflet-popup-content {
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    }
-
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -296,8 +317,8 @@
         grid-template-columns: 1fr;
       }
 
-      #hotelMap {
-        min-height: 460px;
+      .google-map-frame {
+        height: 460px;
       }
     }
   </style>
@@ -316,9 +337,9 @@
     <section class="page-shell hero" aria-label="Wedding announcement">
       <div class="video-frame">
         <iframe
-          src="https://www.youtube.com/embed/ysz5S6PUM-U"
-          title="Wedding announcement video placeholder"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+          title="Lily and Carlos wedding announcement video"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
       </div>
@@ -336,16 +357,35 @@
 
     <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <div class="tabs" role="tablist" aria-label="Travel categories">
+        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="usa" id="tab-usa" data-tab="usa" data-i18n="tabUsa">USA tips and tricks</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="bikes" id="tab-bikes" data-tab="bikes" data-i18n="tabBikes">Bike rentals</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="surf" id="tab-surf" data-tab="surf" data-i18n="tabSurf">Surf rentals</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="trip" id="tab-trip" data-tab="trip" data-i18n="tabTrip">Wider trip ideas</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="attractions" id="tab-attractions" data-tab="attractions" data-i18n="tabAttractions">Tourist attractions</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="neighborhoods" id="tab-neighborhoods" data-tab="neighborhoods" data-i18n="tabNeighborhoods">Neighborhood guide</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="lily" id="tab-lily" data-tab="lily" data-i18n="tabLily">Lily's top five places</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos" id="tab-carlos" data-tab="carlos" data-i18n="tabCarlos">Carlos's top five places</button>
       </div>
+
+      <section class="tab-panel active" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="howWeMetTitle">How we met</h2>
+            <p class="muted" data-i18n="howWeMetNote">A little bit of our story before the party planning begins.</p>
+          </div>
+        </div>
+        <div class="story-card" data-i18n-html="howWeMetStory">
+          <p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p>
+          <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
+          <p>Lily later moved to Boise, Idaho, while Carlos continued his airline transport pilot training in Europe. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
+          <p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p>
+          <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p>
+          <p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p>
+          <p>With love,<br><span class="signature">Lily and Carlos</span></p>
+        </div>
+      </section>
 
       <section class="tab-panel" role="tabpanel" id="usa" aria-labelledby="tab-usa">
         <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
@@ -357,7 +397,7 @@
         <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
       </section>
 
-      <section class="tab-panel active" role="tabpanel" id="hotels" aria-labelledby="tab-hotels">
+      <section class="tab-panel" role="tabpanel" id="hotels" aria-labelledby="tab-hotels">
         <div class="panel-heading">
           <div>
             <h2 data-i18n="hotelsTitle">Hotels</h2>
@@ -370,7 +410,14 @@
         </div>
 
         <div class="hotel-view active" id="mapView">
-          <div id="hotelMap" aria-label="Map of hotel options"></div>
+          <iframe
+            class="google-map-frame"
+            title="Google map of South Bay hotel options"
+            aria-label="Google map of hotel options"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=DoubleTree%20San%20Pedro%2C%20Torrance%20Marriott%20Redondo%20Beach%2C%20Hilton%20Garden%20Inn%20Redondo%20Beach%2C%20Extended%20Stay%20America%20Torrance%20Del%20Amo%2C%20Howard%20Johnson%20Torrance%2C%20Shade%20Hotel%20Redondo%20Beach%2C%20Portofino%20Hotel%20Redondo%20Beach%2C%20Best%20Western%20Plus%20Redondo%20Beach%20Inn%2C%20Sonesta%20Redondo%20Beach%20Marina&output=embed">
+          </iframe>
         </div>
 
         <div class="hotel-view" id="listView">
@@ -396,7 +443,6 @@
     </section>
   </main>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     const hotels = [
       {
@@ -476,6 +522,7 @@
         translate: "Traducir",
         headline: "We're engaged!",
         intro: "We'd love for you to make it to our wedding in 2027. Due to our <a href=\"https://www.uscis.gov/\" target=\"_blank\" rel=\"noopener\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
+        tabHowWeMet: "How we met",
         tabUsa: "USA tips and tricks",
         tabBikes: "Bike rentals",
         tabSurf: "Surf rentals",
@@ -485,6 +532,9 @@
         tabNeighborhoods: "Neighborhood guide",
         tabLily: "Lily's top five places",
         tabCarlos: "Carlos's top five places",
+        howWeMetTitle: "How we met",
+        howWeMetNote: "A little bit of our story before the party planning begins.",
+        howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while Carlos continued his airline transport pilot training in Europe. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
         hotelsTitle: "Hotels",
         hotelsNote: "Starter list for guests. Please confirm rates, availability, and the exact wedding location before booking.",
@@ -496,6 +546,7 @@
         translate: "Translate",
         headline: "¡Estamos comprometidos!",
         intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a href=\"https://www.uscis.gov/\" target=\"_blank\" rel=\"noopener\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
+        tabHowWeMet: "Cómo nos conocimos",
         tabUsa: "Consejos para EE. UU.",
         tabBikes: "Alquiler de bicicletas",
         tabSurf: "Alquiler de surf",
@@ -505,6 +556,9 @@
         tabNeighborhoods: "Guía de barrios",
         tabLily: "Los cinco lugares favoritos de Lily",
         tabCarlos: "Los cinco lugares favoritos de Carlos",
+        howWeMetTitle: "Cómo nos conocimos",
+        howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
+        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras Carlos continuaba su formación de piloto de transporte de línea aérea en Europa. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
         hotelsTitle: "Hoteles",
         hotelsNote: "Lista inicial para invitados. Confirma tarifas, disponibilidad y la ubicación exacta de la boda antes de reservar.",
@@ -515,8 +569,6 @@
     };
 
     let currentLanguage = "en";
-    let map;
-    let markersLayer;
 
     function mapsUrl(hotel) {
       return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(hotel.name + " " + hotel.address);
@@ -534,28 +586,6 @@
       `).join("");
     }
 
-    function initMap() {
-      if (!window.L) {
-        document.getElementById("hotelMap").textContent = "Map could not load. Please use the list view.";
-        return;
-      }
-
-      map = L.map("hotelMap", { scrollWheelZoom: false }).setView([33.837, -118.371], 11);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-      }).addTo(map);
-      markersLayer = L.layerGroup().addTo(map);
-
-      hotels.forEach((hotel) => {
-        L.marker([hotel.lat, hotel.lng]).addTo(markersLayer).bindPopup(`
-          <strong>${hotel.name}</strong><br>
-          ${hotel.address}<br>
-          <a href="${mapsUrl(hotel)}" target="_blank" rel="noopener">${translations[currentLanguage].mapLink}</a>
-        `);
-      });
-    }
-
     function updateLanguage(language) {
       currentLanguage = language;
       document.documentElement.lang = language;
@@ -571,16 +601,6 @@
       });
 
       renderList();
-      if (markersLayer) {
-        markersLayer.clearLayers();
-        hotels.forEach((hotel) => {
-          L.marker([hotel.lat, hotel.lng]).addTo(markersLayer).bindPopup(`
-            <strong>${hotel.name}</strong><br>
-            ${hotel.address}<br>
-            <a href="${mapsUrl(hotel)}" target="_blank" rel="noopener">${translations[currentLanguage].mapLink}</a>
-          `);
-        });
-      }
     }
 
     document.querySelectorAll(".tab-button").forEach((button) => {
@@ -591,9 +611,6 @@
         button.setAttribute("aria-selected", "true");
         document.getElementById(button.dataset.tab).classList.add("active");
 
-        if (button.dataset.tab === "hotels" && map) {
-          setTimeout(() => map.invalidateSize(), 0);
-        }
       });
     });
 
@@ -604,9 +621,6 @@
         document.querySelectorAll(".hotel-view").forEach((item) => item.classList.remove("active"));
         button.classList.add("active");
         document.getElementById(view + "View").classList.add("active");
-        if (view === "map" && map) {
-          setTimeout(() => map.invalidateSize(), 0);
-        }
       });
     });
 
@@ -615,7 +629,6 @@
     });
 
     renderList();
-    initMap();
   </script>
 </body>
 </html>
