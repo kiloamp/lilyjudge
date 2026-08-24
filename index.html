@@ -8,19 +8,24 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <style>
     :root {
-      --ink: #283034;
-      --paper: #fffaf4;
-      --mist: #e9f2ef;
-      --sage: #7b9a8f;
-      --sea: #2f6770;
-      --coral: #d97861;
-      --gold: #c7a35b;
-      --line: rgba(40, 48, 52, 0.16);
-      --shadow: 0 18px 48px rgba(40, 48, 52, 0.14);
-      --radius: 8px;
+      --ink: #39413c;
+      --paper: #fffaf0;
+      --mist: #eaf5ee;
+      --sage: #9ebf9a;
+      --sea: #4a8994;
+      --coral: #df7a68;
+      --gold: #f0cf75;
+      --sun: #ffe8a8;
+      --petal: #f9c8ba;
+      --line: rgba(57, 65, 60, 0.14);
+      --shadow: 0 16px 40px rgba(88, 90, 67, 0.12);
+      --radius: 18px;
     }
 
     * {
@@ -31,10 +36,13 @@
       margin: 0;
       color: var(--ink);
       background:
-        linear-gradient(180deg, rgba(233, 242, 239, 0.88), rgba(255, 250, 244, 0.95) 360px),
+        radial-gradient(circle at 12% 8%, rgba(255, 232, 168, 0.55), transparent 30%),
+        radial-gradient(circle at 88% 14%, rgba(249, 200, 186, 0.42), transparent 28%),
+        linear-gradient(180deg, rgba(234, 245, 238, 0.74), rgba(255, 250, 240, 0.96) 390px),
         var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
+      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-size: 1.35rem;
+      line-height: 1.35;
     }
 
     a {
@@ -72,9 +80,11 @@
       background: rgba(255, 255, 255, 0.76);
       color: var(--ink);
       padding: 10px 14px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px rgba(40, 48, 52, 0.08);
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(88, 90, 67, 0.08);
       cursor: pointer;
+      font-family: inherit;
+      font-size: 1.1rem;
       font-weight: 700;
     }
 
@@ -127,7 +137,7 @@
 
     .tabs {
       display: flex;
-      gap: 8px;
+      gap: 22px;
       overflow-x: auto;
       padding: 0 0 12px;
       scrollbar-width: thin;
@@ -135,19 +145,22 @@
 
     .tab-button {
       flex: 0 0 auto;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.62);
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
       color: var(--ink);
-      border-radius: var(--radius);
-      padding: 10px 13px;
+      border-radius: 0;
+      padding: 8px 0 9px;
+      font-family: inherit;
+      font-size: 1.35rem;
       font-weight: 700;
       cursor: pointer;
     }
 
     .tab-button[aria-selected="true"] {
-      background: var(--sea);
-      border-color: var(--sea);
-      color: white;
+      background: transparent;
+      border-color: var(--sun);
+      color: var(--coral);
     }
 
     .tab-panel {
@@ -181,7 +194,7 @@
     .view-switch {
       display: inline-flex;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 999px;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.7);
     }
@@ -191,13 +204,15 @@
       background: transparent;
       color: var(--ink);
       padding: 10px 14px;
+      font-family: inherit;
+      font-size: 1.15rem;
       font-weight: 800;
       cursor: pointer;
     }
 
     .view-switch button.active {
-      background: var(--gold);
-      color: #fff;
+      background: var(--sun);
+      color: var(--ink);
     }
 
     .hotel-view {
@@ -208,14 +223,66 @@
       display: block;
     }
 
-    .google-map-frame {
-      width: 100%;
-      height: 560px;
-      display: block;
+    .cute-map {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      background: var(--mist);
+      background:
+        linear-gradient(135deg, rgba(74, 137, 148, 0.18) 0 32%, transparent 32%),
+        linear-gradient(180deg, #fff8dd 0%, #f5edd6 48%, #eaf5ee 48%, #d8efe9 100%);
+    }
+
+    .map-water {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 34%;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 18px),
+        #95d0d8;
+    }
+
+    .map-road {
+      position: absolute;
+      left: 31%;
+      top: 5%;
+      width: 10px;
+      height: 90%;
+      border-radius: 999px;
+      background: rgba(218, 167, 97, 0.72);
+      transform: rotate(12deg);
+    }
+
+    .map-label {
+      position: absolute;
+      left: 5%;
+      top: 11%;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .map-pin {
+      position: absolute;
+      max-width: 210px;
+      padding: 10px 12px;
+      border: 2px solid rgba(255, 255, 255, 0.88);
+      border-radius: 16px;
+      background: rgba(255, 250, 240, 0.94);
+      box-shadow: 0 12px 24px rgba(57, 65, 60, 0.12);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .map-pin small {
+      display: block;
+      color: rgba(57, 65, 60, 0.7);
+      font-size: 0.92rem;
+      font-weight: 500;
     }
 
     .story-card {
@@ -313,6 +380,86 @@
       box-shadow: 0 10px 28px rgba(40, 48, 52, 0.08);
     }
 
+    .hotel-card.top-pick {
+      background: linear-gradient(180deg, rgba(255, 248, 221, 0.98), rgba(255, 255, 255, 0.82));
+      border-color: rgba(240, 207, 117, 0.8);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      border-radius: 999px;
+      background: var(--sun);
+      padding: 4px 10px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .hotel-meta {
+      display: grid;
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    .hotel-meta span {
+      display: block;
+    }
+
+    .hotel-details {
+      grid-column: 1 / -1;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.5);
+      padding: 4px 16px 16px;
+    }
+
+    .hotel-details summary {
+      cursor: pointer;
+      padding: 14px 0 6px;
+      color: var(--coral);
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .hotel-details .hotel-grid {
+      margin-top: 12px;
+    }
+
+    .activity-grid,
+    .trip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .idea-card {
+      min-height: 150px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.66);
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(88, 90, 67, 0.08);
+    }
+
+    .idea-card h3 {
+      margin: 0 0 6px;
+      color: var(--sea);
+      font-size: 1.45rem;
+      line-height: 1.05;
+    }
+
+    .idea-card p {
+      margin: 0;
+      color: rgba(57, 65, 60, 0.78);
+    }
+
     .hotel-card h3 {
       margin: 0 0 8px;
       font-size: 1.06rem;
@@ -348,7 +495,9 @@
         padding-top: 0;
       }
 
-      .hotel-grid {
+      .hotel-grid,
+      .activity-grid,
+      .trip-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -371,12 +520,18 @@
         flex-direction: column;
       }
 
-      .hotel-grid {
+      .hotel-grid,
+      .activity-grid,
+      .trip-grid {
         grid-template-columns: 1fr;
       }
 
-      .google-map-frame {
-        height: 460px;
+      .cute-map {
+        min-height: 520px;
+      }
+
+      .map-pin {
+        max-width: 178px;
       }
     }
   </style>
@@ -417,14 +572,9 @@
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="usa" id="tab-usa" data-tab="usa" data-i18n="tabUsa">USA tips and tricks</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="bikes" id="tab-bikes" data-tab="bikes" data-i18n="tabBikes">Bike rentals</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="surf" id="tab-surf" data-tab="surf" data-i18n="tabSurf">Surf rentals</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="trip" id="tab-trip" data-tab="trip" data-i18n="tabTrip">Wider trip ideas</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="attractions" id="tab-attractions" data-tab="attractions" data-i18n="tabAttractions">Tourist attractions</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="neighborhoods" id="tab-neighborhoods" data-tab="neighborhoods" data-i18n="tabNeighborhoods">Neighborhood guide</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="lily" id="tab-lily" data-tab="lily" data-i18n="tabLily">Lily's top five places</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos" id="tab-carlos" data-tab="carlos" data-i18n="tabCarlos">Carlos's top five places</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="top-places" id="tab-top-places" data-tab="top-places" data-i18n="tabTopPlaces">Our top places</button>
       </div>
 
       <section class="tab-panel active" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
@@ -445,21 +595,11 @@
         </div>
       </section>
 
-      <section class="tab-panel" role="tabpanel" id="usa" aria-labelledby="tab-usa">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-      <section class="tab-panel" role="tabpanel" id="bikes" aria-labelledby="tab-bikes">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-      <section class="tab-panel" role="tabpanel" id="surf" aria-labelledby="tab-surf">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-
       <section class="tab-panel" role="tabpanel" id="hotels" aria-labelledby="tab-hotels">
         <div class="panel-heading">
           <div>
             <h2 data-i18n="hotelsTitle">Hotels</h2>
-            <p class="muted" data-i18n="hotelsNote">Starter list for guests. Please confirm rates, availability, and the exact wedding location before booking.</p>
+            <p class="muted" data-i18n="hotelsNote">Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.</p>
           </div>
           <div class="view-switch" aria-label="Hotel view">
             <button type="button" class="active" data-view="map" data-i18n="mapView">Map</button>
@@ -468,14 +608,15 @@
         </div>
 
         <div class="hotel-view active" id="mapView">
-          <iframe
-            class="google-map-frame"
-            title="Google map of South Bay hotel options"
-            aria-label="Google map of hotel options"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=DoubleTree%20San%20Pedro%2C%20Torrance%20Marriott%20Redondo%20Beach%2C%20Hilton%20Garden%20Inn%20Redondo%20Beach%2C%20Extended%20Stay%20America%20Torrance%20Del%20Amo%2C%20Howard%20Johnson%20Torrance%2C%20Shade%20Hotel%20Redondo%20Beach%2C%20Portofino%20Hotel%20Redondo%20Beach%2C%20Best%20Western%20Plus%20Redondo%20Beach%20Inn%2C%20Sonesta%20Redondo%20Beach%20Marina&output=embed">
-          </iframe>
+          <div class="cute-map" aria-label="Simple map of the wedding hotel area">
+            <div class="map-water"></div>
+            <div class="map-road"></div>
+            <div class="map-label">Redondo Beach</div>
+            <div class="map-pin" style="left: 44%; top: 20%;">Portofino <small>Marina views</small></div>
+            <div class="map-pin" style="left: 58%; top: 34%;">Shade <small>Harbor Drive</small></div>
+            <div class="map-pin" style="left: 50%; top: 53%;">Sonesta <small>Near pier</small></div>
+            <div class="map-pin" style="left: 66%; top: 72%;">Other options <small>Torrance + South Bay</small></div>
+          </div>
         </div>
 
         <div class="hotel-view" id="listView">
@@ -483,20 +624,43 @@
         </div>
       </section>
 
+      <section class="tab-panel" role="tabpanel" id="things-to-do" aria-labelledby="tab-things-to-do">
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="thingsTitle">Things to do</h2>
+            <p class="muted" data-i18n="thingsNote">A softer home for the tips, rentals, attractions, and neighborhood notes.</p>
+          </div>
+        </div>
+        <div class="activity-grid" id="activityList"></div>
+      </section>
+
       <section class="tab-panel" role="tabpanel" id="trip" aria-labelledby="tab-trip">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="tripTitle">Wider trip ideas</h2>
+            <p class="muted" data-i18n="tripNote">A few easy day trips if you want to turn the wedding into a California week.</p>
+          </div>
+        </div>
+        <div class="trip-grid" id="tripList"></div>
       </section>
-      <section class="tab-panel" role="tabpanel" id="attractions" aria-labelledby="tab-attractions">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-      <section class="tab-panel" role="tabpanel" id="neighborhoods" aria-labelledby="tab-neighborhoods">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-      <section class="tab-panel" role="tabpanel" id="lily" aria-labelledby="tab-lily">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
-      </section>
-      <section class="tab-panel" role="tabpanel" id="carlos" aria-labelledby="tab-carlos">
-        <div class="empty-panel" data-i18n="comingSoon">Details coming soon.</div>
+
+      <section class="tab-panel" role="tabpanel" id="top-places" aria-labelledby="tab-top-places">
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="topPlacesTitle">Our top places</h2>
+            <p class="muted" data-i18n="topPlacesNote">Lily and Carlos picks will live here once we start filling them in.</p>
+          </div>
+        </div>
+        <div class="activity-grid">
+          <article class="idea-card">
+            <h3>Lily's top five</h3>
+            <p data-i18n="comingSoon">Details coming soon.</p>
+          </article>
+          <article class="idea-card">
+            <h3>Carlos's top five</h3>
+            <p data-i18n="comingSoon">Details coming soon.</p>
+          </article>
+        </div>
       </section>
     </section>
   </main>
@@ -514,74 +678,126 @@
   <script>
     const hotels = [
       {
+        tier: "other",
         name: "DoubleTree by Hilton Hotel San Pedro - Port of Los Angeles",
         address: "2800 Via Cabrillo Marina, San Pedro, CA 90731",
-        lat: 33.71862,
-        lng: -118.28234,
-        note: "Harbor-side option in San Pedro."
+        price: "$140-$180/night",
+        code: "LILYCARLOS",
+        note: "Harbor-side option in San Pedro, better if you want a quieter port area."
       },
       {
+        tier: "other",
         name: "Torrance Marriott Redondo Beach",
         address: "3635 Fashion Way, Torrance, CA 90503",
-        lat: 33.83586,
-        lng: -118.35057,
+        price: "$220-$325/night",
+        code: "LILYCARLOS",
         note: "Near Del Amo Fashion Center."
       },
       {
+        tier: "other",
         name: "Hilton Garden Inn Los Angeles/Redondo Beach",
         address: "2410 Marine Avenue, Redondo Beach, CA 90278",
-        lat: 33.8942,
-        lng: -118.3692,
+        price: "$160-$205/night",
+        code: "LILYCARLOS",
         note: "Near I-405 and the Redondo Beach transit stop."
       },
       {
+        tier: "other",
         name: "Extended Stay America - Torrance - Del Amo Circle",
         address: "3995 Carson Street, Torrance, CA 90503",
-        lat: 33.832485,
-        lng: -118.35618,
+        price: "$115-$170/night",
+        code: "LILYCARLOS",
         note: "Longer-stay suites near Del Amo."
       },
       {
+        tier: "other",
         name: "Howard Johnson by Wyndham Torrance",
         address: "3673 Torrance Boulevard, Torrance, CA 90503",
-        lat: 33.83824,
-        lng: -118.35141,
+        price: "$110-$135/night",
+        code: "LILYCARLOS",
         note: "Simple Torrance option near Del Amo."
       },
       {
+        tier: "other",
         name: "Riviera Village area",
         address: "Riviera Village, Redondo Beach, CA 90277",
-        lat: 33.81719,
-        lng: -118.3876,
+        price: "Confirm exact hotel",
+        code: "LILYCARLOS",
         note: "Placeholder until the exact Riviera hotel is confirmed."
       },
       {
+        tier: "top",
         name: "Shade Hotel Redondo Beach",
         address: "655 N Harbor Drive, Redondo Beach, CA 90277",
-        lat: 33.847657,
-        lng: -118.395405,
+        price: "$475-$550/night",
+        code: "LILYCARLOS",
         note: "Boutique waterfront hotel at King Harbor."
       },
       {
+        tier: "top",
         name: "The Portofino Hotel & Marina",
         address: "260 Portofino Way, Redondo Beach, CA 90277",
-        lat: 33.84534,
-        lng: -118.39744,
+        price: "$240-$450/night",
+        code: "LILYCARLOS",
         note: "Marina hotel on the Redondo waterfront."
       },
       {
+        tier: "other",
         name: "Best Western Plus Redondo Beach Inn",
         address: "1850 S. Pacific Coast Highway, Redondo Beach, CA 90277",
-        lat: 33.8167,
-        lng: -118.3859,
+        price: "$175-$215/night",
+        code: "LILYCARLOS",
         note: "Close to Riviera Village and South Redondo."
       },
       {
+        tier: "top",
         name: "Sonesta Redondo Beach & Marina",
         address: "300 N Harbor Drive, Redondo Beach, CA 90277",
-        lat: 33.845295,
-        lng: -118.392442,
+        price: "$180-$450/night",
+        code: "LILYCARLOS",
         note: "Waterfront option near the pier and marina."
+      }
+    ];
+
+    const activities = [
+      {
+        title: "USA tips and tricks",
+        text: "Driving, tipping, phone data, pharmacies, and the tiny practical things that make the first day easier."
+      },
+      {
+        title: "Bike rentals",
+        text: "The beach path is the nice version of LA transportation. We will add rental spots close to Redondo and Hermosa."
+      },
+      {
+        title: "Surf rentals",
+        text: "Good for brave guests, gentle wipeouts, and pretending jet lag is actually athletic ambition."
+      },
+      {
+        title: "Tourist attractions",
+        text: "Pier walks, beach sunsets, little museums, food stops, and the places worth doing without overplanning."
+      },
+      {
+        title: "Neighborhood guide",
+        text: "Where to stay, where to wander, and which areas feel easiest if you are visiting from far away."
+      }
+    ];
+
+    const tripIdeas = [
+      {
+        title: "San Pedro souvenir mission",
+        text: "Go to San Pedro, walk by the harbor, and get a cool t-shirt. Bonus points if it looks slightly too local."
+      },
+      {
+        title: "Venice Beach",
+        text: "A classic LA people-watching day. Walk the boardwalk, see the canals, then head back before traffic gets dramatic."
+      },
+      {
+        title: "Disney day",
+        text: "A full day, not a casual stop. Worth it if you want one big theme-park memory while you are here."
+      },
+      {
+        title: "Visit Trump Hotel",
+        text: "A very specific coastal detour near Palos Verdes. Go for the view, the curiosity, or the group chat material."
       }
     ];
 
@@ -591,21 +807,27 @@
         headline: "We're engaged!",
         intro: "We'd love for you to make it to our wedding in 2027. Due to our <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
         tabHowWeMet: "How we met",
-        tabUsa: "USA tips and tricks",
-        tabBikes: "Bike rentals",
-        tabSurf: "Surf rentals",
         tabHotels: "Hotels",
+        tabThingsToDo: "Things to do",
         tabTrip: "Wider trip ideas",
-        tabAttractions: "Tourist attractions",
-        tabNeighborhoods: "Neighborhood guide",
-        tabLily: "Lily's top five places",
-        tabCarlos: "Carlos's top five places",
+        tabTopPlaces: "Our top places",
         howWeMetTitle: "How we met",
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
         hotelsTitle: "Hotels",
-        hotelsNote: "Starter list for guests. Please confirm rates, availability, and the exact wedding location before booking.",
+        hotelsNote: "Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.",
+        topPick: "Top pick",
+        beachAccess: "Beach access",
+        summerPrice: "Summer estimate",
+        discountCode: "Dummy code",
+        otherHotels: "Other hotel options",
+        thingsTitle: "Things to do",
+        thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
+        tripTitle: "Wider trip ideas",
+        tripNote: "A few easy day trips if you want to turn the wedding into a California week.",
+        topPlacesTitle: "Our top places",
+        topPlacesNote: "Lily and Carlos picks will live here once we start filling them in.",
         mapView: "Map",
         listView: "List",
         mapLink: "Open in Google Maps"
@@ -615,21 +837,27 @@
         headline: "¡Estamos comprometidos!",
         intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visa\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
         tabHowWeMet: "Cómo nos conocimos",
-        tabUsa: "Consejos para EE. UU.",
-        tabBikes: "Alquiler de bicicletas",
-        tabSurf: "Alquiler de surf",
         tabHotels: "Hoteles",
+        tabThingsToDo: "Cosas que hacer",
         tabTrip: "Ideas para un viaje más amplio",
-        tabAttractions: "Atracciones turísticas",
-        tabNeighborhoods: "Guía de barrios",
-        tabLily: "Los cinco lugares favoritos de Lily",
-        tabCarlos: "Los cinco lugares favoritos de Carlos",
+        tabTopPlaces: "Nuestros lugares",
         howWeMetTitle: "Cómo nos conocimos",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
         hotelsTitle: "Hoteles",
-        hotelsNote: "Lista inicial para invitados. Confirma tarifas, disponibilidad y la ubicación exacta de la boda antes de reservar.",
+        hotelsNote: "Nuestras opciones favoritas con acceso a la playa primero, y después algunas alternativas. Los precios de verano son rangos aproximados y pueden cambiar.",
+        topPick: "Favorito",
+        beachAccess: "Acceso a la playa",
+        summerPrice: "Estimación de verano",
+        discountCode: "Código ficticio",
+        otherHotels: "Otras opciones de hotel",
+        thingsTitle: "Cosas que hacer",
+        thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
+        tripTitle: "Ideas para un viaje más amplio",
+        tripNote: "Algunas excursiones fáciles si quieres convertir la boda en una semana por California.",
+        topPlacesTitle: "Nuestros lugares",
+        topPlacesNote: "Los favoritos de Lily y Carlos irán aquí cuando empecemos a completarlos.",
         mapView: "Mapa",
         listView: "Lista",
         mapLink: "Abrir en Google Maps"
@@ -644,12 +872,53 @@
 
     function renderList() {
       const list = document.getElementById("hotelList");
-      list.innerHTML = hotels.map((hotel) => `
-        <article class="hotel-card">
+      const topOrder = ["The Portofino Hotel & Marina", "Shade Hotel Redondo Beach", "Sonesta Redondo Beach & Marina"];
+      const topHotels = hotels
+        .filter((hotel) => hotel.tier === "top")
+        .sort((a, b) => topOrder.indexOf(a.name) - topOrder.indexOf(b.name));
+      const otherHotels = hotels.filter((hotel) => hotel.tier !== "top");
+      const hotelCard = (hotel) => `
+        <article class="hotel-card ${hotel.tier === "top" ? "top-pick" : ""}">
+          <div class="badge-row">
+            ${hotel.tier === "top" ? `<span class="badge">${translations[currentLanguage].topPick}</span>` : ""}
+            ${hotel.tier === "top" ? `<span class="badge">${translations[currentLanguage].beachAccess}</span>` : ""}
+          </div>
           <h3>${hotel.name}</h3>
           <p>${hotel.address}</p>
           <p>${hotel.note}</p>
+          <div class="hotel-meta">
+            <span>${translations[currentLanguage].summerPrice}: ${hotel.price}</span>
+            <span>${translations[currentLanguage].discountCode}: ${hotel.code}</span>
+          </div>
           <a href="${mapsUrl(hotel)}" target="_blank" rel="noopener">${translations[currentLanguage].mapLink}</a>
+        </article>
+      `;
+
+      list.innerHTML = `
+        ${topHotels.map(hotelCard).join("")}
+        <details class="hotel-details">
+          <summary>${translations[currentLanguage].otherHotels}</summary>
+          <div class="hotel-grid">${otherHotels.map(hotelCard).join("")}</div>
+        </details>
+      `;
+    }
+
+    function renderActivities() {
+      const list = document.getElementById("activityList");
+      list.innerHTML = activities.map((item) => `
+        <article class="idea-card">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderTrips() {
+      const list = document.getElementById("tripList");
+      list.innerHTML = tripIdeas.map((item) => `
+        <article class="idea-card">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
         </article>
       `).join("");
     }
@@ -669,6 +938,8 @@
       });
 
       renderList();
+      renderActivities();
+      renderTrips();
     }
 
     document.querySelectorAll(".tab-button").forEach((button) => {
@@ -738,6 +1009,8 @@
     });
 
     renderList();
+    renderActivities();
+    renderTrips();
   </script>
 </body>
 </html>
