@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQK9d+LRF9BjE7zIRWWj9whgNLFhNc4=" crossorigin="">
   <style>
     :root {
       --ink: #39413c;
@@ -223,66 +224,93 @@
       display: block;
     }
 
-    .cute-map {
-      position: relative;
-      min-height: 420px;
+    .reference-map {
+      width: 100%;
+      height: min(660px, calc(100vh - 180px));
+      min-height: 520px;
       overflow: hidden;
-      border-radius: var(--radius);
       border: 1px solid var(--line);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      background:
-        linear-gradient(135deg, rgba(74, 137, 148, 0.18) 0 32%, transparent 32%),
-        linear-gradient(180deg, #fff8dd 0%, #f5edd6 48%, #eaf5ee 48%, #d8efe9 100%);
+      background: var(--mist);
     }
 
-    .map-water {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 34%;
-      background:
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 18px),
-        #95d0d8;
+    .leaflet-container {
+      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-size: 1.12rem;
     }
 
-    .map-road {
-      position: absolute;
-      left: 31%;
-      top: 5%;
-      width: 10px;
-      height: 90%;
+    .leaflet-control-attribution {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.65rem;
+    }
+
+    .custom-marker {
+      white-space: nowrap;
+    }
+
+    .marker-bubble {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 2px solid rgba(255, 255, 255, 0.9);
       border-radius: 999px;
-      background: rgba(218, 167, 97, 0.72);
-      transform: rotate(12deg);
-    }
-
-    .map-label {
-      position: absolute;
-      left: 5%;
-      top: 11%;
-      color: #fff;
-      font-size: 1.8rem;
+      color: var(--ink);
+      background: rgba(255, 250, 240, 0.96);
+      box-shadow: 0 10px 24px rgba(57, 65, 60, 0.18);
+      font-size: 1.08rem;
       font-weight: 700;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+      line-height: 1;
     }
 
-    .map-pin {
+    .area-tooltip {
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.92);
+      color: var(--ink);
+      box-shadow: 0 8px 18px rgba(57, 65, 60, 0.12);
+      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .marker-bubble.hotel {
+      background: #fff3bf;
+    }
+
+    .marker-bubble.home {
+      background: #ffd4c9;
+    }
+
+    .marker-bubble.attraction {
+      background: #d9f3ed;
+    }
+
+    .marker-bubble::after {
+      content: "";
       position: absolute;
-      max-width: 210px;
-      padding: 10px 12px;
-      border: 2px solid rgba(255, 255, 255, 0.88);
+      left: 50%;
+      bottom: -7px;
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid rgba(255, 255, 255, 0.9);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+      background: inherit;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .leaflet-popup-content-wrapper {
       border-radius: 16px;
-      background: rgba(255, 250, 240, 0.94);
-      box-shadow: 0 12px 24px rgba(57, 65, 60, 0.12);
-      font-size: 1.1rem;
-      font-weight: 700;
-      line-height: 1.1;
+      background: var(--paper);
     }
 
-    .map-pin small {
-      display: block;
-      color: rgba(57, 65, 60, 0.7);
-      font-size: 0.92rem;
-      font-weight: 500;
+    .leaflet-popup-content {
+      margin: 12px 14px;
+      color: var(--ink);
+      font-size: 1.15rem;
+      line-height: 1.15;
     }
 
     .story-card {
@@ -526,12 +554,8 @@
         grid-template-columns: 1fr;
       }
 
-      .cute-map {
+      .reference-map {
         min-height: 520px;
-      }
-
-      .map-pin {
-        max-width: 178px;
       }
     }
   </style>
@@ -571,6 +595,7 @@
     <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="trip" id="tab-trip" data-tab="trip" data-i18n="tabTrip">Wider trip ideas</button>
@@ -595,33 +620,25 @@
         </div>
       </section>
 
+      <section class="tab-panel" role="tabpanel" id="map" aria-labelledby="tab-map">
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="mapTitle">Map</h2>
+            <p class="muted" data-i18n="mapNote">A simple reference map so everyone can see where the beach towns, hotels, home base, and day-trip ideas sit.</p>
+          </div>
+        </div>
+        <div id="referenceMap" class="reference-map" aria-label="Wedding reference map"></div>
+      </section>
+
       <section class="tab-panel" role="tabpanel" id="hotels" aria-labelledby="tab-hotels">
         <div class="panel-heading">
           <div>
             <h2 data-i18n="hotelsTitle">Hotels</h2>
             <p class="muted" data-i18n="hotelsNote">Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.</p>
           </div>
-          <div class="view-switch" aria-label="Hotel view">
-            <button type="button" class="active" data-view="map" data-i18n="mapView">Map</button>
-            <button type="button" data-view="list" data-i18n="listView">List</button>
-          </div>
         </div>
 
-        <div class="hotel-view active" id="mapView">
-          <div class="cute-map" aria-label="Simple map of the wedding hotel area">
-            <div class="map-water"></div>
-            <div class="map-road"></div>
-            <div class="map-label">Redondo Beach</div>
-            <div class="map-pin" style="left: 44%; top: 20%;">Portofino <small>Marina views</small></div>
-            <div class="map-pin" style="left: 58%; top: 34%;">Shade <small>Harbor Drive</small></div>
-            <div class="map-pin" style="left: 50%; top: 53%;">Sonesta <small>Near pier</small></div>
-            <div class="map-pin" style="left: 66%; top: 72%;">Other options <small>Torrance + South Bay</small></div>
-          </div>
-        </div>
-
-        <div class="hotel-view" id="listView">
-          <div class="hotel-grid" id="hotelList"></div>
-        </div>
+        <div class="hotel-grid" id="hotelList"></div>
       </section>
 
       <section class="tab-panel" role="tabpanel" id="things-to-do" aria-labelledby="tab-things-to-do">
@@ -675,6 +692,7 @@
     </div>
   </div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     const hotels = [
       {
@@ -801,12 +819,70 @@
       }
     ];
 
+    const mapAreas = [
+      {
+        name: "Torrance Beach",
+        type: "beach",
+        color: "#f7d976",
+        points: [[33.806, -118.397], [33.799, -118.394], [33.790, -118.397], [33.786, -118.405], [33.793, -118.410], [33.803, -118.405]]
+      },
+      {
+        name: "Redondo Beach",
+        type: "beach",
+        color: "#f7d976",
+        points: [[33.864, -118.398], [33.854, -118.394], [33.839, -118.390], [33.821, -118.391], [33.806, -118.397], [33.805, -118.406], [33.835, -118.400], [33.858, -118.404]]
+      },
+      {
+        name: "Hermosa Beach",
+        type: "beach",
+        color: "#f7d976",
+        points: [[33.878, -118.410], [33.872, -118.405], [33.861, -118.400], [33.856, -118.404], [33.859, -118.412], [33.873, -118.418]]
+      },
+      {
+        name: "Manhattan Beach",
+        type: "beach",
+        color: "#f7d976",
+        points: [[33.907, -118.425], [33.900, -118.421], [33.888, -118.414], [33.878, -118.410], [33.876, -118.419], [33.891, -118.429], [33.904, -118.433]]
+      },
+      {
+        name: "El Segundo",
+        type: "beach",
+        color: "#f7d976",
+        points: [[33.929, -118.433], [33.921, -118.427], [33.908, -118.424], [33.905, -118.433], [33.920, -118.440]]
+      },
+      {
+        name: "Palos Verdes",
+        type: "area",
+        color: "#b7d9a7",
+        points: [[33.817, -118.405], [33.802, -118.424], [33.776, -118.428], [33.748, -118.421], [33.724, -118.391], [33.718, -118.344], [33.735, -118.307], [33.765, -118.309], [33.796, -118.344], [33.814, -118.379]]
+      },
+      {
+        name: "San Pedro",
+        type: "area",
+        color: "#f4b7a9",
+        points: [[33.762, -118.326], [33.756, -118.281], [33.735, -118.262], [33.705, -118.270], [33.706, -118.318], [33.731, -118.338]]
+      }
+    ];
+
+    const mapPins = [
+      { name: "The Portofino Hotel & Marina", kind: "hotel", label: "Portofino", coords: [33.84534, -118.39744], note: "Top hotel pick" },
+      { name: "Shade Hotel Redondo Beach", kind: "hotel", label: "Shade", coords: [33.847657, -118.395405], note: "Top hotel pick" },
+      { name: "Sonesta Redondo Beach & Marina", kind: "hotel", label: "Sonesta", coords: [33.845295, -118.392442], note: "Top hotel pick" },
+      { name: "Valmonte Elementary", kind: "home", label: "Lily's home", coords: [33.801729, -118.364556], note: "Home base reference" },
+      { name: "Trump National Golf Club Los Angeles", kind: "attraction", label: "Trump golf course", coords: [33.72901, -118.34517], note: "Palos Verdes coastal stop" },
+      { name: "San Pedro", kind: "attraction", label: "San Pedro", coords: [33.7361, -118.2922], note: "Cool t-shirt mission" },
+      { name: "Venice Beach", kind: "attraction", label: "Venice Beach", coords: [33.97252, -118.46347], note: "Boardwalk and canals" },
+      { name: "Disneyland", kind: "attraction", label: "Disney", coords: [33.8091, -117.919], note: "Full day trip" },
+      { name: "Redondo Beach Pier", kind: "attraction", label: "Redondo Pier", coords: [33.8397, -118.3923], note: "Beach walk reference" }
+    ];
+
     const translations = {
       en: {
         translate: "Traducir",
         headline: "We're engaged!",
         intro: "We'd love for you to make it to our wedding in 2027. Due to our <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
         tabHowWeMet: "How we met",
+        tabMap: "Map",
         tabHotels: "Hotels",
         tabThingsToDo: "Things to do",
         tabTrip: "Wider trip ideas",
@@ -815,6 +891,8 @@
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
+        mapTitle: "Map",
+        mapNote: "A simple reference map so everyone can see where the beach towns, hotels, home base, and day-trip ideas sit.",
         hotelsTitle: "Hotels",
         hotelsNote: "Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.",
         topPick: "Top pick",
@@ -837,6 +915,7 @@
         headline: "¡Estamos comprometidos!",
         intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visa\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
         tabHowWeMet: "Cómo nos conocimos",
+        tabMap: "Mapa",
         tabHotels: "Hoteles",
         tabThingsToDo: "Cosas que hacer",
         tabTrip: "Ideas para un viaje más amplio",
@@ -845,6 +924,8 @@
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
+        mapTitle: "Mapa",
+        mapNote: "Un mapa sencillo de referencia para ubicar las playas, hoteles, casa base e ideas de excursiones.",
         hotelsTitle: "Hoteles",
         hotelsNote: "Nuestras opciones favoritas con acceso a la playa primero, y después algunas alternativas. Los precios de verano son rangos aproximados y pueden cambiar.",
         topPick: "Favorito",
@@ -865,6 +946,7 @@
     };
 
     let currentLanguage = "en";
+    let referenceMap;
 
     function mapsUrl(hotel) {
       return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(hotel.name + " " + hotel.address);
@@ -923,6 +1005,60 @@
       `).join("");
     }
 
+    function makeMarker(pin) {
+      return L.divIcon({
+        className: `custom-marker ${pin.kind}`,
+        html: `<span class="marker-bubble ${pin.kind}">${pin.label}</span>`,
+        iconSize: [170, 44],
+        iconAnchor: [85, 44]
+      });
+    }
+
+    function initReferenceMap() {
+      if (referenceMap || !window.L) {
+        if (referenceMap) {
+          setTimeout(() => referenceMap.invalidateSize(), 0);
+        }
+        return;
+      }
+
+      referenceMap = L.map("referenceMap", {
+        scrollWheelZoom: false,
+        zoomControl: true
+      }).setView([33.825, -118.37], 11);
+
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
+      }).addTo(referenceMap);
+
+      mapAreas.forEach((area) => {
+        L.polygon(area.points, {
+          color: area.color,
+          fillColor: area.color,
+          fillOpacity: area.type === "beach" ? 0.32 : 0.22,
+          opacity: 0.82,
+          weight: 2
+        }).addTo(referenceMap).bindTooltip(area.name, {
+          sticky: true,
+          direction: "center",
+          className: "area-tooltip"
+        });
+      });
+
+      mapPins.forEach((pin) => {
+        L.marker(pin.coords, { icon: makeMarker(pin), riseOnHover: true })
+          .addTo(referenceMap)
+          .bindPopup(`<strong>${pin.name}</strong><br>${pin.note}`);
+      });
+
+      const bounds = L.latLngBounds([
+        [33.705, -118.47],
+        [33.93, -117.91]
+      ]);
+      referenceMap.fitBounds(bounds, { padding: [22, 22] });
+    }
+
     function updateLanguage(language) {
       currentLanguage = language;
       document.documentElement.lang = language;
@@ -950,6 +1086,9 @@
         button.setAttribute("aria-selected", "true");
         document.getElementById(button.dataset.tab).classList.add("active");
 
+        if (button.dataset.tab === "map") {
+          initReferenceMap();
+        }
       });
     });
 
