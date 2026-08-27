@@ -240,10 +240,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      background:
-        linear-gradient(90deg, rgba(116, 184, 201, 0.72) 0 31%, rgba(223, 236, 207, 0.86) 31%),
-        radial-gradient(circle at 52% 20%, rgba(255, 232, 168, 0.42), transparent 30%),
-        linear-gradient(180deg, rgba(255, 250, 240, 0.94), rgba(198, 224, 190, 0.92));
+      background: #dbe6df;
     }
 
     .map-fallback {
@@ -296,18 +293,6 @@
       padding: 5px 10px;
       font-size: 1.32rem;
       font-weight: 700;
-    }
-
-    .road-tooltip {
-      border: 0;
-      border-radius: 999px;
-      background: rgba(255, 250, 240, 0.82);
-      color: rgba(57, 65, 60, 0.76);
-      box-shadow: none;
-      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-      padding: 2px 8px;
-      font-size: 1.08rem;
-      font-weight: 600;
     }
 
     .marker-bubble.hotel {
@@ -699,6 +684,41 @@
       margin: 0 0 10px;
     }
 
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .place-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 250, 240, 0.8);
+      box-shadow: 0 12px 28px rgba(88, 90, 67, 0.12);
+    }
+
+    .place-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+      background: var(--mist);
+    }
+
+    .place-card h4 {
+      margin: 12px 14px 4px;
+      color: var(--coastal);
+      font-size: 1.45rem;
+      line-height: 1.05;
+    }
+
+    .place-card p {
+      margin: 0 14px 14px;
+      color: rgba(57, 65, 60, 0.78);
+      font-size: 1.08rem;
+    }
+
     .notebook-page p:last-child {
       margin-bottom: 0;
     }
@@ -768,7 +788,8 @@
 
       .hotel-grid,
       .activity-grid,
-      .trip-grid {
+      .trip-grid,
+      .places-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -828,7 +849,8 @@
 
       .hotel-grid,
       .activity-grid,
-      .trip-grid {
+      .trip-grid,
+      .places-grid {
         grid-template-columns: 1fr;
       }
 
@@ -951,13 +973,33 @@
         <div class="activity-grid">
           <article class="idea-card">
             <h3>Lily's top five</h3>
-            <ol class="places-list">
-              <li>Tony's on the Pier, upper deck</li>
-              <li>Riviera Village happy hour</li>
-              <li>Point Vicente Lighthouse trail walk</li>
-              <li>Manhattan Beach Pier and biking on The Strand</li>
-              <li>Handel's Ice Cream</li>
-            </ol>
+            <div class="places-grid">
+              <article class="place-card">
+                <img src="https://pacificcoast.gallery/cdn/shop/products/OldTonys_Redondo-Beach-Pier-Photograph_1320x.jpg?v=1678598003" alt="Tony's on the Pier at Redondo Beach Pier">
+                <h4>Tony's on the Pier, upper deck</h4>
+                <p>Old-school pier energy, ocean views, and the kind of table that makes sunset drinks feel like a tiny ceremony.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://s3-media0.fl.yelpcdn.com/bphoto/aHQU88Wv3K06II_xcHjWGQ/o.jpg" alt="Outdoor patio in Riviera Village">
+                <h4>Riviera Village happy hour</h4>
+                <p>A relaxed neighborhood wander with patios, drinks, little shops, and plenty of places to linger.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://place.com-photos.com/62844/point-vicente-lighthouse-AF1QipMBTWspwiHKpivEBB6dUXNLj0hZmBTrI6CZifQO.jpg" alt="Point Vicente Lighthouse trail and coastline">
+                <h4>Point Vicente Lighthouse trail walk</h4>
+                <p>Cliffside ocean views, lighthouse photos, and a calm Palos Verdes walk if you want something scenic.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg" alt="Biking on The Strand near Manhattan Beach Pier">
+                <h4>Manhattan Beach Pier and biking on The Strand</h4>
+                <p>Beach path, pier views, and the easiest way to make a sunny afternoon feel properly Californian.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://photos.bringfido.com/restaurants/1/2/0/97021/97021_362618.jpg?density=2x&size=full" alt="Handel's ice cream cone outside the shop">
+                <h4>Handel's Ice Cream</h4>
+                <p>A sweet stop for after dinner, after the beach, or after deciding that one scoop is not enough.</p>
+              </article>
+            </div>
           </article>
           <article class="idea-card">
             <h3>Carlos's top five</h3>
@@ -1103,25 +1145,6 @@
           "Hermosa and Manhattan feel more beachy and lively, while Palos Verdes is quieter and more scenic.",
           "San Pedro is good for a harbor wander, a cool t-shirt, and a slightly different side of the coast."
         ]
-      }
-    ];
-
-    const mapRoads = [
-      {
-        name: "Pacific Coast Highway",
-        points: [[33.735, -118.312], [33.776, -118.371], [33.815, -118.386], [33.858, -118.391], [33.902, -118.404]]
-      },
-      {
-        name: "I-405",
-        points: [[33.748, -118.289], [33.802, -118.333], [33.853, -118.352], [33.904, -118.382]]
-      },
-      {
-        name: "I-110",
-        points: [[33.718, -118.284], [33.746, -118.291], [33.784, -118.295], [33.826, -118.301]]
-      },
-      {
-        name: "Sepulveda",
-        points: [[33.796, -118.375], [33.833, -118.366], [33.874, -118.379], [33.920, -118.396]]
       }
     ];
 
@@ -1421,6 +1444,10 @@
         zoomControl: true
       }).setView([33.825, -118.37], 11);
 
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 19
+      }).addTo(referenceMap);
+
       mapAreas.forEach((area) => {
         L.polygon(area.points, {
           color: area.type === "beach" ? "#d9a92f" : area.color,
@@ -1432,21 +1459,6 @@
           permanent: true,
           direction: "center",
           className: "area-tooltip"
-        });
-      });
-
-      mapRoads.forEach((road) => {
-        L.polyline(road.points, {
-          color: "#6f865b",
-          opacity: 0.72,
-          weight: 4,
-          dashArray: "10 10",
-          lineCap: "round",
-          lineJoin: "round"
-        }).addTo(referenceMap).bindTooltip(road.name, {
-          permanent: true,
-          direction: "center",
-          className: "road-tooltip"
         });
       });
 
