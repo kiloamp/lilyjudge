@@ -10,7 +10,7 @@
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <style>
@@ -41,7 +41,7 @@
         radial-gradient(circle at 88% 14%, rgba(249, 200, 186, 0.42), transparent 28%),
         linear-gradient(180deg, rgba(234, 245, 238, 0.74), rgba(255, 250, 240, 0.96) 390px),
         var(--paper);
-      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       font-size: 1.55rem;
       line-height: 1.35;
     }
@@ -233,7 +233,10 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      background: var(--mist);
+      background:
+        linear-gradient(90deg, rgba(149, 208, 216, 0.7) 0 31%, transparent 31%),
+        radial-gradient(circle at 52% 20%, rgba(255, 232, 168, 0.42), transparent 30%),
+        linear-gradient(180deg, rgba(255, 250, 240, 0.94), rgba(234, 245, 238, 0.92));
     }
 
     .map-fallback {
@@ -247,7 +250,7 @@
     }
 
     .leaflet-container {
-      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       font-size: 1.28rem;
     }
 
@@ -282,7 +285,7 @@
       background: rgba(255, 250, 240, 0.92);
       color: var(--ink);
       box-shadow: 0 8px 18px rgba(57, 65, 60, 0.12);
-      font-family: "Caveat", "Snell Roundhand", "Segoe Print", cursive;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       padding: 5px 10px;
       font-size: 1.32rem;
       font-weight: 700;
@@ -470,6 +473,28 @@
 
     .hotel-details .hotel-grid {
       margin-top: 12px;
+    }
+
+    .airbnb-note {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border: 1px solid rgba(240, 207, 117, 0.8);
+      border-radius: var(--radius);
+      background: rgba(255, 248, 221, 0.86);
+      padding: 16px 18px;
+      box-shadow: 0 10px 26px rgba(88, 90, 67, 0.08);
+    }
+
+    .airbnb-note p {
+      margin: 0;
+    }
+
+    .airbnb-note a {
+      flex: 0 0 auto;
+      font-weight: 700;
     }
 
     .activity-grid,
@@ -742,12 +767,12 @@
         note: "Longer-stay suites near Del Amo."
       },
       {
-        tier: "other",
+        tier: "top",
         name: "Howard Johnson by Wyndham Torrance",
         address: "3673 Torrance Boulevard, Torrance, CA 90503",
         price: "$110-$135/night",
         code: "LILYCARLOS",
-        note: "Simple Torrance option near Del Amo."
+        note: "Simple Torrance option near Del Amo, and one of the easier budget picks."
       },
       {
         tier: "other",
@@ -914,6 +939,9 @@
         summerPrice: "Summer estimate",
         discountCode: "Dummy code",
         otherHotels: "Other hotel options",
+        airbnbTitle: "Explore Airbnb too!",
+        airbnbText: "If hotels feel expensive or you are traveling as a group, nearby Airbnbs may be worth checking.",
+        airbnbLink: "Search Redondo Beach Airbnbs",
         thingsTitle: "Things to do",
         thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
         tripTitle: "Wider trip ideas",
@@ -947,6 +975,9 @@
         summerPrice: "Estimación de verano",
         discountCode: "Código ficticio",
         otherHotels: "Otras opciones de hotel",
+        airbnbTitle: "¡Mira Airbnb también!",
+        airbnbText: "Si los hoteles están caros o venís en grupo, puede valer la pena mirar Airbnbs cerca de la zona.",
+        airbnbLink: "Buscar Airbnbs en Redondo Beach",
         thingsTitle: "Cosas que hacer",
         thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
         tripTitle: "Ideas para un viaje más amplio",
@@ -968,7 +999,7 @@
 
     function renderList() {
       const list = document.getElementById("hotelList");
-      const topOrder = ["The Portofino Hotel & Marina", "Shade Hotel Redondo Beach", "Sonesta Redondo Beach & Marina"];
+      const topOrder = ["The Portofino Hotel & Marina", "Shade Hotel Redondo Beach", "Sonesta Redondo Beach & Marina", "Howard Johnson by Wyndham Torrance"];
       const topHotels = hotels
         .filter((hotel) => hotel.tier === "top")
         .sort((a, b) => topOrder.indexOf(a.name) - topOrder.indexOf(b.name));
@@ -992,6 +1023,10 @@
 
       list.innerHTML = `
         ${topHotels.map(hotelCard).join("")}
+        <aside class="airbnb-note">
+          <p><strong>${translations[currentLanguage].airbnbTitle}</strong> ${translations[currentLanguage].airbnbText}</p>
+          <a href="https://www.airbnb.com/s/Redondo-Beach--California--United-States/homes" target="_blank" rel="noopener">${translations[currentLanguage].airbnbLink}</a>
+        </aside>
         <details class="hotel-details">
           <summary>${translations[currentLanguage].otherHotels}</summary>
           <div class="hotel-grid">${otherHotels.map(hotelCard).join("")}</div>
@@ -1052,14 +1087,10 @@
 
       document.getElementById("referenceMap").innerHTML = "";
       referenceMap = L.map("referenceMap", {
+        attributionControl: false,
         scrollWheelZoom: false,
         zoomControl: true
       }).setView([33.825, -118.37], 11);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-      }).addTo(referenceMap);
 
       mapAreas.forEach((area) => {
         L.polygon(area.points, {
