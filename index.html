@@ -267,57 +267,64 @@
       white-space: nowrap;
     }
 
-    .marker-bubble {
+    .pinpoint {
       position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 13px;
-      border: 3px solid rgba(255, 255, 255, 0.95);
-      border-radius: 999px;
-      color: var(--ink);
-      background: rgba(255, 250, 240, 0.96);
-      box-shadow: 0 10px 24px rgba(57, 65, 60, 0.18);
-      font-size: 1.28rem;
-      font-weight: 700;
-      line-height: 1;
+      display: block;
+      width: 22px;
+      height: 22px;
+      border: 3px solid #fff;
+      border-radius: 50% 50% 50% 0;
+      background: var(--coral);
+      box-shadow: 0 8px 18px rgba(57, 65, 60, 0.24);
+      transform: rotate(-45deg);
     }
 
     .area-tooltip {
       border: 0;
       border-radius: 999px;
-      background: rgba(255, 250, 240, 0.92);
-      color: var(--ink);
-      box-shadow: 0 8px 18px rgba(57, 65, 60, 0.12);
+      background: rgba(255, 250, 240, 0.94);
+      color: var(--golf);
+      box-shadow: 0 8px 18px rgba(57, 65, 60, 0.14);
       font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       padding: 5px 10px;
       font-size: 1.32rem;
       font-weight: 700;
     }
 
-    .marker-bubble.hotel {
-      background: #fff3bf;
+    .area-label-icon {
+      white-space: nowrap;
     }
 
-    .marker-bubble.home {
+    .pinpoint.hotel {
+      background: var(--gold);
+    }
+
+    .pinpoint.home {
       background: #ffd4c9;
     }
 
-    .marker-bubble.attraction {
+    .pinpoint.attraction {
       background: #d9f3ed;
     }
 
-    .marker-bubble::after {
+    .pinpoint::after {
       content: "";
       position: absolute;
-      left: 50%;
-      bottom: -8px;
-      width: 14px;
-      height: 14px;
-      border-right: 3px solid rgba(255, 255, 255, 0.95);
-      border-bottom: 3px solid rgba(255, 255, 255, 0.95);
-      background: inherit;
-      transform: translateX(-50%) rotate(45deg);
+      inset: 5px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .pin-label {
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.9);
+      color: var(--ink);
+      box-shadow: 0 8px 18px rgba(57, 65, 60, 0.12);
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      padding: 4px 9px;
+      font-size: 1.08rem;
+      font-weight: 700;
     }
 
     .leaflet-popup-content-wrapper {
@@ -662,6 +669,53 @@
       transform: rotate(-45deg);
     }
 
+    .notebook-doodles.theme-1 .doodle.sun {
+      border-color: var(--coastal);
+      transform: scale(0.85);
+    }
+
+    .notebook-doodles.theme-1 .doodle.board {
+      border-color: var(--golf);
+      transform: rotate(-34deg);
+    }
+
+    .notebook-doodles.theme-2 .doodle.wave {
+      width: 112px;
+      border-bottom-color: var(--coastal);
+      transform: rotate(-8deg);
+    }
+
+    .notebook-doodles.theme-2 .doodle.sun {
+      right: 36px;
+      transform: scale(0.68);
+    }
+
+    .notebook-doodles.theme-3 .doodle.board {
+      width: 70px;
+      height: 24px;
+      right: 48px;
+      top: 58px;
+      transform: rotate(10deg);
+    }
+
+    .notebook-doodles.theme-3 .doodle.board::after {
+      width: 50px;
+      height: 2px;
+      left: 8px;
+      top: 9px;
+    }
+
+    .notebook-doodles.theme-4 .doodle.arrow {
+      border-color: var(--coastal);
+      transform: rotate(18deg);
+    }
+
+    .notebook-doodles.theme-4 .doodle.wave {
+      left: 28px;
+      bottom: 34px;
+      transform: scale(0.82);
+    }
+
     .notebook-page h3 {
       margin: 0 0 14px;
       padding-right: 170px;
@@ -728,6 +782,12 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
+    }
+
+    .places-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
 
     .idea-card {
@@ -899,7 +959,8 @@
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="trip" id="tab-trip" data-tab="trip" data-i18n="tabTrip">Wider trip ideas</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="top-places" id="tab-top-places" data-tab="top-places" data-i18n="tabTopPlaces">Our top places</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="lily-places" id="tab-lily-places" data-tab="lily-places" data-i18n="tabLilyPlaces">Lily's places</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos-places" id="tab-carlos-places" data-tab="carlos-places" data-i18n="tabCarlosPlaces">Carlos's places</button>
       </div>
 
       <section class="tab-panel active" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
@@ -963,14 +1024,14 @@
         <div class="trip-grid" id="tripList"></div>
       </section>
 
-      <section class="tab-panel" role="tabpanel" id="top-places" aria-labelledby="tab-top-places">
+      <section class="tab-panel" role="tabpanel" id="lily-places" aria-labelledby="tab-lily-places">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="topPlacesTitle">Our top places</h2>
-            <p class="muted" data-i18n="topPlacesNote">Lily and Carlos picks will live here once we start filling them in.</p>
+            <h2 data-i18n="lilyPlacesTitle">Lily's top places</h2>
+            <p class="muted" data-i18n="lilyPlacesNote">A few Lily-approved stops for food, views, walks, and beach-town wandering.</p>
           </div>
         </div>
-        <div class="activity-grid">
+        <div class="places-panel">
           <article class="idea-card">
             <h3>Lily's top five</h3>
             <div class="places-grid">
@@ -980,7 +1041,7 @@
                 <p>Old-school pier energy, ocean views, and the kind of table that makes sunset drinks feel like a tiny ceremony.</p>
               </article>
               <article class="place-card">
-                <img src="https://s3-media0.fl.yelpcdn.com/bphoto/aHQU88Wv3K06II_xcHjWGQ/o.jpg" alt="Outdoor patio in Riviera Village">
+                <img src="https://images1.loopnet.com/i2/ABxGyA7D2M258URePaygRXLNBr03B9dZ3_9jY_izEQE/116/1729-1735-S-Catalina-Ave-Redondo-Beach-CA-Primary-Photo-1-LargeHighDefinition.jpg" alt="Riviera Village corner storefronts">
                 <h4>Riviera Village happy hour</h4>
                 <p>A relaxed neighborhood wander with patios, drinks, little shops, and plenty of places to linger.</p>
               </article>
@@ -995,15 +1056,52 @@
                 <p>Beach path, pier views, and the easiest way to make a sunny afternoon feel properly Californian.</p>
               </article>
               <article class="place-card">
-                <img src="https://photos.bringfido.com/restaurants/1/2/0/97021/97021_362618.jpg?density=2x&size=full" alt="Handel's ice cream cone outside the shop">
-                <h4>Handel's Ice Cream</h4>
-                <p>A sweet stop for after dinner, after the beach, or after deciding that one scoop is not enough.</p>
+                <img src="https://images.happycow.net/venues/500/41/84/hcmp418460_2901145.jpeg" alt="Good Stuff Restaurant patio in Redondo Beach">
+                <h4>Good Stuff Redondo</h4>
+                <p>A sunny Riviera Village breakfast or lunch stop when the plan is casual, beachy, and easy.</p>
               </article>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section class="tab-panel" role="tabpanel" id="carlos-places" aria-labelledby="tab-carlos-places">
+        <div class="panel-heading">
+          <div>
+            <h2 data-i18n="carlosPlacesTitle">Carlos's top places</h2>
+            <p class="muted" data-i18n="carlosPlacesNote">Carlos's aviation, coast, thrift, burrito, and hotel-view shortlist.</p>
+          </div>
+        </div>
+        <div class="places-panel">
           <article class="idea-card">
             <h3>Carlos's top five</h3>
-            <p data-i18n="comingSoon">Details coming soon.</p>
+            <div class="places-grid">
+              <article class="place-card">
+                <img src="https://coinventmediastorage.blob.core.windows.net/media-storage-container/gphoto_ChIJp8bt7v5K3YARkVsYtmXG8rI_0.jpg" alt="Western Museum of Flight aircraft exhibits">
+                <h4>Torrance Airport Aviation Museum</h4>
+                <p>Western Museum of Flight, because a wedding website can absolutely include airplanes.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://www.outdoorsocal.com/wp-content/uploads/2022/02/abalone-cove.jpg" alt="Palos Verdes cove and coastline">
+                <h4>Malaga Cove</h4>
+                <p>A Palos Verdes classic for cliffs, ocean air, and a slower kind of coastal afternoon.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://tacotuesday.com/wp-content/uploads/2022/10/20201102-RMG-Psole-Kids-Menu-Chili-verde-Coloroado-Breakfast-2684.jpg" alt="Riviera Mexican Grill patio">
+                <h4>Huge burrito at Riviera Mexican</h4>
+                <p>Come hungry, order confidently, and respect the size of the burrito.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://cdn.businessyab.com/assets/uploads/14970d6042291efc59ea3e04d4ef23f2__united_states_california_los_angeles_county_torrance_seaside_palos_verdes_boulevard_22227_goodwill_store_donation_centerhtml.jpg" alt="Goodwill Store and Donation Center in Torrance">
+                <h4>Goodwill Store Torrance</h4>
+                <p>A very practical cultural stop, depending on who you ask.</p>
+              </article>
+              <article class="place-card">
+                <img src="https://ca-times.brightspotcdn.com/dims4/default/8cf5228/2147483647/strip/false/crop/3000x1688%2B0%2B0/resize/1486x836%21/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F50%2Fcd%2Fc6ae0cd3403590614a4e7b18c71c%2F1329372-me-0731-terranea-1-rcg.jpg" alt="Terranea Resort on the Palos Verdes coast">
+                <h4>Terranea Hotel</h4>
+                <p>Ocean views, Palos Verdes drama, and a very convincing place to pretend you are just stopping by.</p>
+              </article>
+            </div>
           </article>
         </div>
       </section>
@@ -1171,43 +1269,43 @@
       {
         name: "Torrance Beach",
         type: "beach",
-        color: "#f7d976",
+        labelCoords: [33.790, -118.383],
         points: [[33.806, -118.397], [33.799, -118.394], [33.790, -118.397], [33.786, -118.405], [33.793, -118.410], [33.803, -118.405]]
       },
       {
         name: "Redondo Beach",
         type: "beach",
-        color: "#f7d976",
+        labelCoords: [33.842, -118.378],
         points: [[33.864, -118.398], [33.854, -118.394], [33.839, -118.390], [33.821, -118.391], [33.806, -118.397], [33.805, -118.406], [33.835, -118.400], [33.858, -118.404]]
       },
       {
         name: "Hermosa Beach",
         type: "beach",
-        color: "#f7d976",
+        labelCoords: [33.867, -118.390],
         points: [[33.878, -118.410], [33.872, -118.405], [33.861, -118.400], [33.856, -118.404], [33.859, -118.412], [33.873, -118.418]]
       },
       {
         name: "Manhattan Beach",
         type: "beach",
-        color: "#f7d976",
+        labelCoords: [33.895, -118.397],
         points: [[33.907, -118.425], [33.900, -118.421], [33.888, -118.414], [33.878, -118.410], [33.876, -118.419], [33.891, -118.429], [33.904, -118.433]]
       },
       {
         name: "El Segundo",
         type: "beach",
-        color: "#f7d976",
+        labelCoords: [33.925, -118.410],
         points: [[33.929, -118.433], [33.921, -118.427], [33.908, -118.424], [33.905, -118.433], [33.920, -118.440]]
       },
       {
         name: "Palos Verdes",
         type: "area",
-        color: "#b7d9a7",
+        labelCoords: [33.764, -118.332],
         points: [[33.817, -118.405], [33.802, -118.424], [33.776, -118.428], [33.748, -118.421], [33.724, -118.391], [33.718, -118.344], [33.735, -118.307], [33.765, -118.309], [33.796, -118.344], [33.814, -118.379]]
       },
       {
         name: "San Pedro",
         type: "area",
-        color: "#f4b7a9",
+        labelCoords: [33.733, -118.256],
         points: [[33.762, -118.326], [33.756, -118.281], [33.735, -118.262], [33.705, -118.270], [33.706, -118.318], [33.731, -118.338]]
       }
     ];
@@ -1234,7 +1332,8 @@
         tabHotels: "Hotels",
         tabThingsToDo: "Things to do",
         tabTrip: "Wider trip ideas",
-        tabTopPlaces: "Our top places",
+        tabLilyPlaces: "Lily's places",
+        tabCarlosPlaces: "Carlos's places",
         howWeMetTitle: "How we met",
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
@@ -1255,8 +1354,10 @@
         thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
         tripTitle: "Wider trip ideas",
         tripNote: "A few easy day trips if you want to turn the wedding into a California week.",
-        topPlacesTitle: "Our top places",
-        topPlacesNote: "Lily and Carlos picks will live here once we start filling them in.",
+        lilyPlacesTitle: "Lily's top places",
+        lilyPlacesNote: "A few Lily-approved stops for food, views, walks, and beach-town wandering.",
+        carlosPlacesTitle: "Carlos's top places",
+        carlosPlacesNote: "Carlos's aviation, coast, thrift, burrito, and hotel-view shortlist.",
         mapView: "Map",
         listView: "List",
         mapLink: "Open in Google Maps"
@@ -1270,7 +1371,8 @@
         tabHotels: "Hoteles",
         tabThingsToDo: "Cosas que hacer",
         tabTrip: "Ideas para un viaje más amplio",
-        tabTopPlaces: "Nuestros lugares",
+        tabLilyPlaces: "Lugares de Lily",
+        tabCarlosPlaces: "Lugares de Carlos",
         howWeMetTitle: "Cómo nos conocimos",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
@@ -1291,8 +1393,10 @@
         thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
         tripTitle: "Ideas para un viaje más amplio",
         tripNote: "Algunas excursiones fáciles si quieres convertir la boda en una semana por California.",
-        topPlacesTitle: "Nuestros lugares",
-        topPlacesNote: "Los favoritos de Lily y Carlos irán aquí cuando empecemos a completarlos.",
+        lilyPlacesTitle: "Los lugares favoritos de Lily",
+        lilyPlacesNote: "Algunos sitios aprobados por Lily para comer, pasear, ver vistas y disfrutar la playa.",
+        carlosPlacesTitle: "Los lugares favoritos de Carlos",
+        carlosPlacesNote: "La lista de Carlos: aviación, costa, compras de segunda mano, burritos y vistas de hotel.",
         mapView: "Mapa",
         listView: "Lista",
         mapLink: "Abrir en Google Maps"
@@ -1345,8 +1449,8 @@
 
     function renderActivities() {
       const list = document.getElementById("activityList");
-      const doodles = `
-        <div class="notebook-doodles" aria-hidden="true">
+      const doodles = (index) => `
+        <div class="notebook-doodles theme-${index}" aria-hidden="true">
           <span class="doodle sun"></span>
           <span class="doodle board"></span>
           <span class="doodle wave"></span>
@@ -1363,7 +1467,7 @@
             `).join("")}
           </div>
           <article class="notebook-page" id="activityPage">
-            ${doodles}
+            ${doodles(0)}
             <h3>${activities[0].title}</h3>
             ${activities[0].text.map((paragraph) => `<p>${paragraph}</p>`).join("")}
           </article>
@@ -1385,7 +1489,7 @@
       }
 
       page.innerHTML = `
-        <div class="notebook-doodles" aria-hidden="true">
+        <div class="notebook-doodles theme-${index}" aria-hidden="true">
           <span class="doodle sun"></span>
           <span class="doodle board"></span>
           <span class="doodle wave"></span>
@@ -1409,9 +1513,18 @@
     function makeMarker(pin) {
       return L.divIcon({
         className: `custom-marker ${pin.kind}`,
-        html: `<span class="marker-bubble ${pin.kind}">${pin.label}</span>`,
-        iconSize: [230, 58],
-        iconAnchor: [115, 58]
+        html: `<span class="pinpoint ${pin.kind}"></span>`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 22]
+      });
+    }
+
+    function makeAreaLabel(area) {
+      return L.divIcon({
+        className: "area-label-icon",
+        html: `<span class="area-tooltip">${area.name}</span>`,
+        iconSize: [150, 34],
+        iconAnchor: [0, 17]
       });
     }
 
@@ -1449,22 +1562,29 @@
       }).addTo(referenceMap);
 
       mapAreas.forEach((area) => {
+        const areaColor = "#f7d976";
         L.polygon(area.points, {
-          color: area.type === "beach" ? "#d9a92f" : area.color,
-          fillColor: area.color,
-          fillOpacity: area.type === "beach" ? 0.5 : 0.4,
+          color: "#d9a92f",
+          fillColor: areaColor,
+          fillOpacity: 0.42,
           opacity: 0.95,
           weight: 4
-        }).addTo(referenceMap).bindTooltip(area.name, {
-          permanent: true,
-          direction: "center",
-          className: "area-tooltip"
-        });
+        }).addTo(referenceMap);
+
+        L.marker(area.labelCoords, {
+          icon: makeAreaLabel(area),
+          interactive: false
+        }).addTo(referenceMap);
       });
 
       mapPins.forEach((pin) => {
         L.marker(pin.coords, { icon: makeMarker(pin), riseOnHover: true })
           .addTo(referenceMap)
+          .bindTooltip(pin.label, {
+            direction: "right",
+            offset: [12, -14],
+            className: "pin-label"
+          })
           .bindPopup(`<strong>${pin.name}</strong><br>${pin.note}`);
       });
 
