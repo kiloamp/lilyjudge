@@ -36,6 +36,7 @@
     }
 
     body {
+      position: relative;
       margin: 0;
       color: var(--ink);
       background:
@@ -46,6 +47,47 @@
       font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       font-size: 1.55rem;
       line-height: 1.35;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.22;
+    }
+
+    body::before {
+      top: 110px;
+      right: 24px;
+      width: 230px;
+      height: 260px;
+      background:
+        radial-gradient(circle at 34% 20%, transparent 0 12px, rgba(87, 127, 86, 0.72) 13px 15px, transparent 16px),
+        radial-gradient(circle at 52% 24%, transparent 0 13px, rgba(87, 127, 86, 0.72) 14px 16px, transparent 17px),
+        radial-gradient(circle at 42% 39%, transparent 0 14px, rgba(87, 127, 86, 0.72) 15px 17px, transparent 18px),
+        radial-gradient(circle at 60% 43%, transparent 0 12px, rgba(87, 127, 86, 0.72) 13px 15px, transparent 16px),
+        linear-gradient(72deg, transparent 0 48%, rgba(87, 127, 86, 0.5) 49% 51%, transparent 52%),
+        linear-gradient(112deg, transparent 0 50%, rgba(87, 127, 86, 0.45) 51% 53%, transparent 54%);
+      border-bottom: 2px solid rgba(87, 127, 86, 0.34);
+      border-radius: 46% 54% 50% 50%;
+      transform: rotate(-8deg);
+    }
+
+    body::after {
+      left: 18px;
+      bottom: 58px;
+      width: 230px;
+      height: 250px;
+      background:
+        radial-gradient(ellipse at 38% 24%, rgba(255, 250, 240, 0.18) 0 18px, rgba(74, 137, 148, 0.42) 19px 21px, transparent 22px),
+        radial-gradient(ellipse at 54% 31%, rgba(255, 250, 240, 0.18) 0 16px, rgba(74, 137, 148, 0.42) 17px 19px, transparent 20px),
+        radial-gradient(ellipse at 43% 48%, rgba(255, 250, 240, 0.18) 0 17px, rgba(74, 137, 148, 0.42) 18px 20px, transparent 21px),
+        linear-gradient(82deg, transparent 0 52%, rgba(87, 127, 86, 0.36) 53% 55%, transparent 56%),
+        linear-gradient(124deg, transparent 0 45%, rgba(87, 127, 86, 0.34) 46% 48%, transparent 49%);
+      border-radius: 50%;
+      transform: rotate(11deg);
     }
 
     a {
@@ -293,6 +335,14 @@
 
     .area-label-icon {
       white-space: nowrap;
+    }
+
+    .area-connector {
+      stroke: rgba(255, 250, 240, 0.96);
+      stroke-width: 8;
+      stroke-linecap: round;
+      paint-order: stroke;
+      filter: drop-shadow(0 3px 5px rgba(57, 65, 60, 0.22));
     }
 
     .pinpoint.hotel {
@@ -1270,42 +1320,49 @@
         name: "Torrance Beach",
         type: "beach",
         labelCoords: [33.790, -118.383],
+        connectorCoords: [33.794, -118.401],
         points: [[33.806, -118.397], [33.799, -118.394], [33.790, -118.397], [33.786, -118.405], [33.793, -118.410], [33.803, -118.405]]
       },
       {
         name: "Redondo Beach",
         type: "beach",
         labelCoords: [33.842, -118.378],
+        connectorCoords: [33.837, -118.397],
         points: [[33.864, -118.398], [33.854, -118.394], [33.839, -118.390], [33.821, -118.391], [33.806, -118.397], [33.805, -118.406], [33.835, -118.400], [33.858, -118.404]]
       },
       {
         name: "Hermosa Beach",
         type: "beach",
         labelCoords: [33.867, -118.390],
+        connectorCoords: [33.867, -118.408],
         points: [[33.878, -118.410], [33.872, -118.405], [33.861, -118.400], [33.856, -118.404], [33.859, -118.412], [33.873, -118.418]]
       },
       {
         name: "Manhattan Beach",
         type: "beach",
         labelCoords: [33.895, -118.397],
+        connectorCoords: [33.895, -118.423],
         points: [[33.907, -118.425], [33.900, -118.421], [33.888, -118.414], [33.878, -118.410], [33.876, -118.419], [33.891, -118.429], [33.904, -118.433]]
       },
       {
         name: "El Segundo",
         type: "beach",
         labelCoords: [33.925, -118.410],
+        connectorCoords: [33.919, -118.433],
         points: [[33.929, -118.433], [33.921, -118.427], [33.908, -118.424], [33.905, -118.433], [33.920, -118.440]]
       },
       {
         name: "Palos Verdes",
         type: "area",
         labelCoords: [33.764, -118.332],
+        connectorCoords: [33.765, -118.372],
         points: [[33.817, -118.405], [33.802, -118.424], [33.776, -118.428], [33.748, -118.421], [33.724, -118.391], [33.718, -118.344], [33.735, -118.307], [33.765, -118.309], [33.796, -118.344], [33.814, -118.379]]
       },
       {
         name: "San Pedro",
         type: "area",
         labelCoords: [33.733, -118.256],
+        connectorCoords: [33.733, -118.295],
         points: [[33.762, -118.326], [33.756, -118.281], [33.735, -118.262], [33.705, -118.270], [33.706, -118.318], [33.731, -118.338]]
       }
     ];
@@ -1571,6 +1628,15 @@
           weight: 4
         }).addTo(referenceMap);
 
+        L.polyline([area.labelCoords, area.connectorCoords], {
+          className: "area-connector",
+          color: "#577f56",
+          opacity: 0.86,
+          weight: 3,
+          dashArray: "8 8",
+          lineCap: "round"
+        }).addTo(referenceMap);
+
         L.marker(area.labelCoords, {
           icon: makeAreaLabel(area),
           interactive: false
@@ -1593,6 +1659,7 @@
         [33.94, -118.245]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
+      referenceMap.setZoom(referenceMap.getZoom() + 1);
       resizeReferenceMap();
       setTimeout(resizeReferenceMap, 250);
     }
