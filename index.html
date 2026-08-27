@@ -120,7 +120,11 @@
 
     .engaged {
       margin: 0 0 18px;
-      color: var(--coral);
+      color: var(--coastal);
+      background: linear-gradient(115deg, var(--coastal) 0%, var(--golf) 58%, var(--coral) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(3.8rem, 10vw, 7rem);
       font-weight: 500;
@@ -515,11 +519,12 @@
     .notebook {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: minmax(170px, 0.34fr) minmax(0, 1fr);
+      grid-template-columns: minmax(190px, 0.28fr) minmax(0, 1fr);
       gap: 0;
       overflow: hidden;
+      min-height: 640px;
       border: 1px solid rgba(137, 112, 76, 0.26);
-      border-radius: 20px;
+      border-radius: 10px;
       background:
         linear-gradient(90deg, rgba(172, 116, 86, 0.12), transparent 42px),
         #fff8dd;
@@ -532,7 +537,7 @@
       display: grid;
       align-content: start;
       gap: 8px;
-      padding: 22px 12px 22px 18px;
+      padding: 28px 14px 28px 20px;
       background:
         linear-gradient(90deg, rgba(125, 84, 62, 0.12), rgba(255, 248, 221, 0.58)),
         repeating-linear-gradient(180deg, transparent 0 34px, rgba(137, 112, 76, 0.12) 34px 35px);
@@ -542,7 +547,7 @@
     .notebook-tab {
       border: 1px solid rgba(137, 112, 76, 0.22);
       border-right: 0;
-      border-radius: 14px 0 0 14px;
+      border-radius: 8px 0 0 8px;
       background: rgba(255, 250, 240, 0.76);
       color: var(--coastal);
       cursor: pointer;
@@ -561,16 +566,120 @@
     }
 
     .notebook-page {
-      min-height: 360px;
-      padding: clamp(24px, 5vw, 54px);
+      position: relative;
+      min-height: 640px;
+      padding: clamp(34px, 5vw, 62px);
       background:
         linear-gradient(90deg, rgba(212, 96, 84, 0.18) 0 2px, transparent 2px 100%),
         repeating-linear-gradient(180deg, transparent 0 35px, rgba(74, 137, 148, 0.14) 35px 36px),
         rgba(255, 253, 246, 0.96);
     }
 
+    .notebook-doodles {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      width: 164px;
+      height: 138px;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .doodle {
+      position: absolute;
+      display: block;
+    }
+
+    .doodle.sun {
+      top: 2px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+    }
+
+    .doodle.sun::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px dashed rgba(240, 207, 117, 0.72);
+    }
+
+    .doodle.board {
+      top: 44px;
+      right: 68px;
+      width: 22px;
+      height: 82px;
+      border: 3px solid var(--coastal);
+      border-radius: 999px;
+      transform: rotate(24deg);
+    }
+
+    .doodle.board::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      width: 2px;
+      height: 62px;
+      background: rgba(47, 113, 135, 0.65);
+    }
+
+    .doodle.wave {
+      left: 8px;
+      bottom: 22px;
+      width: 92px;
+      height: 28px;
+      border-bottom: 4px solid var(--sea);
+      border-radius: 0 0 70px 70px;
+    }
+
+    .doodle.wave::before,
+    .doodle.wave::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      width: 46px;
+      height: 28px;
+      border-bottom: 4px solid var(--sea);
+      border-radius: 0 0 60px 60px;
+    }
+
+    .doodle.wave::before {
+      left: 34px;
+    }
+
+    .doodle.wave::after {
+      left: 68px;
+    }
+
+    .doodle.arrow {
+      right: 4px;
+      bottom: 8px;
+      width: 64px;
+      height: 30px;
+      border-bottom: 3px solid var(--golf);
+      border-right: 3px solid var(--golf);
+      transform: rotate(-12deg);
+    }
+
+    .doodle.arrow::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      bottom: -7px;
+      width: 12px;
+      height: 12px;
+      border-right: 3px solid var(--golf);
+      border-bottom: 3px solid var(--golf);
+      transform: rotate(-45deg);
+    }
+
     .notebook-page h3 {
       margin: 0 0 14px;
+      padding-right: 170px;
       color: var(--coastal);
       font-size: clamp(2rem, 4vw, 3rem);
     }
@@ -579,6 +688,15 @@
       margin: 0 0 16px;
       max-width: 58ch;
       color: rgba(57, 65, 60, 0.84);
+    }
+
+    .places-list {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    .places-list li {
+      margin: 0 0 10px;
     }
 
     .notebook-page p:last-child {
@@ -673,6 +791,20 @@
 
       .notebook-tab.active {
         transform: translateY(4px);
+      }
+
+      .notebook-page h3 {
+        padding-right: 0;
+      }
+
+      .notebook-doodles {
+        position: relative;
+        top: auto;
+        right: auto;
+        float: right;
+        margin: -8px 0 12px 18px;
+        width: 136px;
+        height: 116px;
       }
     }
 
@@ -819,7 +951,13 @@
         <div class="activity-grid">
           <article class="idea-card">
             <h3>Lily's top five</h3>
-            <p data-i18n="comingSoon">Details coming soon.</p>
+            <ol class="places-list">
+              <li>Tony's on the Pier, upper deck</li>
+              <li>Riviera Village happy hour</li>
+              <li>Point Vicente Lighthouse trail walk</li>
+              <li>Manhattan Beach Pier and biking on The Strand</li>
+              <li>Handel's Ice Cream</li>
+            </ol>
           </article>
           <article class="idea-card">
             <h3>Carlos's top five</h3>
@@ -1184,6 +1322,14 @@
 
     function renderActivities() {
       const list = document.getElementById("activityList");
+      const doodles = `
+        <div class="notebook-doodles" aria-hidden="true">
+          <span class="doodle sun"></span>
+          <span class="doodle board"></span>
+          <span class="doodle wave"></span>
+          <span class="doodle arrow"></span>
+        </div>
+      `;
       list.innerHTML = `
         <div class="notebook">
           <div class="notebook-tabs" role="tablist" aria-label="Things to do sections">
@@ -1194,6 +1340,7 @@
             `).join("")}
           </div>
           <article class="notebook-page" id="activityPage">
+            ${doodles}
             <h3>${activities[0].title}</h3>
             ${activities[0].text.map((paragraph) => `<p>${paragraph}</p>`).join("")}
           </article>
@@ -1215,6 +1362,12 @@
       }
 
       page.innerHTML = `
+        <div class="notebook-doodles" aria-hidden="true">
+          <span class="doodle sun"></span>
+          <span class="doodle board"></span>
+          <span class="doodle wave"></span>
+          <span class="doodle arrow"></span>
+        </div>
         <h3>${activity.title}</h3>
         ${activity.text.map((paragraph) => `<p>${paragraph}</p>`).join("")}
       `;
