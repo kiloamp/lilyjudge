@@ -430,6 +430,13 @@
       will-change: transform;
     }
 
+    .map-rough-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 425;
+      pointer-events: none;
+    }
+
     .custom-marker {
       white-space: nowrap;
     }
@@ -1344,6 +1351,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     const hotels = [
@@ -1843,6 +1851,9 @@
 
     let currentLanguage = "en";
     let referenceMap;
+    let roughMapCanvas;
+    let roughMapRenderer;
+    let roughDrawFrame;
 
     function mapsUrl(hotel) {
       return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(hotel.name + " " + hotel.address);
@@ -1980,6 +1991,84 @@
       });
     }
 
+    function setupRoughMapLayer() {
+      if (!window.rough || roughMapCanvas) {
+        return Boolean(window.rough);
+      }
+
+      const mapElement = document.getElementById("referenceMap");
+      roughMapCanvas = document.createElement("canvas");
+      roughMapCanvas.className = "map-rough-canvas";
+      mapElement.appendChild(roughMapCanvas);
+      roughMapRenderer = rough.canvas(roughMapCanvas);
+      return true;
+    }
+
+    function scheduleRoughMapDraw() {
+      if (!roughMapCanvas || !roughMapRenderer || !referenceMap) {
+        return;
+      }
+
+      if (roughDrawFrame) {
+        cancelAnimationFrame(roughDrawFrame);
+      }
+
+      roughDrawFrame = requestAnimationFrame(drawRoughMapLayer);
+    }
+
+    function drawRoughMapLayer() {
+      roughDrawFrame = null;
+      if (!roughMapCanvas || !roughMapRenderer || !referenceMap) {
+        return;
+      }
+
+      const size = referenceMap.getSize();
+      const scale = window.devicePixelRatio || 1;
+      roughMapCanvas.width = size.x * scale;
+      roughMapCanvas.height = size.y * scale;
+      roughMapCanvas.style.width = `${size.x}px`;
+      roughMapCanvas.style.height = `${size.y}px`;
+
+      const context = roughMapCanvas.getContext("2d");
+      context.setTransform(scale, 0, 0, scale, 0, 0);
+      context.clearRect(0, 0, size.x, size.y);
+
+      mapAreas.forEach((area, index) => {
+        const points = area.points.map((coords) => {
+          const point = referenceMap.latLngToContainerPoint(coords);
+          return [point.x, point.y];
+        });
+        const labelPoint = referenceMap.latLngToContainerPoint(area.labelCoords);
+        const connectorPoint = referenceMap.latLngToContainerPoint(area.connectorCoords);
+
+        roughMapRenderer.polygon(points, {
+          stroke: "#577f56",
+          strokeWidth: 2.4,
+          roughness: 2.6,
+          bowing: 1.4,
+          fill: "rgba(247, 217, 118, 0.31)",
+          fillStyle: index % 2 ? "hachure" : "zigzag",
+          fillWeight: 1.1,
+          hachureAngle: -18 + (index * 7),
+          hachureGap: 12
+        });
+
+        roughMapRenderer.line(labelPoint.x, labelPoint.y, connectorPoint.x, connectorPoint.y, {
+          stroke: "#fffaf0",
+          strokeWidth: 8,
+          roughness: 1.7,
+          bowing: 1.2
+        });
+
+        roughMapRenderer.line(labelPoint.x, labelPoint.y, connectorPoint.x, connectorPoint.y, {
+          stroke: "#577f56",
+          strokeWidth: 2.2,
+          roughness: 2.2,
+          bowing: 1.6
+        });
+      });
+    }
+
     function resizeReferenceMap() {
       if (!referenceMap) {
         return;
@@ -1987,7 +2076,11 @@
 
       requestAnimationFrame(() => {
         referenceMap.invalidateSize();
-        requestAnimationFrame(() => referenceMap.invalidateSize());
+        scheduleRoughMapDraw();
+        requestAnimationFrame(() => {
+          referenceMap.invalidateSize();
+          scheduleRoughMapDraw();
+        });
       });
     }
 
@@ -2003,6 +2096,8 @@
       }
 
       document.getElementById("referenceMap").innerHTML = "";
+      roughMapCanvas = null;
+      roughMapRenderer = null;
       referenceMap = L.map("referenceMap", {
         attributionControl: false,
         scrollWheelZoom: true,
@@ -2016,24 +2111,28 @@
         maxZoom: 19
       }).addTo(referenceMap);
 
-      mapAreas.forEach((area) => {
-        const areaColor = "#f7d976";
-        L.polygon(area.points, {
-          color: "#d9a92f",
-          fillColor: areaColor,
-          fillOpacity: 0.42,
-          opacity: 0.95,
-          weight: 4
-        }).addTo(referenceMap);
+      const hasRoughLayer = setupRoughMapLayer();
 
-        L.polyline([area.labelCoords, area.connectorCoords], {
-          className: "area-connector",
-          color: "#577f56",
-          opacity: 0.86,
-          weight: 3,
-          dashArray: "8 8",
-          lineCap: "round"
-        }).addTo(referenceMap);
+      mapAreas.forEach((area) => {
+        if (!hasRoughLayer) {
+          const areaColor = "#f7d976";
+          L.polygon(area.points, {
+            color: "#d9a92f",
+            fillColor: areaColor,
+            fillOpacity: 0.42,
+            opacity: 0.95,
+            weight: 4
+          }).addTo(referenceMap);
+
+          L.polyline([area.labelCoords, area.connectorCoords], {
+            className: "area-connector",
+            color: "#577f56",
+            opacity: 0.86,
+            weight: 3,
+            dashArray: "8 8",
+            lineCap: "round"
+          }).addTo(referenceMap);
+        }
 
         L.marker(area.labelCoords, {
           icon: makeAreaLabel(area),
@@ -2057,6 +2156,7 @@
         [33.945, -118.235]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
+      referenceMap.on("move zoom resize moveend zoomend", scheduleRoughMapDraw);
       resizeReferenceMap();
       setTimeout(resizeReferenceMap, 250);
     }
@@ -2081,6 +2181,8 @@
       if (referenceMap) {
         referenceMap.remove();
         referenceMap = null;
+        roughMapCanvas = null;
+        roughMapRenderer = null;
         initReferenceMap();
       }
     }
