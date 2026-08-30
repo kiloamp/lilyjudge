@@ -8,6 +8,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-image-preview:none">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='8' fill='%23f0cf75'/%3E%3Cellipse cx='32' cy='15' rx='9' ry='15' fill='%23f9c8ba'/%3E%3Cellipse cx='32' cy='49' rx='9' ry='15' fill='%23f9c8ba'/%3E%3Cellipse cx='15' cy='32' rx='15' ry='9' fill='%23f9c8ba'/%3E%3Cellipse cx='49' cy='32' rx='15' ry='9' fill='%23f9c8ba'/%3E%3Cellipse cx='20' cy='20' rx='8' ry='13' fill='%23fffaf0' transform='rotate(-45 20 20)'/%3E%3Cellipse cx='44' cy='44' rx='8' ry='13' fill='%23fffaf0' transform='rotate(-45 44 44)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -204,12 +205,23 @@
       margin: 0 auto;
     }
 
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 12;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.9);
+      box-shadow: 0 10px 26px rgba(88, 90, 67, 0.08);
+      backdrop-filter: blur(14px);
+    }
+
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 16px;
-      padding: 18px 0 10px;
+      padding: 12px 0 8px;
     }
 
     .names {
@@ -286,16 +298,16 @@
     }
 
     .tabs-wrap {
-      border-top: 1px solid var(--line);
-      padding: 24px 0 56px;
+      padding: 18px 0 56px;
     }
 
     .tabs {
       display: flex;
       justify-content: center;
-      gap: 22px;
+      flex: 1 1 100%;
+      gap: clamp(14px, 3vw, 28px);
       overflow-x: auto;
-      padding: 0 0 12px;
+      padding: 0 0 4px;
       scrollbar-width: thin;
     }
 
@@ -1197,28 +1209,30 @@
     <span></span>
     <span></span>
     <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <header class="page-shell topbar">
-    <div class="names">Lily & Carlos</div>
-    <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
-      <span aria-hidden="true">🇪🇸</span>
-      <span data-i18n="translate">Traducir</span>
-      <span aria-hidden="true">🇺🇸</span>
-    </button>
-  </header>
-
-  <main>
-    <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
+  <header class="site-header">
+    <div class="page-shell topbar">
+      <div class="names">Lily & Carlos</div>
+      <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
+        <span aria-hidden="true">🇪🇸</span>
+        <span data-i18n="translate">Traducir</span>
+        <span aria-hidden="true">🇺🇸</span>
+      </button>
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="lily-places" id="tab-lily-places" data-tab="lily-places" data-i18n="tabLilyPlaces">Lily's places</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos-places" id="tab-carlos-places" data-tab="carlos-places" data-i18n="tabCarlosPlaces">Carlos's places</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="places" id="tab-places" data-tab="places" data-i18n="tabPlaces">Places</button>
       </div>
+    </div>
+  </header>
 
+  <main>
+    <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <section class="tab-panel active" role="tabpanel" id="engaged" aria-labelledby="tab-engaged">
         <div class="hero" aria-label="Wedding announcement">
           <div class="video-frame">
@@ -1254,7 +1268,7 @@
             <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
             <p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p>
             <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p>
-            <p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p>
+            <p>We know our wedding might be untraditional, but we would love it if you could make it. If you already know you can or cannot make it, please <a href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener">fill in this form</a>.</p>
             <p>With love,<br><span class="signature">Lily and Carlos</span></p>
           </div>
           <div class="story-photos" aria-hidden="true">
@@ -1299,11 +1313,11 @@
         <div class="activity-grid" id="activityList"></div>
       </section>
 
-      <section class="tab-panel" role="tabpanel" id="lily-places" aria-labelledby="tab-lily-places">
+      <section class="tab-panel" role="tabpanel" id="places" aria-labelledby="tab-places">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="lilyPlacesTitle">Lily's top places</h2>
-            <p class="muted" data-i18n="lilyPlacesNote">A few Lily-approved stops for food, views, walks, and beach-town wandering.</p>
+            <h2 data-i18n="placesTitle">Favorite places</h2>
+            <p class="muted" data-i18n="placesNote">A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.</p>
           </div>
         </div>
         <div class="places-panel">
@@ -1311,17 +1325,6 @@
             <h3 data-i18n="lilyTopFiveTitle">Lily's top five</h3>
             <div class="places-grid" id="lilyPlacesList"></div>
           </article>
-        </div>
-      </section>
-
-      <section class="tab-panel" role="tabpanel" id="carlos-places" aria-labelledby="tab-carlos-places">
-        <div class="panel-heading">
-          <div>
-            <h2 data-i18n="carlosPlacesTitle">Carlos's top places</h2>
-            <p class="muted" data-i18n="carlosPlacesNote">Carlos's aviation, coast, thrift, burrito, and hotel-view shortlist.</p>
-          </div>
-        </div>
-        <div class="places-panel">
           <article class="idea-card wide">
             <h3 data-i18n="carlosTopFiveTitle">Carlos's favorites</h3>
             <div class="places-grid" id="carlosPlacesList"></div>
@@ -1779,11 +1782,10 @@
         tabMap: "Map",
         tabHotels: "Hotels",
         tabThingsToDo: "Things to do",
-        tabLilyPlaces: "Lily's places",
-        tabCarlosPlaces: "Carlos's places",
+        tabPlaces: "Places",
         howWeMetTitle: "How we met",
         howWeMetNote: "A little bit of our story before the party planning begins.",
-        howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
+        howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know our wedding might be untraditional, but we would love it if you could make it. If you already know you can or cannot make it, please <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor\" target=\"_blank\" rel=\"noopener\">fill in this form</a>.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
         mapTitle: "A Different, More Local Map of Los Angeles",
         mapNote: "A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.",
@@ -1798,11 +1800,9 @@
         airbnbLink: "Search Redondo Beach Airbnbs",
         thingsTitle: "Things to do",
         thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
-        lilyPlacesTitle: "Lily's top places",
-        lilyPlacesNote: "A few Lily-approved stops for food, views, walks, and beach-town wandering.",
+        placesTitle: "Favorite places",
+        placesNote: "A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.",
         lilyTopFiveTitle: "Lily's favorites",
-        carlosPlacesTitle: "Carlos's top places",
-        carlosPlacesNote: "Carlos's aviation, coast, thrift, burrito, and hotel-view shortlist.",
         carlosTopFiveTitle: "Carlos's favorites",
         mapLink: "Open in Google Maps"
       },
@@ -1815,11 +1815,10 @@
         tabMap: "Mapa",
         tabHotels: "Hoteles",
         tabThingsToDo: "Cosas que hacer",
-        tabLilyPlaces: "Lugares de Lily",
-        tabCarlosPlaces: "Lugares de Carlos",
+        tabPlaces: "Lugares",
         howWeMetTitle: "Cómo nos conocimos",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
-        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
+        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que nuestra boda puede ser poco tradicional, pero nos encantaría que pudieras venir. Si ya sabes si podrás venir o no, por favor <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor\" target=\"_blank\" rel=\"noopener\">rellena este formulario</a>.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
         mapTitle: "Un mapa más local de Los Ángeles",
         mapNote: "Un mapa sencillo para ubicar playas, casa base, aeropuertos y excursiones.",
@@ -1834,11 +1833,9 @@
         airbnbLink: "Buscar Airbnbs en Redondo Beach",
         thingsTitle: "Cosas que hacer",
         thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
-        lilyPlacesTitle: "Los lugares favoritos de Lily",
-        lilyPlacesNote: "Algunos sitios aprobados por Lily para comer, pasear, ver vistas y disfrutar la playa.",
+        placesTitle: "Lugares favoritos",
+        placesNote: "Sitios favoritos de Lily y Carlos para comer, pasear y ver la costa.",
         lilyTopFiveTitle: "Favoritos de Lily",
-        carlosPlacesTitle: "Los lugares favoritos de Carlos",
-        carlosPlacesNote: "La lista de Carlos: aviación, costa, compras de segunda mano, burritos y vistas de hotel.",
         carlosTopFiveTitle: "Favoritos de Carlos",
         mapLink: "Abrir en Google Maps"
       }
