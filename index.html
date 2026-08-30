@@ -219,14 +219,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      padding: 12px 0 8px;
+      flex-wrap: nowrap;
+      gap: 18px;
+      padding: 10px 0;
     }
 
     .names {
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
-      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-size: clamp(1.85rem, 3vw, 3rem);
       color: var(--sea);
       line-height: 1;
       white-space: nowrap;
@@ -239,13 +239,14 @@
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.76);
       color: var(--ink);
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-radius: 999px;
       box-shadow: 0 8px 20px rgba(88, 90, 67, 0.08);
       cursor: pointer;
       font-family: inherit;
-      font-size: 1.28rem;
+      font-size: 1.08rem;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     .hero {
@@ -304,8 +305,8 @@
     .tabs {
       display: flex;
       justify-content: center;
-      flex: 1 1 100%;
-      gap: clamp(14px, 3vw, 28px);
+      flex: 1 1 auto;
+      gap: clamp(12px, 2vw, 24px);
       overflow-x: auto;
       padding: 0 0 4px;
       scrollbar-width: thin;
@@ -320,8 +321,10 @@
       border-radius: 0;
       padding: 8px 0 9px;
       font-family: inherit;
-      font-size: 1.62rem;
+      font-size: clamp(1rem, 1.35vw, 1.32rem);
       font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       cursor: pointer;
     }
 
@@ -779,6 +782,8 @@
       font-family: inherit;
       font-size: 1.28rem;
       font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       padding: 10px 12px;
       text-align: left;
       box-shadow: 0 8px 18px rgba(88, 90, 67, 0.08);
@@ -999,6 +1004,8 @@
       color: var(--coastal);
       font-size: 1.45rem;
       line-height: 1.05;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .place-card p {
@@ -1042,6 +1049,11 @@
       color: var(--sea);
       font-size: 1.7rem;
       line-height: 1.05;
+    }
+
+    .places-panel .idea-card h3 {
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .idea-card p {
@@ -1164,6 +1176,7 @@
       }
 
       .topbar {
+        flex-wrap: wrap;
         align-items: flex-start;
       }
 
@@ -1209,11 +1222,6 @@
   <header class="site-header">
     <div class="page-shell topbar">
       <div class="names">Lily & Carlos</div>
-      <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
-        <span aria-hidden="true">🇪🇸</span>
-        <span data-i18n="translate">Traducir</span>
-        <span aria-hidden="true">🇺🇸</span>
-      </button>
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
@@ -1221,6 +1229,11 @@
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="places" id="tab-places" data-tab="places" data-i18n="tabPlaces">Places</button>
       </div>
+      <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
+        <span aria-hidden="true">🇪🇸</span>
+        <span data-i18n="translate">Traducir</span>
+        <span aria-hidden="true">🇺🇸</span>
+      </button>
     </div>
   </header>
 
@@ -1345,7 +1358,6 @@
         name: "DoubleTree by Hilton Hotel San Pedro - Port of Los Angeles",
         address: "2800 Via Cabrillo Marina, San Pedro, CA 90731",
         price: "$140-$180/night",
-        code: "LILYCARLOS",
         note: "Harbor-side option in San Pedro, better if you want a quieter port area.",
         noteEs: "Opción junto al puerto en San Pedro, buena si prefieres una zona tranquila."
       },
@@ -1354,7 +1366,6 @@
         name: "Torrance Marriott Redondo Beach",
         address: "3635 Fashion Way, Torrance, CA 90503",
         price: "$220-$325/night",
-        code: "LILYCARLOS",
         note: "Near Del Amo Fashion Center.",
         noteEs: "Cerca de Del Amo Fashion Center."
       },
@@ -1363,7 +1374,6 @@
         name: "Hilton Garden Inn Los Angeles/Redondo Beach",
         address: "2410 Marine Avenue, Redondo Beach, CA 90278",
         price: "$160-$205/night",
-        code: "LILYCARLOS",
         note: "Near I-405 and the Redondo Beach transit stop.",
         noteEs: "Cerca de la I-405 y de la parada de Redondo Beach."
       },
@@ -1372,7 +1382,6 @@
         name: "Extended Stay America - Torrance - Del Amo Circle",
         address: "3995 Carson Street, Torrance, CA 90503",
         price: "$115-$170/night",
-        code: "LILYCARLOS",
         note: "Longer-stay suites near Del Amo.",
         noteEs: "Suites para estancias más largas cerca de Del Amo."
       },
@@ -1381,7 +1390,6 @@
         name: "Howard Johnson by Wyndham Torrance",
         address: "3673 Torrance Boulevard, Torrance, CA 90503",
         price: "$110-$135/night",
-        code: "LILYCARLOS",
         note: "Simple Torrance option near Del Amo, and one of the easier budget picks.",
         noteEs: "Opción sencilla en Torrance, cerca de Del Amo y con precio más cómodo."
       },
@@ -1390,7 +1398,6 @@
         name: "Riviera Village area",
         address: "Riviera Village, Redondo Beach, CA 90277",
         price: "Confirm exact hotel",
-        code: "LILYCARLOS",
         note: "Placeholder until the exact Riviera hotel is confirmed.",
         noteEs: "Pendiente de confirmar el hotel exacto en Riviera."
       },
@@ -1399,7 +1406,6 @@
         name: "Shade Hotel Redondo Beach",
         address: "655 N Harbor Drive, Redondo Beach, CA 90277",
         price: "$475-$550/night",
-        code: "LILYCARLOS",
         note: "Boutique waterfront hotel at King Harbor.",
         noteEs: "Hotel boutique junto al agua en King Harbor."
       },
@@ -1408,7 +1414,6 @@
         name: "The Portofino Hotel & Marina",
         address: "260 Portofino Way, Redondo Beach, CA 90277",
         price: "$240-$450/night",
-        code: "LILYCARLOS",
         note: "Marina hotel on the Redondo waterfront.",
         noteEs: "Hotel en la marina de Redondo, junto al agua."
       },
@@ -1417,7 +1422,6 @@
         name: "Best Western Plus Redondo Beach Inn",
         address: "1850 S. Pacific Coast Highway, Redondo Beach, CA 90277",
         price: "$175-$215/night",
-        code: "LILYCARLOS",
         note: "Close to Riviera Village and South Redondo.",
         noteEs: "Cerca de Riviera Village y South Redondo."
       },
@@ -1426,7 +1430,6 @@
         name: "Sonesta Redondo Beach & Marina",
         address: "300 N Harbor Drive, Redondo Beach, CA 90277",
         price: "$180-$450/night",
-        code: "LILYCARLOS",
         note: "Waterfront option near the pier and marina.",
         noteEs: "Opción junto al agua, cerca del pier y la marina."
       }
@@ -1786,7 +1789,6 @@
         hotelsNote: "A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.",
         hotelTopPicks: "Our hotel top picks",
         summerPrice: "Summer estimate",
-        discountCode: "Dummy code",
         otherHotels: "Other hotel options",
         airbnbTitle: "Explore Airbnb too!",
         airbnbText: "If hotels feel expensive or you are traveling as a group, nearby Airbnbs may be worth checking.",
@@ -1819,7 +1821,6 @@
         hotelsNote: "Una lista sencilla de favoritos primero, y después algunas alternativas. Los precios de verano son orientativos.",
         hotelTopPicks: "Hoteles favoritos",
         summerPrice: "Estimación de verano",
-        discountCode: "Código ficticio",
         otherHotels: "Otras opciones de hotel",
         airbnbTitle: "¡Mira Airbnb también!",
         airbnbText: "Si los hoteles están caros o venís en grupo, puede valer la pena mirar Airbnbs cerca de la zona.",
@@ -1860,7 +1861,6 @@
           <p>${localized(hotel, "note")}</p>
           <div class="hotel-meta">
             <span>${translations[currentLanguage].summerPrice}: ${hotel.price}</span>
-            <span>${translations[currentLanguage].discountCode}: ${hotel.code}</span>
           </div>
           <a href="${mapsUrl(hotel)}" target="_blank" rel="noopener">${translations[currentLanguage].mapLink}</a>
         </article>
