@@ -73,7 +73,7 @@
       width: 190px;
       height: 190px;
       background-image: url("media/flowers.png");
-      transform: rotate(-18deg);
+      transform: rotate(-18deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(2) {
@@ -91,7 +91,7 @@
       width: 150px;
       height: 150px;
       background-image: url("media/flowers.png");
-      transform: rotate(54deg);
+      transform: rotate(54deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(4) {
@@ -109,7 +109,7 @@
       width: 130px;
       height: 130px;
       background-image: url("media/flowers.png");
-      transform: rotate(12deg);
+      transform: rotate(12deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(6) {
@@ -127,7 +127,7 @@
       width: 230px;
       height: 230px;
       background-image: url("media/flowers.png");
-      transform: rotate(37deg);
+      transform: rotate(37deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(8) {
@@ -145,7 +145,7 @@
       width: 175px;
       height: 175px;
       background-image: url("media/flowers.png");
-      transform: rotate(79deg);
+      transform: rotate(79deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(10) {
@@ -163,7 +163,7 @@
       width: 150px;
       height: 150px;
       background-image: url("media/flowers.png");
-      transform: rotate(18deg);
+      transform: rotate(18deg) scaleX(-1);
     }
 
     .flower-wash span:nth-child(12) {
@@ -173,6 +173,24 @@
       height: 100px;
       background-image: url("media/flowers.png");
       transform: rotate(106deg);
+    }
+
+    .flower-wash span:nth-child(13) {
+      top: 61%;
+      left: 35%;
+      width: 118px;
+      height: 118px;
+      background-image: url("media/flowers.png");
+      transform: rotate(-118deg) scaleX(-1);
+    }
+
+    .flower-wash span:nth-child(14) {
+      top: 91%;
+      right: 8%;
+      width: 145px;
+      height: 145px;
+      background-image: url("media/flowers.png");
+      transform: rotate(46deg);
     }
 
     a {
@@ -223,7 +241,7 @@
       grid-template-columns: minmax(0, 1.32fr) minmax(310px, 0.68fr);
       gap: 28px;
       align-items: center;
-      padding: 26px 0 44px;
+      padding: 18px 0 34px;
     }
 
     .video-frame {
@@ -247,8 +265,8 @@
     }
 
     .engaged {
-      margin: 0 0 28px;
-      padding: 0.08em 0 0.04em;
+      margin: 0 0 58px;
+      padding: 0.28em 0 0.18em;
       color: var(--coastal);
       background: linear-gradient(115deg, var(--coastal) 0%, var(--golf) 58%, var(--coral) 100%);
       -webkit-background-clip: text;
@@ -257,7 +275,7 @@
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(3.8rem, 10vw, 7rem);
       font-weight: 500;
-      line-height: 1;
+      line-height: 1.14;
       overflow: visible;
     }
 
@@ -393,6 +411,13 @@
       font-size: 0.65rem;
     }
 
+    .leaflet-container img.leaflet-tile {
+      outline: 1px solid transparent;
+      transform: translateZ(0) scale(1.006);
+      transform-origin: center;
+      will-change: transform;
+    }
+
     .custom-marker {
       white-space: nowrap;
     }
@@ -478,12 +503,19 @@
     }
 
     .story-card {
+      position: relative;
       max-width: 880px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.72);
       box-shadow: var(--shadow);
       padding: clamp(20px, 4vw, 42px);
+    }
+
+    .story-copy {
+      position: relative;
+      z-index: 1;
+      padding-right: min(28vw, 250px);
     }
 
     .story-card p {
@@ -500,6 +532,71 @@
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       line-height: 1;
+    }
+
+    .story-photos {
+      position: absolute;
+      right: 22px;
+      bottom: 20px;
+      width: min(250px, 30%);
+      min-height: 270px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .pinned-photo {
+      position: absolute;
+      width: 132px;
+      aspect-ratio: 1 / 1.16;
+      padding: 8px 8px 18px;
+      border: 1px solid rgba(57, 65, 60, 0.16);
+      background: #fffdf8;
+      box-shadow: 0 14px 26px rgba(57, 65, 60, 0.18);
+      object-fit: cover;
+    }
+
+    .pinned-photo::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 2px 5px rgba(57, 65, 60, 0.24);
+      transform: translateX(-50%);
+    }
+
+    .pinned-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .pinned-photo:nth-child(1) {
+      top: 6px;
+      right: 86px;
+      transform: rotate(-8deg);
+    }
+
+    .pinned-photo:nth-child(2) {
+      top: 54px;
+      right: 0;
+      transform: rotate(7deg);
+    }
+
+    .pinned-photo:nth-child(3) {
+      top: 124px;
+      right: 96px;
+      transform: rotate(5deg);
+    }
+
+    .pinned-photo:nth-child(4) {
+      top: 164px;
+      right: 12px;
+      transform: rotate(-6deg);
     }
 
     .media-modal {
@@ -899,8 +996,8 @@
     }
 
     .place-card p {
-      margin: 0 22px 20px;
-      padding-right: 18px;
+      margin: 0;
+      padding: 0 42px 26px 22px;
       color: rgba(57, 65, 60, 0.78);
       font-size: 1.08rem;
     }
@@ -1017,6 +1114,19 @@
         padding-right: 0;
       }
 
+      .story-copy {
+        padding-right: 0;
+      }
+
+      .story-photos {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: min(100%, 470px);
+        min-height: 240px;
+        margin: 22px auto 0;
+      }
+
       .notebook-doodles {
         position: relative;
         top: auto;
@@ -1084,30 +1194,10 @@
   </header>
 
   <main>
-    <section class="page-shell hero" aria-label="Wedding announcement">
-      <div class="video-frame">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-          title="Lily and Carlos wedding announcement video"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="hero-copy">
-        <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
-        <p class="intro" data-i18n-html="intro">
-          We'd love for you to make it to our wedding in 2027. Due to our
-          <a class="media-link" href="media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>,
-          the wedding date will have short notice. We've created this website with details
-          for you to review as you consider joining us and celebrating.
-        </p>
-      </div>
-    </section>
-
     <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <div class="tabs" role="tablist" aria-label="Travel categories">
-        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
@@ -1115,21 +1205,52 @@
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos-places" id="tab-carlos-places" data-tab="carlos-places" data-i18n="tabCarlosPlaces">Carlos's places</button>
       </div>
 
-      <section class="tab-panel active" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
+      <section class="tab-panel active" role="tabpanel" id="engaged" aria-labelledby="tab-engaged">
+        <div class="hero" aria-label="Wedding announcement">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+              title="Lily and Carlos wedding announcement video"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="hero-copy">
+            <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
+            <p class="intro" data-i18n-html="intro">
+              We'd love for you to make it to our wedding in 2027. Due to our
+              <a class="media-link" href="media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>,
+              the wedding date will have short notice. We've created this website with details
+              for you to review as you consider joining us and celebrating.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
         <div class="panel-heading">
           <div>
             <h2 data-i18n="howWeMetTitle">How we met</h2>
             <p class="muted" data-i18n="howWeMetNote">A little bit of our story before the party planning begins.</p>
           </div>
         </div>
-        <div class="story-card" data-i18n-html="howWeMetStory">
-          <p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p>
-          <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
-          <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
-          <p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p>
-          <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p>
-          <p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p>
-          <p>With love,<br><span class="signature">Lily and Carlos</span></p>
+        <div class="story-card">
+          <div class="story-copy" data-i18n-html="howWeMetStory">
+            <p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p>
+            <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
+            <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
+            <p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p>
+            <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p>
+            <p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p>
+            <p>With love,<br><span class="signature">Lily and Carlos</span></p>
+          </div>
+          <div class="story-photos" aria-hidden="true">
+            <div class="pinned-photo"><img src="media/1.png" alt=""></div>
+            <div class="pinned-photo"><img src="media/2.png" alt=""></div>
+            <div class="pinned-photo"><img src="media/3.png" alt=""></div>
+            <div class="pinned-photo"><img src="media/celebrate.png" alt=""></div>
+          </div>
         </div>
       </section>
 
@@ -1641,6 +1762,7 @@
         translate: "Traducir",
         headline: "We're engaged!",
         intro: "We'd love for you to make it to our wedding in 2027. Due to our <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
+        tabEngaged: "We're engaged",
         tabHowWeMet: "How we met",
         tabMap: "Map",
         tabHotels: "Hotels",
@@ -1676,6 +1798,7 @@
         translate: "Translate",
         headline: "¡Estamos comprometidos!",
         intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visa\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
+        tabEngaged: "Estamos comprometidos",
         tabHowWeMet: "Cómo nos conocimos",
         tabMap: "Mapa",
         tabHotels: "Hoteles",
@@ -1874,8 +1997,9 @@
       referenceMap = L.map("referenceMap", {
         attributionControl: false,
         scrollWheelZoom: true,
-        zoomControl: false
-      }).setView([33.825, -118.37], 11);
+        zoomControl: false,
+        zoomSnap: 1
+      }).setView([33.825, -118.37], 10);
 
       L.control.zoom({ position: "bottomleft" }).addTo(referenceMap);
 
@@ -1924,7 +2048,6 @@
         [33.945, -118.235]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
-      referenceMap.setZoom(referenceMap.getZoom() + 1);
       resizeReferenceMap();
       setTimeout(resizeReferenceMap, 250);
     }
