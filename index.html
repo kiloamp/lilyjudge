@@ -49,45 +49,94 @@
       line-height: 1.35;
     }
 
-    body::before,
-    body::after {
-      content: "";
+    .flower-wash {
       position: fixed;
+      inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.22;
+      overflow: hidden;
     }
 
-    body::before {
-      top: 110px;
-      right: 24px;
-      width: 230px;
-      height: 260px;
-      background:
-        radial-gradient(circle at 34% 20%, transparent 0 12px, rgba(87, 127, 86, 0.72) 13px 15px, transparent 16px),
-        radial-gradient(circle at 52% 24%, transparent 0 13px, rgba(87, 127, 86, 0.72) 14px 16px, transparent 17px),
-        radial-gradient(circle at 42% 39%, transparent 0 14px, rgba(87, 127, 86, 0.72) 15px 17px, transparent 18px),
-        radial-gradient(circle at 60% 43%, transparent 0 12px, rgba(87, 127, 86, 0.72) 13px 15px, transparent 16px),
-        linear-gradient(72deg, transparent 0 48%, rgba(87, 127, 86, 0.5) 49% 51%, transparent 52%),
-        linear-gradient(112deg, transparent 0 50%, rgba(87, 127, 86, 0.45) 51% 53%, transparent 54%);
-      border-bottom: 2px solid rgba(87, 127, 86, 0.34);
-      border-radius: 46% 54% 50% 50%;
-      transform: rotate(-8deg);
+    .flower-wash span {
+      position: absolute;
+      display: block;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.12;
+      filter: saturate(0.9);
     }
 
-    body::after {
-      left: 18px;
-      bottom: 58px;
-      width: 230px;
+    .flower-wash span:nth-child(1) {
+      top: 4%;
+      left: -2%;
+      width: 190px;
+      height: 190px;
+      background-image: url("media/flower1.png");
+      transform: rotate(-18deg);
+    }
+
+    .flower-wash span:nth-child(2) {
+      top: 18%;
+      right: 2%;
+      width: 250px;
       height: 250px;
-      background:
-        radial-gradient(ellipse at 38% 24%, rgba(255, 250, 240, 0.18) 0 18px, rgba(74, 137, 148, 0.42) 19px 21px, transparent 22px),
-        radial-gradient(ellipse at 54% 31%, rgba(255, 250, 240, 0.18) 0 16px, rgba(74, 137, 148, 0.42) 17px 19px, transparent 20px),
-        radial-gradient(ellipse at 43% 48%, rgba(255, 250, 240, 0.18) 0 17px, rgba(74, 137, 148, 0.42) 18px 20px, transparent 21px),
-        linear-gradient(82deg, transparent 0 52%, rgba(87, 127, 86, 0.36) 53% 55%, transparent 56%),
-        linear-gradient(124deg, transparent 0 45%, rgba(87, 127, 86, 0.34) 46% 48%, transparent 49%);
-      border-radius: 50%;
-      transform: rotate(11deg);
+      background-image: url("media/flower2.png");
+      transform: rotate(21deg);
+    }
+
+    .flower-wash span:nth-child(3) {
+      top: 42%;
+      left: 6%;
+      width: 150px;
+      height: 150px;
+      background-image: url("media/flower2.png");
+      transform: rotate(54deg);
+    }
+
+    .flower-wash span:nth-child(4) {
+      top: 66%;
+      right: -3%;
+      width: 220px;
+      height: 220px;
+      background-image: url("media/flower1.png");
+      transform: rotate(-42deg);
+    }
+
+    .flower-wash span:nth-child(5) {
+      bottom: 6%;
+      left: 20%;
+      width: 130px;
+      height: 130px;
+      background-image: url("media/flower1.png");
+      transform: rotate(12deg);
+    }
+
+    .flower-wash span:nth-child(6) {
+      bottom: 18%;
+      right: 22%;
+      width: 165px;
+      height: 165px;
+      background-image: url("media/flower2.png");
+      transform: rotate(-9deg);
+    }
+
+    .flower-wash span:nth-child(7) {
+      top: 82%;
+      left: -1%;
+      width: 230px;
+      height: 230px;
+      background-image: url("media/flower2.png");
+      transform: rotate(37deg);
+    }
+
+    .flower-wash span:nth-child(8) {
+      top: 31%;
+      right: 24%;
+      width: 115px;
+      height: 115px;
+      background-image: url("media/flower1.png");
+      transform: rotate(-61deg);
     }
 
     a {
@@ -158,10 +207,12 @@
 
     .hero-copy {
       padding: 12px 0;
+      overflow: visible;
     }
 
     .engaged {
-      margin: 0 0 18px;
+      margin: 0 0 28px;
+      padding: 0.08em 0 0.04em;
       color: var(--coastal);
       background: linear-gradient(115deg, var(--coastal) 0%, var(--golf) 58%, var(--coral) 100%);
       -webkit-background-clip: text;
@@ -170,7 +221,8 @@
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(3.8rem, 10vw, 7rem);
       font-weight: 500;
-      line-height: 0.88;
+      line-height: 1;
+      overflow: visible;
     }
 
     .intro {
@@ -485,24 +537,16 @@
     }
 
     .hotel-card.top-pick {
-      background: linear-gradient(180deg, rgba(255, 248, 221, 0.98), rgba(255, 255, 255, 0.82));
-      border-color: rgba(240, 207, 117, 0.8);
+      background: rgba(255, 255, 255, 0.84);
+      border-color: rgba(87, 127, 86, 0.22);
     }
 
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 12px;
-    }
-
-    .badge {
-      display: inline-flex;
-      border-radius: 999px;
-      background: var(--sun);
-      padding: 4px 10px;
-      font-size: 1.16rem;
-      font-weight: 700;
+    .hotel-subheading {
+      grid-column: 1 / -1;
+      margin: 2px 0 0;
+      color: var(--coastal);
+      font-size: clamp(1.9rem, 3vw, 2.45rem);
+      line-height: 1.05;
     }
 
     .hotel-meta {
@@ -775,6 +819,7 @@
 
     .notebook-page p {
       margin: 0 0 16px;
+      padding-right: 170px;
       max-width: 58ch;
       color: rgba(57, 65, 60, 0.84);
     }
@@ -819,16 +864,20 @@
 
     .place-card p {
       margin: 0 14px 14px;
+      padding-right: 12px;
       color: rgba(57, 65, 60, 0.78);
       font-size: 1.08rem;
+    }
+
+    .place-card.wide {
+      grid-column: 1 / -1;
     }
 
     .notebook-page p:last-child {
       margin-bottom: 0;
     }
 
-    .activity-grid,
-    .trip-grid {
+    .activity-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
@@ -858,6 +907,7 @@
 
     .idea-card p {
       margin: 0;
+      padding-right: 14px;
       color: rgba(57, 65, 60, 0.78);
     }
 
@@ -898,7 +948,6 @@
 
       .hotel-grid,
       .activity-grid,
-      .trip-grid,
       .places-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -925,6 +974,10 @@
       }
 
       .notebook-page h3 {
+        padding-right: 0;
+      }
+
+      .notebook-page p {
         padding-right: 0;
       }
 
@@ -959,7 +1012,6 @@
 
       .hotel-grid,
       .activity-grid,
-      .trip-grid,
       .places-grid {
         grid-template-columns: 1fr;
       }
@@ -971,6 +1023,17 @@
   </style>
 </head>
 <body>
+  <div class="flower-wash" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <header class="page-shell topbar">
     <div class="names">Lily & Carlos</div>
     <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
@@ -1008,7 +1071,6 @@
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="trip" id="tab-trip" data-tab="trip" data-i18n="tabTrip">Wider trip ideas</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="lily-places" id="tab-lily-places" data-tab="lily-places" data-i18n="tabLilyPlaces">Lily's places</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="carlos-places" id="tab-carlos-places" data-tab="carlos-places" data-i18n="tabCarlosPlaces">Carlos's places</button>
       </div>
@@ -1034,8 +1096,8 @@
       <section class="tab-panel" role="tabpanel" id="map" aria-labelledby="tab-map">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="mapTitle">Map</h2>
-            <p class="muted" data-i18n="mapNote">A simple reference map so everyone can see where the beach towns, hotels, home base, and day-trip ideas sit.</p>
+            <h2 data-i18n="mapTitle">A Different, More Local Map of Los Angeles</h2>
+            <p class="muted" data-i18n="mapNote">A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.</p>
           </div>
         </div>
         <div id="referenceMap" class="reference-map" aria-label="Wedding reference map">
@@ -1047,7 +1109,7 @@
         <div class="panel-heading">
           <div>
             <h2 data-i18n="hotelsTitle">Hotels</h2>
-            <p class="muted" data-i18n="hotelsNote">Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.</p>
+            <p class="muted" data-i18n="hotelsNote">A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.</p>
           </div>
         </div>
 
@@ -1064,16 +1126,6 @@
         <div class="activity-grid" id="activityList"></div>
       </section>
 
-      <section class="tab-panel" role="tabpanel" id="trip" aria-labelledby="tab-trip">
-        <div class="panel-heading">
-          <div>
-            <h2 data-i18n="tripTitle">Wider trip ideas</h2>
-            <p class="muted" data-i18n="tripNote">A few easy day trips if you want to turn the wedding into a California week.</p>
-          </div>
-        </div>
-        <div class="trip-grid" id="tripList"></div>
-      </section>
-
       <section class="tab-panel" role="tabpanel" id="lily-places" aria-labelledby="tab-lily-places">
         <div class="panel-heading">
           <div>
@@ -1082,35 +1134,9 @@
           </div>
         </div>
         <div class="places-panel">
-          <article class="idea-card">
-            <h3>Lily's top five</h3>
-            <div class="places-grid">
-              <article class="place-card">
-                <img src="https://pacificcoast.gallery/cdn/shop/products/OldTonys_Redondo-Beach-Pier-Photograph_1320x.jpg?v=1678598003" alt="Tony's on the Pier at Redondo Beach Pier">
-                <h4>Tony's on the Pier, upper deck</h4>
-                <p>Old-school pier energy, ocean views, and the kind of table that makes sunset drinks feel like a tiny ceremony.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://images1.loopnet.com/i2/ABxGyA7D2M258URePaygRXLNBr03B9dZ3_9jY_izEQE/116/1729-1735-S-Catalina-Ave-Redondo-Beach-CA-Primary-Photo-1-LargeHighDefinition.jpg" alt="Riviera Village corner storefronts">
-                <h4>Riviera Village happy hour</h4>
-                <p>A relaxed neighborhood wander with patios, drinks, little shops, and plenty of places to linger.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://place.com-photos.com/62844/point-vicente-lighthouse-AF1QipMBTWspwiHKpivEBB6dUXNLj0hZmBTrI6CZifQO.jpg" alt="Point Vicente Lighthouse trail and coastline">
-                <h4>Point Vicente Lighthouse trail walk</h4>
-                <p>Cliffside ocean views, lighthouse photos, and a calm Palos Verdes walk if you want something scenic.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg" alt="Biking on The Strand near Manhattan Beach Pier">
-                <h4>Manhattan Beach Pier and biking on The Strand</h4>
-                <p>Beach path, pier views, and the easiest way to make a sunny afternoon feel properly Californian.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://images.happycow.net/venues/500/41/84/hcmp418460_2901145.jpeg" alt="Good Stuff Restaurant patio in Redondo Beach">
-                <h4>Good Stuff Redondo</h4>
-                <p>A sunny Riviera Village breakfast or lunch stop when the plan is casual, beachy, and easy.</p>
-              </article>
-            </div>
+          <article class="idea-card wide">
+            <h3 data-i18n="lilyTopFiveTitle">Lily's top five</h3>
+            <div class="places-grid" id="lilyPlacesList"></div>
           </article>
         </div>
       </section>
@@ -1123,35 +1149,9 @@
           </div>
         </div>
         <div class="places-panel">
-          <article class="idea-card">
-            <h3>Carlos's top five</h3>
-            <div class="places-grid">
-              <article class="place-card">
-                <img src="https://coinventmediastorage.blob.core.windows.net/media-storage-container/gphoto_ChIJp8bt7v5K3YARkVsYtmXG8rI_0.jpg" alt="Western Museum of Flight aircraft exhibits">
-                <h4>Torrance Airport Aviation Museum</h4>
-                <p>Western Museum of Flight, because a wedding website can absolutely include airplanes.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://www.outdoorsocal.com/wp-content/uploads/2022/02/abalone-cove.jpg" alt="Palos Verdes cove and coastline">
-                <h4>Malaga Cove</h4>
-                <p>A Palos Verdes classic for cliffs, ocean air, and a slower kind of coastal afternoon.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://tacotuesday.com/wp-content/uploads/2022/10/20201102-RMG-Psole-Kids-Menu-Chili-verde-Coloroado-Breakfast-2684.jpg" alt="Riviera Mexican Grill patio">
-                <h4>Huge burrito at Riviera Mexican</h4>
-                <p>Come hungry, order confidently, and respect the size of the burrito.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://cdn.businessyab.com/assets/uploads/14970d6042291efc59ea3e04d4ef23f2__united_states_california_los_angeles_county_torrance_seaside_palos_verdes_boulevard_22227_goodwill_store_donation_centerhtml.jpg" alt="Goodwill Store and Donation Center in Torrance">
-                <h4>Goodwill Store Torrance</h4>
-                <p>A very practical cultural stop, depending on who you ask.</p>
-              </article>
-              <article class="place-card">
-                <img src="https://ca-times.brightspotcdn.com/dims4/default/8cf5228/2147483647/strip/false/crop/3000x1688%2B0%2B0/resize/1486x836%21/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F50%2Fcd%2Fc6ae0cd3403590614a4e7b18c71c%2F1329372-me-0731-terranea-1-rcg.jpg" alt="Terranea Resort on the Palos Verdes coast">
-                <h4>Terranea Hotel</h4>
-                <p>Ocean views, Palos Verdes drama, and a very convincing place to pretend you are just stopping by.</p>
-              </article>
-            </div>
+          <article class="idea-card wide">
+            <h3 data-i18n="carlosTopFiveTitle">Carlos's top seven</h3>
+            <div class="places-grid" id="carlosPlacesList"></div>
           </article>
         </div>
       </section>
@@ -1177,7 +1177,8 @@
         address: "2800 Via Cabrillo Marina, San Pedro, CA 90731",
         price: "$140-$180/night",
         code: "LILYCARLOS",
-        note: "Harbor-side option in San Pedro, better if you want a quieter port area."
+        note: "Harbor-side option in San Pedro, better if you want a quieter port area.",
+        noteEs: "Opción junto al puerto en San Pedro, buena si prefieres una zona tranquila."
       },
       {
         tier: "other",
@@ -1185,7 +1186,8 @@
         address: "3635 Fashion Way, Torrance, CA 90503",
         price: "$220-$325/night",
         code: "LILYCARLOS",
-        note: "Near Del Amo Fashion Center."
+        note: "Near Del Amo Fashion Center.",
+        noteEs: "Cerca de Del Amo Fashion Center."
       },
       {
         tier: "other",
@@ -1193,7 +1195,8 @@
         address: "2410 Marine Avenue, Redondo Beach, CA 90278",
         price: "$160-$205/night",
         code: "LILYCARLOS",
-        note: "Near I-405 and the Redondo Beach transit stop."
+        note: "Near I-405 and the Redondo Beach transit stop.",
+        noteEs: "Cerca de la I-405 y de la parada de Redondo Beach."
       },
       {
         tier: "other",
@@ -1201,7 +1204,8 @@
         address: "3995 Carson Street, Torrance, CA 90503",
         price: "$115-$170/night",
         code: "LILYCARLOS",
-        note: "Longer-stay suites near Del Amo."
+        note: "Longer-stay suites near Del Amo.",
+        noteEs: "Suites para estancias más largas cerca de Del Amo."
       },
       {
         tier: "top",
@@ -1209,7 +1213,8 @@
         address: "3673 Torrance Boulevard, Torrance, CA 90503",
         price: "$110-$135/night",
         code: "LILYCARLOS",
-        note: "Simple Torrance option near Del Amo, and one of the easier budget picks."
+        note: "Simple Torrance option near Del Amo, and one of the easier budget picks.",
+        noteEs: "Opción sencilla en Torrance, cerca de Del Amo y con precio más cómodo."
       },
       {
         tier: "other",
@@ -1217,7 +1222,8 @@
         address: "Riviera Village, Redondo Beach, CA 90277",
         price: "Confirm exact hotel",
         code: "LILYCARLOS",
-        note: "Placeholder until the exact Riviera hotel is confirmed."
+        note: "Placeholder until the exact Riviera hotel is confirmed.",
+        noteEs: "Pendiente de confirmar el hotel exacto en Riviera."
       },
       {
         tier: "other",
@@ -1225,7 +1231,8 @@
         address: "655 N Harbor Drive, Redondo Beach, CA 90277",
         price: "$475-$550/night",
         code: "LILYCARLOS",
-        note: "Boutique waterfront hotel at King Harbor."
+        note: "Boutique waterfront hotel at King Harbor.",
+        noteEs: "Hotel boutique junto al agua en King Harbor."
       },
       {
         tier: "top",
@@ -1233,7 +1240,8 @@
         address: "260 Portofino Way, Redondo Beach, CA 90277",
         price: "$240-$450/night",
         code: "LILYCARLOS",
-        note: "Marina hotel on the Redondo waterfront."
+        note: "Marina hotel on the Redondo waterfront.",
+        noteEs: "Hotel en la marina de Redondo, junto al agua."
       },
       {
         tier: "other",
@@ -1241,7 +1249,8 @@
         address: "1850 S. Pacific Coast Highway, Redondo Beach, CA 90277",
         price: "$175-$215/night",
         code: "LILYCARLOS",
-        note: "Close to Riviera Village and South Redondo."
+        note: "Close to Riviera Village and South Redondo.",
+        noteEs: "Cerca de Riviera Village y South Redondo."
       },
       {
         tier: "top",
@@ -1249,134 +1258,354 @@
         address: "300 N Harbor Drive, Redondo Beach, CA 90277",
         price: "$180-$450/night",
         code: "LILYCARLOS",
-        note: "Waterfront option near the pier and marina."
+        note: "Waterfront option near the pier and marina.",
+        noteEs: "Opción junto al agua, cerca del pier y la marina."
       }
     ];
 
-    const activities = [
-      {
-        title: "USA tips and tricks",
-        text: [
-          "We recommend keeping a tiny bit of cash for tips, but most places will happily take cards.",
-          "If you are driving, distances can look short and still take a while. Give yourself extra time, especially near the beach in summer.",
-          "For phone data, an eSIM before landing is usually easier than solving it while jet-lagged in a parking lot."
-        ]
-      },
-      {
-        title: "Bike rentals",
-        text: [
-          "We recommend Randy's Bike Shack for a relaxed beach-cruiser kind of day. This is placeholder text until we confirm the actual rental place.",
-          "The beach path is the nice version of LA transportation. Start around Redondo or Hermosa and keep it slow.",
-          "Bring sunscreen, a bottle of water, and the confidence of someone who has definitely not forgotten how gears work."
-        ]
-      },
-      {
-        title: "Surf rentals",
-        text: [
-          "We recommend checking a local surf shop close to Hermosa or Manhattan Beach for soft-top rentals and beginner lessons.",
-          "Morning is usually friendlier than afternoon for wind and crowds.",
-          "This is a great plan if you enjoy brave guests, gentle wipeouts, and pretending jet lag is actually athletic ambition."
-        ]
-      },
-      {
-        title: "Tourist attractions",
-        text: [
-          "We recommend keeping at least one sunset open for a pier walk.",
-          "Redondo, Hermosa, and Manhattan each have their own rhythm, so it is worth wandering without turning the whole day into homework.",
-          "We will keep adding small stops here as the date gets closer."
-        ]
-      },
-      {
-        title: "Neighborhood guide",
-        text: [
-          "We recommend staying near Redondo or Torrance if you want the easiest wedding-weekend logistics.",
-          "Hermosa and Manhattan feel more beachy and lively, while Palos Verdes is quieter and more scenic.",
-          "San Pedro is good for a harbor wander, a cool t-shirt, and a slightly different side of the coast."
-        ]
-      }
-    ];
+    const activitiesByLanguage = {
+      en: [
+        {
+          title: "USA tips and tricks",
+          text: [
+            "Keep a tiny bit of cash for tips, but most places take cards.",
+            "Distances can look short and still take a while. Leave extra time near the beach in summer.",
+            "An eSIM before landing is easier than solving phone data while jet-lagged."
+          ]
+        },
+        {
+          title: "Bike rentals",
+          text: [
+            "We recommend Randy's Bike Shack for a relaxed beach-cruiser day. Placeholder until we confirm the rental spot.",
+            "Start around Redondo or Hermosa and take the beach path slowly.",
+            "Bring sunscreen, water, and casual confidence."
+          ]
+        },
+        {
+          title: "Surf rentals",
+          text: [
+            "Check a local surf shop near Hermosa or Manhattan Beach for soft-top rentals and beginner lessons.",
+            "Mornings are usually calmer for wind and crowds.",
+            "Great for brave guests and gentle wipeouts."
+          ]
+        },
+        {
+          title: "Local attractions",
+          text: [
+            "Save one sunset for a pier walk.",
+            "Redondo, Hermosa, and Manhattan each feel different, so wander without overplanning.",
+            "We will add more small stops as the date gets closer."
+          ]
+        },
+        {
+          title: "Neighborhood guide",
+          text: [
+            "Redondo or Torrance are easiest for wedding-weekend logistics.",
+            "Hermosa and Manhattan are livelier and beachier. Palos Verdes is quieter and scenic.",
+            "San Pedro is good for a harbor walk and a cool t-shirt."
+          ]
+        },
+        {
+          title: "Wider trip ideas",
+          text: [
+            "San Pedro for a harbor walk and souvenir mission.",
+            "Venice Beach for the boardwalk, canals, and people-watching.",
+            "Disney if you want a full theme-park day.",
+            "Trump Golf for a Palos Verdes coastal detour."
+          ]
+        }
+      ],
+      es: [
+        {
+          title: "Consejos para EE. UU.",
+          text: [
+            "Lleva algo de efectivo para propinas, aunque casi todo acepta tarjeta.",
+            "Las distancias parecen cortas, pero en verano se tarda más cerca de la playa.",
+            "Una eSIM antes de aterrizar suele ser lo más fácil."
+          ]
+        },
+        {
+          title: "Alquiler de bicis",
+          text: [
+            "Recomendamos Randy's Bike Shack para un paseo tranquilo. Es texto provisional hasta confirmar el sitio.",
+            "Empieza por Redondo o Hermosa y ve sin prisa por el paseo marítimo.",
+            "Lleva crema solar, agua y ganas de improvisar."
+          ]
+        },
+        {
+          title: "Surf",
+          text: [
+            "Mira una tienda local en Hermosa o Manhattan Beach para tablas blandas y clases de iniciación.",
+            "Por la mañana suele haber menos viento y menos gente.",
+            "Buen plan para caerse con estilo."
+          ]
+        },
+        {
+          title: "Sitios locales",
+          text: [
+            "Reserva al menos un atardecer para pasear por un pier.",
+            "Redondo, Hermosa y Manhattan tienen ambientes distintos. Merece la pena pasear sin plan cerrado.",
+            "Añadiremos más paradas cuando se acerque la fecha."
+          ]
+        },
+        {
+          title: "Barrios",
+          text: [
+            "Redondo o Torrance son lo más cómodo para la boda.",
+            "Hermosa y Manhattan tienen más ambiente de playa. Palos Verdes es más tranquilo y escénico.",
+            "San Pedro va bien para pasear por el puerto y comprar una camiseta."
+          ]
+        },
+        {
+          title: "Ideas extra",
+          text: [
+            "San Pedro para puerto y souvenir.",
+            "Venice Beach para paseo, canales y gente curiosa.",
+            "Disney si quieres un día completo de parque.",
+            "Trump Golf para una escapada por la costa de Palos Verdes."
+          ]
+        }
+      ]
+    };
 
-    const tripIdeas = [
-      {
-        title: "San Pedro souvenir mission",
-        text: "Go to San Pedro, walk by the harbor, and get a cool t-shirt. Bonus points if it looks slightly too local."
-      },
-      {
-        title: "Venice Beach",
-        text: "A classic LA people-watching day. Walk the boardwalk, see the canals, then head back before traffic gets dramatic."
-      },
-      {
-        title: "Disney day",
-        text: "A full day, not a casual stop. Worth it if you want one big theme-park memory while you are here."
-      },
-      {
-        title: "Visit Trump Hotel",
-        text: "A very specific coastal detour near Palos Verdes. Go for the view, the curiosity, or the group chat material."
-      }
-    ];
+    const lilyPlacesByLanguage = {
+      en: [
+        {
+          title: "Tony's on the Pier, upper deck",
+          image: "https://pacificcoast.gallery/cdn/shop/products/OldTonys_Redondo-Beach-Pier-Photograph_1320x.jpg?v=1678598003",
+          alt: "Tony's on the Pier at Redondo Beach Pier",
+          text: "Old-school pier energy, ocean views, and sunset drinks."
+        },
+        {
+          title: "Riviera Village happy hour",
+          image: "https://images1.loopnet.com/i2/ABxGyA7D2M258URePaygRXLNBr03B9dZ3_9jY_izEQE/116/1729-1735-S-Catalina-Ave-Redondo-Beach-CA-Primary-Photo-1-LargeHighDefinition.jpg",
+          alt: "Riviera Village storefronts",
+          text: "Patios, drinks, little shops, and places to linger."
+        },
+        {
+          title: "Point Vicente Lighthouse trail walk",
+          image: "https://www.moontravelguides.com/wp-content/uploads/2020/08/CA_PalosVerdes_PtVicenteLighthouse_Peieq-DT.jpg",
+          alt: "Point Vicente Lighthouse and cliffs",
+          text: "Cliffside ocean views and a calm Palos Verdes walk."
+        },
+        {
+          title: "Manhattan Beach Pier and biking on The Strand",
+          image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
+          alt: "Biking on The Strand near Manhattan Beach",
+          text: "Beach path, pier views, and a sunny California afternoon."
+        },
+        {
+          title: "Jus' Poke in Redondo",
+          image: "https://s3-media0.fl.yelpcdn.com/bphoto/yPJxmQiKjB8h9Qk6QPjmHQ/o.jpg",
+          alt: "Poke bowl from Jus' Poke",
+          text: "Easy, fresh, and very Redondo."
+        },
+        {
+          title: "Catalina Island",
+          image: "https://www.visitcatalinaisland.com/wp-content/uploads/2020/01/avalon-harbor-catalina-island.jpg",
+          alt: "Avalon Harbor on Catalina Island",
+          text: "A ferry ride away and a completely different pace."
+        }
+      ],
+      es: [
+        {
+          title: "Tony's on the Pier, terraza superior",
+          image: "https://pacificcoast.gallery/cdn/shop/products/OldTonys_Redondo-Beach-Pier-Photograph_1320x.jpg?v=1678598003",
+          alt: "Tony's on the Pier en Redondo Beach",
+          text: "Ambiente clásico de pier, vistas al mar y bebidas al atardecer."
+        },
+        {
+          title: "Happy hour en Riviera Village",
+          image: "https://images1.loopnet.com/i2/ABxGyA7D2M258URePaygRXLNBr03B9dZ3_9jY_izEQE/116/1729-1735-S-Catalina-Ave-Redondo-Beach-CA-Primary-Photo-1-LargeHighDefinition.jpg",
+          alt: "Locales de Riviera Village",
+          text: "Terrazas, tiendas pequeñas y sitios para quedarse un rato."
+        },
+        {
+          title: "Paseo por Point Vicente Lighthouse",
+          image: "https://www.moontravelguides.com/wp-content/uploads/2020/08/CA_PalosVerdes_PtVicenteLighthouse_Peieq-DT.jpg",
+          alt: "Faro y acantilados de Point Vicente",
+          text: "Vistas al mar y paseo tranquilo por Palos Verdes."
+        },
+        {
+          title: "Manhattan Beach Pier y bici por The Strand",
+          image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
+          alt: "Bicis en The Strand cerca de Manhattan Beach",
+          text: "Paseo marítimo, pier y una tarde muy californiana."
+        },
+        {
+          title: "Jus' Poke en Redondo",
+          image: "https://s3-media0.fl.yelpcdn.com/bphoto/yPJxmQiKjB8h9Qk6QPjmHQ/o.jpg",
+          alt: "Poke de Jus' Poke",
+          text: "Fresco, fácil y muy de Redondo."
+        },
+        {
+          title: "Catalina Island",
+          image: "https://www.visitcatalinaisland.com/wp-content/uploads/2020/01/avalon-harbor-catalina-island.jpg",
+          alt: "Puerto de Avalon en Catalina Island",
+          text: "Un ferry y otro ritmo."
+        }
+      ]
+    };
+
+    const carlosPlacesByLanguage = {
+      en: [
+        {
+          title: "Torrance Airport Aviation Museum",
+          image: "https://coinventmediastorage.blob.core.windows.net/media-storage-container/gphoto_ChIJp8bt7v5K3YARkVsYtmXG8rI_0.jpg",
+          alt: "Western Museum of Flight aircraft exhibits",
+          text: "Western Museum of Flight, because this site can include airplanes."
+        },
+        {
+          title: "Malaga Cove",
+          image: "https://www.moontravelguides.com/wp-content/uploads/2020/08/CA_PalosVerdes_PtVicenteLighthouse_Peieq-DT.jpg",
+          alt: "Palos Verdes cove and coastline",
+          text: "Cliffs, ocean air, and a slower coastal afternoon."
+        },
+        {
+          title: "Huge burrito at Riviera Mexican",
+          image: "https://tacotuesday.com/wp-content/uploads/2022/10/20201102-RMG-Psole-Kids-Menu-Chili-verde-Coloroado-Breakfast-2684.jpg",
+          alt: "Riviera Mexican Grill food",
+          text: "Come hungry and respect the size of the burrito."
+        },
+        {
+          title: "Goodwill Store Torrance",
+          image: "https://cdn.businessyab.com/assets/uploads/14970d6042291efc59ea3e04d4ef23f2__united_states_california_los_angeles_county_torrance_seaside_palos_verdes_boulevard_22227_goodwill_store_donation_centerhtml.jpg",
+          alt: "Goodwill Store in Torrance",
+          text: "A practical cultural stop, depending on who you ask."
+        },
+        {
+          title: "Terranea Hotel",
+          image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
+          alt: "Terranea Resort on the Palos Verdes coast",
+          text: "Ocean views and a very convincing place to pretend you are just stopping by."
+        },
+        {
+          title: "San Pedro Downtown",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Vincent_Thomas_Bridge%2C_San_Pedro%2C_CA.jpg/1280px-Vincent_Thomas_Bridge%2C_San_Pedro%2C_CA.jpg",
+          alt: "San Pedro and Vincent Thomas Bridge",
+          text: "Harbor streets, old signs, and a different side of LA."
+        },
+        {
+          title: "Old Torrance",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Old_Torrance%2C_CA.jpg/1280px-Old_Torrance%2C_CA.jpg",
+          alt: "Old Torrance street view",
+          text: "Quiet streets, small businesses, and local South Bay charm."
+        }
+      ],
+      es: [
+        {
+          title: "Museo de aviación de Torrance Airport",
+          image: "https://coinventmediastorage.blob.core.windows.net/media-storage-container/gphoto_ChIJp8bt7v5K3YARkVsYtmXG8rI_0.jpg",
+          alt: "Aviones del Western Museum of Flight",
+          text: "Western Museum of Flight, porque esta web también puede tener aviones."
+        },
+        {
+          title: "Malaga Cove",
+          image: "https://www.moontravelguides.com/wp-content/uploads/2020/08/CA_PalosVerdes_PtVicenteLighthouse_Peieq-DT.jpg",
+          alt: "Cala y costa de Palos Verdes",
+          text: "Acantilados, mar y una tarde tranquila."
+        },
+        {
+          title: "Burrito enorme en Riviera Mexican",
+          image: "https://tacotuesday.com/wp-content/uploads/2022/10/20201102-RMG-Psole-Kids-Menu-Chili-verde-Coloroado-Breakfast-2684.jpg",
+          alt: "Comida de Riviera Mexican Grill",
+          text: "Ven con hambre y respeta el tamaño del burrito."
+        },
+        {
+          title: "Goodwill Store Torrance",
+          image: "https://cdn.businessyab.com/assets/uploads/14970d6042291efc59ea3e04d4ef23f2__united_states_california_los_angeles_county_torrance_seaside_palos_verdes_boulevard_22227_goodwill_store_donation_centerhtml.jpg",
+          alt: "Goodwill Store en Torrance",
+          text: "Una parada cultural práctica, según a quién preguntes."
+        },
+        {
+          title: "Terranea Hotel",
+          image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
+          alt: "Terranea Resort en la costa de Palos Verdes",
+          text: "Vistas al mar y buen sitio para fingir que solo pasabas por allí."
+        },
+        {
+          title: "Downtown San Pedro",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Vincent_Thomas_Bridge%2C_San_Pedro%2C_CA.jpg/1280px-Vincent_Thomas_Bridge%2C_San_Pedro%2C_CA.jpg",
+          alt: "San Pedro y el Vincent Thomas Bridge",
+          text: "Puerto, carteles antiguos y otra cara de LA."
+        },
+        {
+          title: "Old Torrance",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Old_Torrance%2C_CA.jpg/1280px-Old_Torrance%2C_CA.jpg",
+          alt: "Calle de Old Torrance",
+          text: "Calles tranquilas, comercios pequeños y encanto local."
+        }
+      ]
+    };
 
     const mapAreas = [
       {
         name: "Torrance Beach",
+        nameEs: "Playa de Torrance",
         type: "beach",
-        labelCoords: [33.790, -118.383],
+        labelCoords: [33.786, -118.440],
         connectorCoords: [33.794, -118.401],
         points: [[33.806, -118.397], [33.799, -118.394], [33.790, -118.397], [33.786, -118.405], [33.793, -118.410], [33.803, -118.405]]
       },
       {
         name: "Redondo Beach",
+        nameEs: "Playa de Redondo",
         type: "beach",
-        labelCoords: [33.842, -118.378],
+        labelCoords: [33.836, -118.448],
         connectorCoords: [33.837, -118.397],
         points: [[33.864, -118.398], [33.854, -118.394], [33.839, -118.390], [33.821, -118.391], [33.806, -118.397], [33.805, -118.406], [33.835, -118.400], [33.858, -118.404]]
       },
       {
         name: "Hermosa Beach",
+        nameEs: "Playa de Hermosa",
         type: "beach",
-        labelCoords: [33.867, -118.390],
+        labelCoords: [33.865, -118.458],
         connectorCoords: [33.867, -118.408],
         points: [[33.878, -118.410], [33.872, -118.405], [33.861, -118.400], [33.856, -118.404], [33.859, -118.412], [33.873, -118.418]]
       },
       {
         name: "Manhattan Beach",
+        nameEs: "Playa de Manhattan",
         type: "beach",
-        labelCoords: [33.895, -118.397],
+        labelCoords: [33.897, -118.466],
         connectorCoords: [33.895, -118.423],
         points: [[33.907, -118.425], [33.900, -118.421], [33.888, -118.414], [33.878, -118.410], [33.876, -118.419], [33.891, -118.429], [33.904, -118.433]]
       },
       {
         name: "El Segundo",
+        nameEs: "El Segundo",
         type: "beach",
-        labelCoords: [33.925, -118.410],
+        labelCoords: [33.925, -118.472],
         connectorCoords: [33.919, -118.433],
         points: [[33.929, -118.433], [33.921, -118.427], [33.908, -118.424], [33.905, -118.433], [33.920, -118.440]]
       },
       {
         name: "Palos Verdes",
+        nameEs: "Palos Verdes",
         type: "area",
-        labelCoords: [33.764, -118.332],
+        labelCoords: [33.745, -118.462],
         connectorCoords: [33.765, -118.372],
         points: [[33.817, -118.405], [33.802, -118.424], [33.776, -118.428], [33.748, -118.421], [33.724, -118.391], [33.718, -118.344], [33.735, -118.307], [33.765, -118.309], [33.796, -118.344], [33.814, -118.379]]
       },
       {
         name: "San Pedro",
+        nameEs: "San Pedro",
         type: "area",
-        labelCoords: [33.733, -118.256],
+        labelCoords: [33.705, -118.380],
         connectorCoords: [33.733, -118.295],
         points: [[33.762, -118.326], [33.756, -118.281], [33.735, -118.262], [33.705, -118.270], [33.706, -118.318], [33.731, -118.338]]
       }
     ];
 
     const mapPins = [
-      { name: "The Portofino Hotel & Marina", kind: "hotel", label: "Portofino", coords: [33.84534, -118.39744], note: "Top hotel pick" },
-      { name: "Shade Hotel Redondo Beach", kind: "hotel", label: "Shade", coords: [33.847657, -118.395405], note: "Top hotel pick" },
-      { name: "Sonesta Redondo Beach & Marina", kind: "hotel", label: "Sonesta", coords: [33.845295, -118.392442], note: "Top hotel pick" },
-      { name: "Valmonte Elementary", kind: "home", label: "Lily's home", coords: [33.801729, -118.364556], note: "Home base reference" },
-      { name: "Trump National Golf Club Los Angeles", kind: "attraction", label: "Trump golf course", coords: [33.72901, -118.34517], note: "Palos Verdes coastal stop" },
-      { name: "San Pedro", kind: "attraction", label: "San Pedro", coords: [33.7361, -118.2922], note: "Cool t-shirt mission" },
-      { name: "Venice Beach", kind: "attraction", label: "Venice Beach", coords: [33.97252, -118.46347], note: "Boardwalk and canals" },
-      { name: "Disneyland", kind: "attraction", label: "Disney", coords: [33.8091, -117.919], note: "Full day trip" },
-      { name: "Redondo Beach Pier", kind: "attraction", label: "Redondo Pier", coords: [33.8397, -118.3923], note: "Beach walk reference" }
+      { name: "Valmonte Elementary", kind: "home", label: "Lily's Home", labelEs: "Casa de Lily", coords: [33.801729, -118.364556], note: "Home base reference", noteEs: "Referencia de casa" },
+      { name: "Trump National Golf Club Los Angeles", kind: "attraction", label: "Trump Golf", labelEs: "Trump Golf", coords: [33.72901, -118.34517], note: "Palos Verdes coastal stop", noteEs: "Parada por la costa de Palos Verdes" },
+      { name: "San Pedro Downtown", kind: "attraction", label: "San Pedro Downtown", labelEs: "Downtown San Pedro", coords: [33.7361, -118.2922], note: "Harbor streets and cool t-shirt mission", noteEs: "Puerto, calles con carácter y camiseta de recuerdo" },
+      { name: "Venice Beach", kind: "attraction", label: "Venice Beach", labelEs: "Venice Beach", coords: [33.97252, -118.46347], note: "Boardwalk and canals", noteEs: "Paseo marítimo y canales" },
+      { name: "Disneyland", kind: "attraction", label: "Disney", labelEs: "Disney", coords: [33.8091, -117.919], note: "Full day trip", noteEs: "Excursión de día completo" },
+      { name: "Redondo Beach Pier", kind: "attraction", label: "Redondo Pier", labelEs: "Pier de Redondo", coords: [33.8397, -118.3923], note: "Beach walk reference", noteEs: "Referencia para paseo de playa" },
+      { name: "Catalina Airport", kind: "attraction", label: "Catalina Airport", labelEs: "Catalina Airport", coords: [33.4049, -118.4159], note: "Airport in the Sky", noteEs: "Airport in the Sky" },
+      { name: "Torrance Airport", kind: "attraction", label: "Torrance Airport", labelEs: "Torrance Airport", coords: [33.8034, -118.3396], note: "Zamperini Field", noteEs: "Zamperini Field" }
     ];
 
     const translations = {
@@ -1388,19 +1617,17 @@
         tabMap: "Map",
         tabHotels: "Hotels",
         tabThingsToDo: "Things to do",
-        tabTrip: "Wider trip ideas",
         tabLilyPlaces: "Lily's places",
         tabCarlosPlaces: "Carlos's places",
         howWeMetTitle: "How we met",
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>After traveling through South America with her family, Lily found herself even more drawn to languages, new places, and the kind of experiences that make a place feel alive. She had already spent time in Poland and Seville, so taking a chance on Spain felt less like a leap and more like following a thread she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, we decided to keep dating across the distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his airline transport pilot training in Europe</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>For more than a year, Lily has been building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos joined a software company alongside his aviation training, and as his pilot license work has settled, he has been able to give more time and energy to that role.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends for life.</p><p>We know it is a wedding that will not be normal, but we would love it if you could make it. If not, no worries. We will make sure to visit wherever you are and make plans before or after.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         comingSoon: "Details coming soon.",
-        mapTitle: "Map",
-        mapNote: "A simple reference map so everyone can see where the beach towns, hotels, home base, and day-trip ideas sit.",
+        mapTitle: "A Different, More Local Map of Los Angeles",
+        mapNote: "A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.",
         hotelsTitle: "Hotels",
-        hotelsNote: "Our favorite beach-access options first, then a few backups. Summer prices are rough planning ranges and will move around.",
-        topPick: "Top pick",
-        beachAccess: "Beach access",
+        hotelsNote: "A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.",
+        hotelTopPicks: "Our hotel top picks",
         summerPrice: "Summer estimate",
         discountCode: "Dummy code",
         otherHotels: "Other hotel options",
@@ -1409,14 +1636,12 @@
         airbnbLink: "Search Redondo Beach Airbnbs",
         thingsTitle: "Things to do",
         thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
-        tripTitle: "Wider trip ideas",
-        tripNote: "A few easy day trips if you want to turn the wedding into a California week.",
         lilyPlacesTitle: "Lily's top places",
         lilyPlacesNote: "A few Lily-approved stops for food, views, walks, and beach-town wandering.",
+        lilyTopFiveTitle: "Lily's favorites",
         carlosPlacesTitle: "Carlos's top places",
         carlosPlacesNote: "Carlos's aviation, coast, thrift, burrito, and hotel-view shortlist.",
-        mapView: "Map",
-        listView: "List",
+        carlosTopFiveTitle: "Carlos's favorites",
         mapLink: "Open in Google Maps"
       },
       es: {
@@ -1427,19 +1652,17 @@
         tabMap: "Mapa",
         tabHotels: "Hoteles",
         tabThingsToDo: "Cosas que hacer",
-        tabTrip: "Ideas para un viaje más amplio",
         tabLilyPlaces: "Lugares de Lily",
         tabCarlosPlaces: "Lugares de Carlos",
         howWeMetTitle: "Cómo nos conocimos",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió todavía más atraída por los idiomas, los lugares nuevos y esas experiencias que hacen que un sitio cobre vida. Ya había pasado tiempo en Polonia y Sevilla, así que apostar por España no fue tanto un salto al vacío como seguir un hilo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidimos seguir juntos a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto de transporte de línea aérea en Europa</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Durante más de un año, Lily ha construido su carrera en Madrid en el mundo de la educación y los programas de estudios en el extranjero, donde le está yendo muy bien. Carlos se incorporó a una empresa de software mientras seguía con su formación aeronáutica, y a medida que el trabajo de su licencia de piloto se ha ido asentando, ha podido dedicar más tiempo y energía a ese puesto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para toda la vida.</p><p>Sabemos que no será una boda normal, pero nos encantaría que pudieras venir. Si no, no pasa nada. Nos aseguraremos de visitarte donde estés y de hacer planes antes o después.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         comingSoon: "Detalles próximamente.",
-        mapTitle: "Mapa",
-        mapNote: "Un mapa sencillo de referencia para ubicar las playas, hoteles, casa base e ideas de excursiones.",
+        mapTitle: "Un mapa más local de Los Ángeles",
+        mapNote: "Un mapa sencillo para ubicar playas, casa base, aeropuertos y excursiones.",
         hotelsTitle: "Hoteles",
-        hotelsNote: "Nuestras opciones favoritas con acceso a la playa primero, y después algunas alternativas. Los precios de verano son rangos aproximados y pueden cambiar.",
-        topPick: "Favorito",
-        beachAccess: "Acceso a la playa",
+        hotelsNote: "Una lista sencilla de favoritos primero, y después algunas alternativas. Los precios de verano son orientativos.",
+        hotelTopPicks: "Hoteles favoritos",
         summerPrice: "Estimación de verano",
         discountCode: "Código ficticio",
         otherHotels: "Otras opciones de hotel",
@@ -1448,14 +1671,12 @@
         airbnbLink: "Buscar Airbnbs en Redondo Beach",
         thingsTitle: "Cosas que hacer",
         thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
-        tripTitle: "Ideas para un viaje más amplio",
-        tripNote: "Algunas excursiones fáciles si quieres convertir la boda en una semana por California.",
         lilyPlacesTitle: "Los lugares favoritos de Lily",
         lilyPlacesNote: "Algunos sitios aprobados por Lily para comer, pasear, ver vistas y disfrutar la playa.",
+        lilyTopFiveTitle: "Favoritos de Lily",
         carlosPlacesTitle: "Los lugares favoritos de Carlos",
         carlosPlacesNote: "La lista de Carlos: aviación, costa, compras de segunda mano, burritos y vistas de hotel.",
-        mapView: "Mapa",
-        listView: "Lista",
+        carlosTopFiveTitle: "Favoritos de Carlos",
         mapLink: "Abrir en Google Maps"
       }
     };
@@ -1467,6 +1688,11 @@
       return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(hotel.name + " " + hotel.address);
     }
 
+    function localized(item, key) {
+      const translatedKey = key + "Es";
+      return currentLanguage === "es" && item[translatedKey] ? item[translatedKey] : item[key];
+    }
+
     function renderList() {
       const list = document.getElementById("hotelList");
       const topOrder = ["The Portofino Hotel & Marina", "Sonesta Redondo Beach & Marina", "Howard Johnson by Wyndham Torrance"];
@@ -1476,13 +1702,9 @@
       const otherHotels = hotels.filter((hotel) => hotel.tier !== "top");
       const hotelCard = (hotel) => `
         <article class="hotel-card ${hotel.tier === "top" ? "top-pick" : ""}">
-          <div class="badge-row">
-            ${hotel.tier === "top" ? `<span class="badge">${translations[currentLanguage].topPick}</span>` : ""}
-            ${hotel.tier === "top" ? `<span class="badge">${translations[currentLanguage].beachAccess}</span>` : ""}
-          </div>
           <h3>${hotel.name}</h3>
           <p>${hotel.address}</p>
-          <p>${hotel.note}</p>
+          <p>${localized(hotel, "note")}</p>
           <div class="hotel-meta">
             <span>${translations[currentLanguage].summerPrice}: ${hotel.price}</span>
             <span>${translations[currentLanguage].discountCode}: ${hotel.code}</span>
@@ -1492,6 +1714,7 @@
       `;
 
       list.innerHTML = `
+        <h3 class="hotel-subheading">${translations[currentLanguage].hotelTopPicks}</h3>
         ${topHotels.map(hotelCard).join("")}
         <aside class="airbnb-note">
           <p><strong>${translations[currentLanguage].airbnbTitle}</strong> ${translations[currentLanguage].airbnbText}</p>
@@ -1506,6 +1729,7 @@
 
     function renderActivities() {
       const list = document.getElementById("activityList");
+      const activities = activitiesByLanguage[currentLanguage];
       const doodles = (index) => `
         <div class="notebook-doodles theme-${index}" aria-hidden="true">
           <span class="doodle sun"></span>
@@ -1533,6 +1757,7 @@
     }
 
     function showActivityPage(index) {
+      const activities = activitiesByLanguage[currentLanguage];
       const activity = activities[index];
       const page = document.getElementById("activityPage");
       if (!activity || !page) {
@@ -1557,14 +1782,24 @@
       `;
     }
 
-    function renderTrips() {
-      const list = document.getElementById("tripList");
-      list.innerHTML = tripIdeas.map((item) => `
-        <article class="idea-card">
-          <h3>${item.title}</h3>
-          <p>${item.text}</p>
+    function renderPlaceList(elementId, places) {
+      const list = document.getElementById(elementId);
+      if (!list) {
+        return;
+      }
+
+      list.innerHTML = places.map((place) => `
+        <article class="place-card">
+          <img src="${place.image}" alt="${place.alt}" loading="lazy">
+          <h4>${place.title}</h4>
+          <p>${place.text}</p>
         </article>
       `).join("");
+    }
+
+    function renderPlaces() {
+      renderPlaceList("lilyPlacesList", lilyPlacesByLanguage[currentLanguage]);
+      renderPlaceList("carlosPlacesList", carlosPlacesByLanguage[currentLanguage]);
     }
 
     function makeMarker(pin) {
@@ -1579,7 +1814,7 @@
     function makeAreaLabel(area) {
       return L.divIcon({
         className: "area-label-icon",
-        html: `<span class="area-tooltip">${area.name}</span>`,
+        html: `<span class="area-tooltip">${localized(area, "name")}</span>`,
         iconSize: [150, 34],
         iconAnchor: [0, 17]
       });
@@ -1610,9 +1845,11 @@
       document.getElementById("referenceMap").innerHTML = "";
       referenceMap = L.map("referenceMap", {
         attributionControl: false,
-        scrollWheelZoom: false,
-        zoomControl: true
+        scrollWheelZoom: true,
+        zoomControl: false
       }).setView([33.825, -118.37], 11);
+
+      L.control.zoom({ position: "bottomleft" }).addTo(referenceMap);
 
       L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
         maxZoom: 19
@@ -1646,17 +1883,17 @@
       mapPins.forEach((pin) => {
         L.marker(pin.coords, { icon: makeMarker(pin), riseOnHover: true })
           .addTo(referenceMap)
-          .bindTooltip(pin.label, {
+          .bindTooltip(localized(pin, "label"), {
             direction: "right",
             offset: [12, -14],
             className: "pin-label"
           })
-          .bindPopup(`<strong>${pin.name}</strong><br>${pin.note}`);
+          .bindPopup(`<strong>${localized(pin, "label")}</strong><br>${localized(pin, "note")}`);
       });
 
       const bounds = L.latLngBounds([
-        [33.705, -118.465],
-        [33.94, -118.245]
+        [33.700, -118.470],
+        [33.945, -118.235]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
       referenceMap.setZoom(referenceMap.getZoom() + 1);
@@ -1680,7 +1917,12 @@
 
       renderList();
       renderActivities();
-      renderTrips();
+      renderPlaces();
+      if (referenceMap) {
+        referenceMap.remove();
+        referenceMap = null;
+        initReferenceMap();
+      }
     }
 
     document.querySelectorAll(".tab-button").forEach((button) => {
@@ -1764,7 +2006,7 @@
 
     renderList();
     renderActivities();
-    renderTrips();
+    renderPlaces();
   </script>
 </body>
 </html>
