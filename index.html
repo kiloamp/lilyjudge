@@ -504,18 +504,19 @@
 
     .story-card {
       position: relative;
-      max-width: 880px;
+      width: 100%;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.72);
       box-shadow: var(--shadow);
-      padding: clamp(20px, 4vw, 42px);
+      padding: clamp(22px, 4vw, 44px);
+      overflow: hidden;
     }
 
     .story-copy {
       position: relative;
       z-index: 1;
-      padding-right: min(28vw, 250px);
+      padding-right: min(34vw, 360px);
     }
 
     .story-card p {
@@ -536,23 +537,22 @@
 
     .story-photos {
       position: absolute;
-      right: 22px;
-      bottom: 20px;
-      width: min(250px, 30%);
-      min-height: 270px;
+      top: 50px;
+      right: clamp(18px, 3vw, 34px);
+      bottom: 28px;
+      width: min(320px, 30%);
       pointer-events: none;
       z-index: 2;
     }
 
     .pinned-photo {
       position: absolute;
-      width: 132px;
+      width: min(210px, 76%);
       aspect-ratio: 1 / 1.16;
       padding: 8px 8px 18px;
       border: 1px solid rgba(57, 65, 60, 0.16);
       background: #fffdf8;
       box-shadow: 0 14px 26px rgba(57, 65, 60, 0.18);
-      object-fit: cover;
     }
 
     .pinned-photo::before {
@@ -576,26 +576,27 @@
     }
 
     .pinned-photo:nth-child(1) {
-      top: 6px;
-      right: 86px;
+      top: 0;
+      right: 78px;
       transform: rotate(-8deg);
     }
 
     .pinned-photo:nth-child(2) {
-      top: 54px;
-      right: 0;
+      top: 26%;
+      right: 8px;
       transform: rotate(7deg);
     }
 
     .pinned-photo:nth-child(3) {
-      top: 124px;
-      right: 96px;
+      top: 52%;
+      right: 86px;
       transform: rotate(5deg);
     }
 
     .pinned-photo:nth-child(4) {
-      top: 164px;
-      right: 12px;
+      bottom: 0;
+      right: 0;
+      width: min(252px, 92%);
       transform: rotate(-6deg);
     }
 
@@ -1120,11 +1121,25 @@
 
       .story-photos {
         position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
         right: auto;
+        top: auto;
         bottom: auto;
-        width: min(100%, 470px);
-        min-height: 240px;
+        width: min(100%, 560px);
+        min-height: 0;
         margin: 22px auto 0;
+      }
+
+      .pinned-photo,
+      .pinned-photo:nth-child(1),
+      .pinned-photo:nth-child(2),
+      .pinned-photo:nth-child(3),
+      .pinned-photo:nth-child(4) {
+        position: relative;
+        inset: auto;
+        width: 100%;
       }
 
       .notebook-doodles {
@@ -1197,7 +1212,6 @@
     <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="how-we-met" id="tab-how-we-met" data-tab="how-we-met" data-i18n="tabHowWeMet">How we met</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
@@ -1226,9 +1240,7 @@
             </p>
           </div>
         </div>
-      </section>
 
-      <section class="tab-panel" role="tabpanel" id="how-we-met" aria-labelledby="tab-how-we-met">
         <div class="panel-heading">
           <div>
             <h2 data-i18n="howWeMetTitle">How we met</h2>
