@@ -298,6 +298,56 @@
       font-size: clamp(1.35rem, 2vw, 1.65rem);
     }
 
+    .intro p {
+      margin: 0 0 16px;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .planning-card {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin: 10px 0 34px;
+      padding: clamp(22px, 4vw, 38px);
+      border: 1px solid rgba(87, 127, 86, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .planning-card h2 {
+      grid-column: 1 / -1;
+    }
+
+    .planning-card h3 {
+      margin: 0 0 8px;
+      color: var(--coastal);
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .planning-card p {
+      margin: 0;
+      color: rgba(57, 65, 60, 0.78);
+      font-size: 1.18rem;
+    }
+
+    .planning-card .cta-link {
+      grid-column: 1 / -1;
+      justify-self: start;
+      display: inline-flex;
+      border: 1px solid rgba(87, 127, 86, 0.22);
+      border-radius: 999px;
+      background: var(--sun);
+      padding: 10px 16px;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
     .tabs-wrap {
       padding: 18px 0 56px;
     }
@@ -747,44 +797,41 @@
     .notebook {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: minmax(190px, 0.28fr) minmax(0, 1fr);
+      grid-template-columns: minmax(220px, 0.26fr) minmax(0, 1fr);
       gap: 0;
       overflow: hidden;
-      min-height: 640px;
-      border: 1px solid rgba(137, 112, 76, 0.26);
-      border-radius: 10px;
-      background:
-        linear-gradient(90deg, rgba(172, 116, 86, 0.12), transparent 42px),
-        #fff8dd;
+      min-height: 720px;
+      border: 1px solid rgba(87, 127, 86, 0.18);
+      border-radius: 14px;
+      background: #fffdf7;
       box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.7),
-        0 18px 38px rgba(88, 90, 67, 0.16);
+        0 18px 38px rgba(88, 90, 67, 0.12);
     }
 
     .notebook-tabs {
       display: grid;
       align-content: start;
-      gap: 8px;
-      padding: 28px 14px 28px 20px;
+      gap: 10px;
+      padding: 30px 16px 30px 22px;
       background:
-        linear-gradient(90deg, rgba(125, 84, 62, 0.12), rgba(255, 248, 221, 0.58)),
-        repeating-linear-gradient(180deg, transparent 0 34px, rgba(137, 112, 76, 0.12) 34px 35px);
-      border-right: 1px solid rgba(137, 112, 76, 0.2);
+        linear-gradient(180deg, rgba(255, 250, 240, 0.88), rgba(234, 245, 238, 0.58)),
+        rgba(255, 253, 247, 0.92);
+      border-right: 1px solid rgba(87, 127, 86, 0.14);
     }
 
     .notebook-tab {
-      border: 1px solid rgba(137, 112, 76, 0.22);
-      border-right: 0;
-      border-radius: 8px 0 0 8px;
-      background: rgba(255, 250, 240, 0.76);
+      border: 1px solid rgba(87, 127, 86, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
       color: var(--coastal);
       cursor: pointer;
       font-family: inherit;
       font-size: 1.28rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 10px 12px;
+      letter-spacing: 0;
+      text-transform: none;
+      padding: 11px 14px;
       text-align: left;
       box-shadow: 0 8px 18px rgba(88, 90, 67, 0.08);
     }
@@ -797,12 +844,55 @@
 
     .notebook-page {
       position: relative;
-      min-height: 640px;
-      padding: clamp(34px, 5vw, 62px);
+      min-height: 720px;
+      padding: clamp(34px, 5vw, 66px);
       background:
-        linear-gradient(90deg, rgba(212, 96, 84, 0.18) 0 2px, transparent 2px 100%),
-        repeating-linear-gradient(180deg, transparent 0 35px, rgba(74, 137, 148, 0.14) 35px 36px),
-        rgba(255, 253, 246, 0.96);
+        linear-gradient(90deg, rgba(240, 207, 117, 0.08), transparent 90px),
+        rgba(255, 253, 247, 0.96);
+    }
+
+    .journal-image {
+      width: min(100%, 760px);
+      aspect-ratio: 16 / 7;
+      display: block;
+      margin: 0 0 28px;
+      border: 9px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 14px 28px rgba(88, 90, 67, 0.14);
+      object-fit: cover;
+      transform: rotate(-1deg);
+    }
+
+    .journal-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--coral);
+      font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .activity-ideas {
+      display: grid;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .activity-idea {
+      border-top: 1px solid rgba(87, 127, 86, 0.16);
+      padding-top: 14px;
+    }
+
+    .activity-idea strong {
+      color: var(--coastal);
+      font-size: 1.18em;
+    }
+
+    .activity-idea span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(57, 65, 60, 0.66);
+      font-size: 0.92em;
     }
 
     .notebook-doodles {
@@ -1065,6 +1155,7 @@
     .hotel-card h3 {
       margin: 0 0 8px;
       font-size: 1.32rem;
+      font-weight: 800;
       line-height: 1.2;
     }
 
@@ -1074,6 +1165,10 @@
     }
 
     .hotel-card a {
+      font-weight: 800;
+    }
+
+    .hotel-price {
       font-weight: 800;
     }
 
@@ -1101,6 +1196,10 @@
       .activity-grid,
       .places-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .planning-card {
+        grid-template-columns: 1fr;
       }
 
       .notebook {
@@ -1226,7 +1325,7 @@
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Activities</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="places" id="tab-places" data-tab="places" data-i18n="tabPlaces">Places</button>
       </div>
       <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
@@ -1252,14 +1351,29 @@
 
           <div class="hero-copy">
             <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
-            <p class="intro" data-i18n-html="intro">
-              We'd love for you to make it to our wedding in 2027. Due to our
-              <a class="media-link" href="media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>,
-              the wedding date will have short notice. We've created this website with details
-              for you to review as you consider joining us and celebrating.
-            </p>
+            <div class="intro" data-i18n-html="intro">
+              <p>We'd love for you to join us for our wedding in California in 2027! Because of our <a class="media-link" href="https://lilyjudge.carloslagoa.com/media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>, we may not know the exact wedding date until relatively close to the big day, potentially with only about four months' notice.</p>
+              <p>We know that's not much time to plan a trip, so we've created this website to give you a head start. Here, you can explore the area, get a sense of travel and accommodation options, and start thinking about whether you might be able to make the journey to California and celebrate with us.</p>
+            </div>
           </div>
         </div>
+
+        <section class="planning-card" aria-label="A little planning ahead">
+          <h2 data-i18n="planningTitle">A little planning ahead</h2>
+          <div>
+            <h3 data-i18n="planningPlaceTitle">Los Angeles, California</h3>
+            <p data-i18n="planningPlaceText">We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.</p>
+          </div>
+          <div>
+            <h3 data-i18n="planningDateTitle">The date</h3>
+            <p data-i18n="planningDateText">We expect to have around four months' notice once our date is confirmed. Until then, we'll keep you posted here.</p>
+          </div>
+          <div>
+            <h3 data-i18n="planningPlansTitle">Your plans</h3>
+            <p data-i18n="planningPlansText">If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. It will help us plan, too.</p>
+          </div>
+          <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
+        </section>
 
         <div class="panel-heading">
           <div>
@@ -1269,12 +1383,12 @@
         </div>
         <div class="story-card">
           <div class="story-copy" data-i18n-html="howWeMetStory">
-            <p>After traveling through South America with her family, Lily felt even more drawn to languages and new places. She had already spent time in Poland and Seville, so Spain felt like following something she already loved.</p>
+            <p>Lily came to Spain drawn by languages, travel, and the feeling of trying life somewhere new. She had already spent time in Poland and Seville, so Madrid felt like another step into something she loved.</p>
             <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
             <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
             <p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p>
             <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p>
-            <p>Our wedding might be a little unconventional, we hope you'll be part of it. We can't give you a date yet, but if you already have a sense of whether or not you'll be able to make it, please let us know where to help with planning. More info here: <a href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener">form</a>.</p>
+            <p>Our wedding might be a little unconventional, but we hope you'll be part of it.</p>
             <p>With love,<br><span class="signature">Lily and Carlos</span></p>
           </div>
           <div class="story-photos" aria-hidden="true">
@@ -1312,8 +1426,8 @@
       <section class="tab-panel" role="tabpanel" id="things-to-do" aria-labelledby="tab-things-to-do">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="thingsTitle">Things to do</h2>
-            <p class="muted" data-i18n="thingsNote">A softer home for the tips, rentals, attractions, and neighborhood notes.</p>
+            <h2 data-i18n="thingsTitle">Ideas For Your Stay</h2>
+            <p class="muted" data-i18n="thingsNote">Los Angeles is full of fun activities and excursions. If you are making your way from Europe, we want to help you take advantage of everything. Use this page as a guide for local(ish) ideas.</p>
           </div>
         </div>
         <div class="activity-grid" id="activityList"></div>
@@ -1438,103 +1552,187 @@
     const activitiesByLanguage = {
       en: [
         {
-          title: "USA tips and tricks",
-          text: [
-            "Keep a tiny bit of cash for tips, but most places take cards.",
-            "Distances can look short and still take a while. Leave extra time near the beach in summer.",
-            "An eSIM before landing is easier than solving phone data while jet-lagged."
+          title: "Palos Verdes",
+          kicker: "A little California magic, right where we'll be celebrating.",
+          image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
+          alt: "Palos Verdes coastline near Terranea",
+          intro: ["Palos Verdes is all about dramatic ocean views, winding coastal roads, beautiful gardens, and some of the best sunsets in the area. This is the place to slow down, take a walk, and enjoy the California coast without going too far."],
+          ideas: [
+            { name: "Terranea", description: "Walk the grounds, enjoy the ocean views, grab a bite, or stay for sunset.", meta: "Time: 2-4 hours · Price: $-$$" },
+            { name: "Point Vicente", description: "One of our favorite spots for dramatic coastline and ocean views.", meta: "Time: 1-2 hours · Price: Free" },
+            { name: "Abalone Cove", description: "Coastal trails and beautiful scenery for a more active afternoon.", meta: "Time: 2-3 hours · Price: $" },
+            { name: "Palos Verdes coastline drive", description: "Put on some music and follow the coast. Sometimes the best activity is just seeing where the road takes you.", meta: "Time: 1-2 hours · Price: Free" }
           ]
         },
         {
-          title: "Bike rentals",
-          text: [
-            "We recommend Randy's Bike Shack for a relaxed beach-cruiser day. Placeholder until we confirm the rental spot.",
-            "Start around Redondo or Hermosa and take the beach path slowly.",
-            "Bring sunscreen, water, and casual confidence."
+          title: "Manhattan Beach, Redondo Beach & Hermosa Beach",
+          kicker: "When in California, go to the beach.",
+          image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
+          alt: "Beach bike path near Manhattan Beach",
+          intro: ["You don't need a whole day or a complicated plan. Pick a beach, walk along the water, grab lunch, and see where the afternoon takes you."],
+          ideas: [
+            { name: "Manhattan Beach", description: "A charming beach town with a long sandy beach, pier, shops, restaurants, and plenty of places to sit and watch the world go by.", meta: "Time: 2-5 hours · Price: $-$$" },
+            { name: "Hermosa Beach", description: "A little more laid-back and lively, with a great beach walk and plenty of casual places to eat and drink.", meta: "Time: 2-4 hours · Price: $-$$" },
+            { name: "Redondo Beach", description: "Closest to Palos Verdes and an easy option if you want a relaxed afternoon by the water.", meta: "Time: 2-4 hours · Price: $-$$" },
+            { name: "Beach bike ride", description: "Rent bikes and follow the beach path for a quintessential Southern California experience.", meta: "Time: 1-3 hours · Price: $$" }
           ]
         },
         {
-          title: "Surf rentals",
-          text: [
-            "Check a local surf shop near Hermosa or Manhattan Beach for soft-top rentals and beginner lessons.",
-            "Mornings are usually calmer for wind and crowds.",
-            "Great for brave guests and gentle wipeouts."
+          title: "Santa Monica & Venice",
+          kicker: "The classic LA day out.",
+          image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
+          alt: "Venice Beach boardwalk",
+          intro: ["If you want to experience the LA you've probably seen in movies, head west. Santa Monica and Venice offer beaches, palm trees, shops, restaurants, street performers, and plenty of people-watching."],
+          ideas: [
+            { name: "Santa Monica Pier", description: "Walk the pier, explore the beach, and take in the views from the end of Route 66.", meta: "Time: 2-4 hours · Price: Free-$$" },
+            { name: "Venice Beach & Abbot Kinney", description: "A fun combination of beach, street life, independent shops, restaurants, and one of LA's most famous boardwalks.", meta: "Time: 3-5 hours · Price: $-$$" },
+            { name: "Santa Monica to Venice walk", description: "Walk or bike between the two for a much more enjoyable way to experience the coastline.", meta: "Time: 2-3 hours · Price: Free-$$" }
           ]
         },
         {
-          title: "Local attractions",
-          text: [
-            "Save one sunset for a pier walk.",
-            "Redondo, Hermosa, and Manhattan each feel different, so wander without overplanning.",
-            "We will add more small stops as the date gets closer."
+          title: "Malibu",
+          kicker: "For the full California feeling.",
+          image: "https://media.listquicker.com/users/schulz/post-151-697d04ceaf2dc-800x450.webp",
+          alt: "Malibu Pier and coastline",
+          intro: ["Malibu is where we'd send you if you want beautiful beaches, ocean views, winding roads, and a little more of that \"we're really in California\" feeling.", "The drive itself is part of the experience. Take Pacific Coast Highway, stop whenever something looks beautiful, and don't worry too much about having a strict itinerary."],
+          ideas: [
+            { name: "Malibu beaches", description: "Spend a few hours on the sand and in the sun.", meta: "Time: 2-4 hours · Price: Free-$$" },
+            { name: "Point Dume", description: "Beautiful coastal scenery and an easy place to stretch your legs.", meta: "Time: 1-2 hours · Price: Free" },
+            { name: "Malibu Pier", description: "Walk the pier and enjoy the views.", meta: "Time: 1-2 hours · Price: Free-$" },
+            { name: "Malibu Country Mart", description: "Shops, food, and a good place for a casual stop.", meta: "Time: 1-2 hours · Price: $$" },
+            { name: "Pacific Coast Highway drive", description: "Leave room in the day for spontaneous stops.", meta: "Time: Half day-full day · Price: $-$$" }
           ]
         },
         {
-          title: "Neighborhood guide",
-          text: [
-            "Redondo or Torrance are easiest for wedding-weekend logistics.",
-            "Hermosa and Manhattan are livelier and beachier. Palos Verdes is quieter and scenic.",
-            "San Pedro is good for a harbor walk and a cool t-shirt."
+          title: "Hollywood, Griffith & Downtown",
+          kicker: "For your first taste of the big city.",
+          image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
+          alt: "Griffith Observatory",
+          intro: ["Los Angeles is huge, and there's no way to see all of it in one trip. If you've never been before, these are some of the places that give you a taste of the city's history, culture, and slightly ridiculous scale."],
+          ideas: [
+            { name: "Griffith Observatory", description: "One of the best views over Los Angeles, especially around sunset.", meta: "Time: 2-3 hours · Price: Free" },
+            { name: "Hollywood", description: "Walk the Walk of Fame, see the Chinese Theatre, and experience one of LA's most famous and touristy neighborhoods.", meta: "Time: 2-3 hours · Price: Free-$$" },
+            { name: "Getty Center", description: "Beautiful art, architecture, gardens, and incredible views of the city.", meta: "Time: 3-4 hours · Price: Free-$" },
+            { name: "Downtown LA", description: "Museums, architecture, food, and some of the city's oldest neighborhoods.", meta: "Time: Half day-full day · Price: $-$$" }
           ]
         },
         {
-          title: "Wider trip ideas",
-          text: [
-            "San Pedro for a harbor walk and souvenir mission.",
-            "Venice Beach for the boardwalk, canals, and people-watching.",
-            "Disney if you want a full theme-park day.",
-            "Trump Golf for a Palos Verdes coastal detour."
+          title: "Make a Day of It",
+          kicker: "Because you're coming all this way...",
+          image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
+          alt: "Sleeping Beauty Castle at Disneyland",
+          intro: ["If you've never been to Disneyland, this might be your excuse. Orange County and Joshua Tree are also easy ways to turn the wedding into a bigger California trip."],
+          ideas: [
+            { name: "Disneyland", description: "A full-day adventure and a very California way to spend a day. Check the park calendar and tickets well in advance.", meta: "Time: Full day · Price: $$$-$$$$" },
+            { name: "Orange County", description: "Laguna Beach, Newport Beach, and Huntington Beach all offer a different version of Southern California.", meta: "Time: Full day · Price: $-$$$" },
+            { name: "Joshua Tree", description: "Desert landscapes, huge rock formations, and wide-open skies about two hours from LA.", meta: "Time: Full day or overnight · Price: $-$$" }
+          ]
+        },
+        {
+          title: "California Things",
+          kicker: "Don't just sightsee.",
+          image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
+          alt: "In-N-Out burger",
+          intro: ["Some of our favorite California experiences aren't really attractions. They're just things that feel different when you're visiting from Europe."],
+          ideas: [
+            { name: "Watch the sunset at the ocean", description: "Bring a jacket, find a viewpoint, and stay until the sun disappears.", meta: "" },
+            { name: "Try an In-N-Out burger", description: "A California classic. We don't make the rules.", meta: "" },
+            { name: "Have a proper American brunch", description: "Go hungry. Portions are part of the experience.", meta: "" },
+            { name: "Eat tacos", description: "LA has incredible Mexican food, from tiny taco stands to sit-down restaurants.", meta: "" },
+            { name: "Visit a farmers market", description: "Fresh produce, flowers, food stalls, and a very Californian Saturday morning.", meta: "" }
           ]
         }
       ],
       es: [
         {
-          title: "Consejos para EE. UU.",
-          text: [
-            "Lleva algo de efectivo para propinas, aunque casi todo acepta tarjeta.",
-            "Las distancias parecen cortas, pero en verano se tarda más cerca de la playa.",
-            "Una eSIM antes de aterrizar suele ser lo más fácil."
+          title: "Palos Verdes",
+          kicker: "Un poco de magia californiana, justo donde celebraremos.",
+          image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
+          alt: "Costa de Palos Verdes cerca de Terranea",
+          intro: ["Palos Verdes son vistas al mar, carreteras de costa, jardines bonitos y algunos de los mejores atardeceres de la zona. Es el sitio para ir sin prisa y disfrutar de la costa sin alejarse demasiado."],
+          ideas: [
+            { name: "Terranea", description: "Pasea por el recinto, mira el mar, toma algo o quédate al atardecer.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
+            { name: "Point Vicente", description: "Uno de nuestros sitios favoritos para ver acantilados y océano.", meta: "Tiempo: 1-2 h · Precio: gratis" },
+            { name: "Abalone Cove", description: "Senderos junto al mar y paisaje para una tarde más activa.", meta: "Tiempo: 2-3 h · Precio: $" },
+            { name: "Ruta por la costa de Palos Verdes", description: "Pon música y sigue la costa. A veces el mejor plan es dejarse llevar.", meta: "Tiempo: 1-2 h · Precio: gratis" }
           ]
         },
         {
-          title: "Alquiler de bicis",
-          text: [
-            "Recomendamos Randy's Bike Shack para un paseo tranquilo. Es texto provisional hasta confirmar el sitio.",
-            "Empieza por Redondo o Hermosa y ve sin prisa por el paseo marítimo.",
-            "Lleva crema solar, agua y ganas de improvisar."
+          title: "Manhattan Beach, Redondo Beach y Hermosa Beach",
+          kicker: "Si estás en California, ve a la playa.",
+          image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
+          alt: "Carril bici junto a Manhattan Beach",
+          intro: ["No hace falta un día entero ni un plan complicado. Elige una playa, pasea junto al agua, come algo y deja que la tarde fluya."],
+          ideas: [
+            { name: "Manhattan Beach", description: "Playa amplia, pier, tiendas, restaurantes y sitios para sentarse a mirar el ambiente.", meta: "Tiempo: 2-5 h · Precio: $-$$" },
+            { name: "Hermosa Beach", description: "Más relajada y animada, con paseo de playa y sitios informales para comer o beber.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
+            { name: "Redondo Beach", description: "La más cercana a Palos Verdes y una opción fácil para una tarde junto al agua.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
+            { name: "Paseo en bici por la playa", description: "Alquila bicis y sigue el carril de la costa.", meta: "Tiempo: 1-3 h · Precio: $$" }
           ]
         },
         {
-          title: "Surf",
-          text: [
-            "Mira una tienda local en Hermosa o Manhattan Beach para tablas blandas y clases de iniciación.",
-            "Por la mañana suele haber menos viento y menos gente.",
-            "Buen plan para caerse con estilo."
+          title: "Santa Monica y Venice",
+          kicker: "El día clásico de LA.",
+          image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
+          alt: "Paseo marítimo de Venice Beach",
+          intro: ["Si quieres ver el LA de las películas, ve hacia el oeste. Santa Monica y Venice tienen playa, palmeras, tiendas, restaurantes, artistas callejeros y mucho ambiente."],
+          ideas: [
+            { name: "Santa Monica Pier", description: "Pasea por el pier, baja a la playa y mira las vistas desde el final de la Route 66.", meta: "Tiempo: 2-4 h · Precio: gratis-$$" },
+            { name: "Venice Beach y Abbot Kinney", description: "Playa, tiendas independientes, restaurantes y uno de los paseos más famosos de LA.", meta: "Tiempo: 3-5 h · Precio: $-$$" },
+            { name: "Paseo de Santa Monica a Venice", description: "Camina o ve en bici entre las dos zonas.", meta: "Tiempo: 2-3 h · Precio: gratis-$$" }
           ]
         },
         {
-          title: "Sitios locales",
-          text: [
-            "Reserva al menos un atardecer para pasear por un pier.",
-            "Redondo, Hermosa y Manhattan tienen ambientes distintos. Merece la pena pasear sin plan cerrado.",
-            "Añadiremos más paradas cuando se acerque la fecha."
+          title: "Malibu",
+          kicker: "Para sentir California del todo.",
+          image: "https://media.listquicker.com/users/schulz/post-151-697d04ceaf2dc-800x450.webp",
+          alt: "Malibu Pier y la costa",
+          intro: ["Malibu es una buena opción si quieres playas bonitas, vistas al mar, carreteras con curvas y esa sensación de estar de verdad en California.", "El trayecto también es parte del plan. Ve por Pacific Coast Highway, para cuando algo te parezca bonito y no llenes demasiado el itinerario."],
+          ideas: [
+            { name: "Playas de Malibu", description: "Unas horas de arena y sol.", meta: "Tiempo: 2-4 h · Precio: gratis-$$" },
+            { name: "Point Dume", description: "Paisaje de costa y un paseo sencillo.", meta: "Tiempo: 1-2 h · Precio: gratis" },
+            { name: "Malibu Pier", description: "Pasea por el pier y disfruta de las vistas.", meta: "Tiempo: 1-2 h · Precio: gratis-$" },
+            { name: "Malibu Country Mart", description: "Tiendas, comida y una parada cómoda.", meta: "Tiempo: 1-2 h · Precio: $$" },
+            { name: "Ruta por Pacific Coast Highway", description: "Deja margen para parar sin planearlo.", meta: "Tiempo: medio día-día completo · Precio: $-$$" }
           ]
         },
         {
-          title: "Barrios",
-          text: [
-            "Redondo o Torrance son lo más cómodo para la boda.",
-            "Hermosa y Manhattan tienen más ambiente de playa. Palos Verdes es más tranquilo y escénico.",
-            "San Pedro va bien para pasear por el puerto y comprar una camiseta."
+          title: "Hollywood, Griffith y Downtown",
+          kicker: "Para probar la ciudad grande.",
+          image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
+          alt: "Griffith Observatory",
+          intro: ["Los Ángeles es enorme y no se puede ver todo en un viaje. Si nunca has ido, estos sitios dan una primera idea de su historia, cultura y tamaño algo absurdo."],
+          ideas: [
+            { name: "Griffith Observatory", description: "Una de las mejores vistas de Los Ángeles, sobre todo al atardecer.", meta: "Tiempo: 2-3 h · Precio: gratis" },
+            { name: "Hollywood", description: "Walk of Fame, Chinese Theatre y uno de los barrios más famosos y turísticos de LA.", meta: "Tiempo: 2-3 h · Precio: gratis-$$" },
+            { name: "Getty Center", description: "Arte, arquitectura, jardines y vistas de la ciudad.", meta: "Tiempo: 3-4 h · Precio: gratis-$" },
+            { name: "Downtown LA", description: "Museos, arquitectura, comida y algunos de los barrios más antiguos de la ciudad.", meta: "Tiempo: medio día-día completo · Precio: $-$$" }
           ]
         },
         {
-          title: "Ideas extra",
-          text: [
-            "San Pedro para puerto y souvenir.",
-            "Venice Beach para paseo, canales y gente curiosa.",
-            "Disney si quieres un día completo de parque.",
-            "Trump Golf para una escapada por la costa de Palos Verdes."
+          title: "Plan de día completo",
+          kicker: "Ya que vienes hasta aquí...",
+          image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
+          alt: "Castillo de Disneyland",
+          intro: ["Si nunca has ido a Disneyland, esta puede ser la excusa. Orange County y Joshua Tree también son buenas opciones para alargar el viaje."],
+          ideas: [
+            { name: "Disneyland", description: "Un día completo y una forma muy californiana de pasar el día. Mira calendario y entradas con antelación.", meta: "Tiempo: día completo · Precio: $$$-$$$$" },
+            { name: "Orange County", description: "Laguna Beach, Newport Beach y Huntington Beach ofrecen otra versión del sur de California.", meta: "Tiempo: día completo · Precio: $-$$$" },
+            { name: "Joshua Tree", description: "Desierto, rocas enormes y cielo abierto a unas dos horas de LA.", meta: "Tiempo: día completo o noche · Precio: $-$$" }
+          ]
+        },
+        {
+          title: "Cosas de California",
+          kicker: "No todo tiene que ser turismo.",
+          image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
+          alt: "Hamburguesa de In-N-Out",
+          intro: ["Algunas de nuestras experiencias favoritas de California no son atracciones. Son cosas que se sienten distintas cuando vienes de Europa."],
+          ideas: [
+            { name: "Ver el atardecer junto al mar", description: "Lleva chaqueta, busca un mirador y quédate hasta que desaparezca el sol.", meta: "" },
+            { name: "Probar In-N-Out", description: "Un clásico de California.", meta: "" },
+            { name: "Tomar un brunch americano", description: "Ve con hambre. Las raciones son parte de la experiencia.", meta: "" },
+            { name: "Comer tacos", description: "LA tiene comida mexicana increíble, desde puestos pequeños hasta restaurantes.", meta: "" },
+            { name: "Visitar un farmers market", description: "Fruta, flores, puestos de comida y sábado muy californiano.", meta: "" }
           ]
         }
       ]
@@ -1700,12 +1898,12 @@
 
     const mapAreas = [
       {
-        name: "Torrance Beach",
-        nameEs: "Playa de Torrance",
-        type: "beach",
-        labelCoords: [33.786, -118.440],
-        connectorCoords: [33.794, -118.401],
-        points: [[33.806, -118.397], [33.799, -118.394], [33.790, -118.397], [33.786, -118.405], [33.793, -118.410], [33.803, -118.405]]
+        name: "Torrance",
+        nameEs: "Torrance",
+        type: "city",
+        labelCoords: [33.815, -118.450],
+        connectorCoords: [33.835, -118.340],
+        points: [[33.885, -118.370], [33.860, -118.315], [33.795, -118.315], [33.780, -118.360], [33.805, -118.405], [33.860, -118.405]]
       },
       {
         name: "Redondo Beach",
@@ -1742,7 +1940,7 @@
       {
         name: "Palos Verdes",
         nameEs: "Palos Verdes",
-        type: "area",
+        type: "palos",
         labelCoords: [33.745, -118.462],
         connectorCoords: [33.765, -118.372],
         points: [[33.817, -118.405], [33.802, -118.424], [33.776, -118.428], [33.748, -118.421], [33.724, -118.391], [33.718, -118.344], [33.735, -118.307], [33.765, -118.309], [33.796, -118.344], [33.814, -118.379]]
@@ -1754,34 +1952,80 @@
         labelCoords: [33.705, -118.380],
         connectorCoords: [33.733, -118.295],
         points: [[33.762, -118.326], [33.756, -118.281], [33.735, -118.262], [33.705, -118.270], [33.706, -118.318], [33.731, -118.338]]
+      },
+      {
+        name: "Malibu",
+        nameEs: "Malibu",
+        type: "area",
+        labelCoords: [34.040, -118.815],
+        connectorCoords: [34.035, -118.690],
+        points: [[34.075, -118.875], [34.060, -118.705], [34.030, -118.630], [34.000, -118.650], [34.010, -118.790]]
+      },
+      {
+        name: "Hollywood",
+        nameEs: "Hollywood",
+        type: "area",
+        labelCoords: [34.128, -118.455],
+        connectorCoords: [34.100, -118.330],
+        points: [[34.125, -118.370], [34.115, -118.285], [34.070, -118.285], [34.062, -118.350], [34.090, -118.380]]
+      },
+      {
+        name: "Long Beach",
+        nameEs: "Long Beach",
+        type: "area",
+        labelCoords: [33.700, -118.120],
+        connectorCoords: [33.770, -118.194],
+        points: [[33.835, -118.230], [33.815, -118.135], [33.745, -118.120], [33.705, -118.170], [33.725, -118.250], [33.790, -118.265]]
+      },
+      {
+        name: "Orange County",
+        nameEs: "Orange County",
+        type: "area",
+        labelCoords: [33.610, -117.760],
+        connectorCoords: [33.720, -117.830],
+        points: [[33.920, -118.060], [33.860, -117.670], [33.560, -117.600], [33.440, -117.910], [33.610, -118.130]]
       }
     ];
 
     const mapPins = [
+      { name: "Los Angeles International Airport", kind: "attraction", label: "LAX Airport", labelEs: "Aeropuerto LAX", coords: [33.9416, -118.4085], note: "Main airport for most international arrivals", noteEs: "Aeropuerto principal para llegadas internacionales" },
       { name: "Valmonte Elementary", kind: "home", label: "Lily's Home", labelEs: "Casa de Lily", coords: [33.801729, -118.364556], note: "Home base reference", noteEs: "Referencia de casa" },
       { name: "Trump National Golf Club Los Angeles", kind: "attraction", label: "Trump Golf", labelEs: "Trump Golf", coords: [33.72901, -118.34517], note: "Palos Verdes coastal stop", noteEs: "Parada por la costa de Palos Verdes" },
       { name: "San Pedro Downtown", kind: "attraction", label: "San Pedro Downtown", labelEs: "Downtown San Pedro", coords: [33.7361, -118.2922], note: "Harbor streets and cool t-shirt mission", noteEs: "Puerto, calles con carácter y camiseta de recuerdo" },
+      { name: "Hollywood", kind: "attraction", label: "Hollywood", labelEs: "Hollywood", coords: [34.0928, -118.3287], note: "Classic first-time LA stop", noteEs: "Parada clásica si es tu primera vez en LA" },
+      { name: "Universal Studios Hollywood", kind: "attraction", label: "Universal Studios", labelEs: "Universal Studios", coords: [34.1381, -118.3534], note: "Theme park and studio tour", noteEs: "Parque temático y tour de estudios" },
       { name: "Venice Beach", kind: "attraction", label: "Venice Beach", labelEs: "Venice Beach", coords: [33.97252, -118.46347], note: "Boardwalk and canals", noteEs: "Paseo marítimo y canales" },
       { name: "Disneyland", kind: "attraction", label: "Disney", labelEs: "Disney", coords: [33.8091, -117.919], note: "Full day trip", noteEs: "Excursión de día completo" },
       { name: "Redondo Beach Pier", kind: "attraction", label: "Redondo Pier", labelEs: "Pier de Redondo", coords: [33.8397, -118.3923], note: "Beach walk reference", noteEs: "Referencia para paseo de playa" },
       { name: "Catalina Airport", kind: "attraction", label: "Catalina Airport", labelEs: "Catalina Airport", coords: [33.4049, -118.4159], note: "Airport in the Sky", noteEs: "Airport in the Sky" },
-      { name: "Torrance Airport", kind: "attraction", label: "Torrance Airport", labelEs: "Torrance Airport", coords: [33.8034, -118.3396], note: "Zamperini Field", noteEs: "Zamperini Field" }
+      { name: "Torrance Airport", kind: "attraction", label: "Torrance Airport", labelEs: "Torrance Airport", coords: [33.8034, -118.3396], note: "Zamperini Field", noteEs: "Zamperini Field" },
+      { name: "Malibu", kind: "attraction", label: "Malibu", labelEs: "Malibu", coords: [34.0259, -118.7798], note: "Coast drive and beaches", noteEs: "Ruta de costa y playas" },
+      { name: "Long Beach", kind: "attraction", label: "Long Beach", labelEs: "Long Beach", coords: [33.7701, -118.1937], note: "Harbor city south of LA", noteEs: "Ciudad portuaria al sur de LA" },
+      { name: "Orange County", kind: "attraction", label: "Orange County", labelEs: "Orange County", coords: [33.7175, -117.8311], note: "Beaches and Disneyland direction", noteEs: "Playas y zona de Disneyland" }
     ];
 
     const translations = {
       en: {
         translate: "Traducir",
         headline: "We're engaged!",
-        intro: "We'd love for you to make it to our wedding in 2027. Due to our <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, the wedding date will have short notice. We've created this website with details for you to review as you consider joining us and celebrating.",
+        intro: "<p>We'd love for you to join us for our wedding in California in 2027! Because of our <a class=\"media-link\" href=\"https://lilyjudge.carloslagoa.com/media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, we may not know the exact wedding date until relatively close to the big day, potentially with only about four months' notice.</p><p>We know that's not much time to plan a trip, so we've created this website to give you a head start. Here, you can explore the area, get a sense of travel and accommodation options, and start thinking about whether you might be able to make the journey to California and celebrate with us.</p>",
         tabEngaged: "We're engaged",
         tabHowWeMet: "Our Story",
         tabMap: "Map",
         tabHotels: "Hotels",
-        tabThingsToDo: "Things to do",
+        tabThingsToDo: "Activities",
         tabPlaces: "Places",
         howWeMetTitle: "Our Story",
         howWeMetNote: "A little bit of our story before the party planning begins.",
-        howWeMetStory: "<p>After traveling through South America with her family, Lily felt even more drawn to languages and new places. She had already spent time in Poland and Seville, so Spain felt like following something she already loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p><p>Our wedding might be a little unconventional, we hope you'll be part of it. We can't give you a date yet, but if you already have a sense of whether or not you'll be able to make it, please let us know where to help with planning. More info here: <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor\" target=\"_blank\" rel=\"noopener\">form</a>.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
+        howWeMetStory: "<p>Lily came to Spain drawn by languages, travel, and the feeling of trying life somewhere new. She had already spent time in Poland and Seville, so Madrid felt like another step into something she loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p><p>Our wedding might be a little unconventional, but we hope you'll be part of it.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
+        planningTitle: "A little planning ahead",
+        planningPlaceTitle: "Los Angeles, California",
+        planningPlaceText: "We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.",
+        planningDateTitle: "The date",
+        planningDateText: "We expect to have around four months' notice once our date is confirmed. Until then, we'll keep you posted here.",
+        planningPlansTitle: "Your plans",
+        planningPlansText: "If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. It will help us plan, too.",
+        planningCta: "Tell us your plans",
         comingSoon: "Details coming soon.",
         mapTitle: "A Different, More Local Map of Los Angeles",
         mapNote: "A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.",
@@ -1793,8 +2037,8 @@
         airbnbTitle: "Explore Airbnb too!",
         airbnbText: "If hotels feel expensive or you are traveling as a group, nearby Airbnbs may be worth checking.",
         airbnbLink: "Search Redondo Beach Airbnbs",
-        thingsTitle: "Things to do",
-        thingsNote: "A softer home for the tips, rentals, attractions, and neighborhood notes.",
+        thingsTitle: "Ideas For Your Stay",
+        thingsNote: "Los Angeles is full of fun activities and excursions. If you are making your way from Europe, we want to help you take advantage of everything. Use this page as a guide for local(ish) ideas.",
         placesTitle: "Favorite places",
         placesNote: "A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.",
         lilyTopFiveTitle: "Lily's favorites",
@@ -1804,16 +2048,24 @@
       es: {
         translate: "Translate",
         headline: "¡Estamos comprometidos!",
-        intro: "Nos encantaría que pudieras venir a nuestra boda en 2027. Debido a nuestro <a class=\"media-link\" href=\"media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visa\">proceso de visa</a>, la fecha de la boda se anunciará con poco aviso. Creamos este sitio con detalles para que los revises mientras consideras acompañarnos y celebrar.",
+        intro: "<p>Nos encantaría que vinieras a nuestra boda en California en 2027. Por nuestro <a class=\"media-link\" href=\"https://lilyjudge.carloslagoa.com/media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visado\">proceso de visado</a>, puede que no sepamos la fecha exacta hasta bastante cerca del gran día, quizá con solo unos cuatro meses de aviso.</p><p>Sabemos que no es mucho tiempo para preparar un viaje, así que hemos creado esta web para ayudarte a empezar. Aquí puedes explorar la zona, ver opciones de viaje y alojamiento, y pensar si podrías venir a California a celebrarlo con nosotros.</p>",
         tabEngaged: "Estamos comprometidos",
         tabHowWeMet: "Nuestra historia",
         tabMap: "Mapa",
         tabHotels: "Hoteles",
-        tabThingsToDo: "Cosas que hacer",
+        tabThingsToDo: "Actividades",
         tabPlaces: "Lugares",
         howWeMetTitle: "Nuestra historia",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
-        howWeMetStory: "<p>Después de viajar por Sudamérica con su familia, Lily se sintió aún más atraída por los idiomas y los lugares nuevos. Ya había pasado tiempo en Polonia y Sevilla, así que España era una forma de seguir algo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidieron seguir con una relación a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Lily está construyendo su carrera en Madrid en educación y programas de estudios en el extranjero, donde le está yendo muy bien. Carlos trabaja en Marple junto a grandes amigos y, en algún momento, también empezará su carrera como piloto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para siempre.</p><p>Nuestra boda puede ser algo poco convencional, y nos encantaría que formaras parte de ella. Todavía no podemos dar una fecha, pero si ya tienes una idea de si podrás venir o no, por favor dínoslo para ayudarnos con la planificación. Más información aquí: <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor\" target=\"_blank\" rel=\"noopener\">formulario</a>.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
+        howWeMetStory: "<p>Lily llegó a España atraída por los idiomas, los viajes y la idea de probar una vida en otro lugar. Ya había pasado tiempo en Polonia y Sevilla, así que Madrid fue otro paso hacia algo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidieron seguir con una relación a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Lily está construyendo su carrera en Madrid en educación y programas de estudios en el extranjero, donde le está yendo muy bien. Carlos trabaja en Marple junto a grandes amigos y, en algún momento, también empezará su carrera como piloto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para siempre.</p><p>Nuestra boda puede ser algo poco convencional, pero nos encantaría que formaras parte de ella.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
+        planningTitle: "Un poco de planificación",
+        planningPlaceTitle: "Los Ángeles, California",
+        planningPlaceText: "Celebraremos en Palos Verdes, la ciudad de Lily. Hemos reunido ideas de alojamiento, planes y formas de aprovechar el viaje.",
+        planningDateTitle: "La fecha",
+        planningDateText: "Esperamos tener unos cuatro meses de aviso cuando se confirme la fecha. Hasta entonces, iremos actualizando la web.",
+        planningPlansTitle: "Tus planes",
+        planningPlansText: "Si ya tienes una idea de si podrás venir a California, nos encantará saberlo. También nos ayuda a planificar.",
+        planningCta: "Cuéntanos tus planes",
         comingSoon: "Detalles próximamente.",
         mapTitle: "Un mapa más local de Los Ángeles",
         mapNote: "Un mapa sencillo para ubicar playas, casa base, aeropuertos y excursiones.",
@@ -1825,8 +2077,8 @@
         airbnbTitle: "¡Mira Airbnb también!",
         airbnbText: "Si los hoteles están caros o venís en grupo, puede valer la pena mirar Airbnbs cerca de la zona.",
         airbnbLink: "Buscar Airbnbs en Redondo Beach",
-        thingsTitle: "Cosas que hacer",
-        thingsNote: "Un sitio más sencillo para consejos, alquileres, atracciones y barrios.",
+        thingsTitle: "Ideas para tu estancia",
+        thingsNote: "Los Ángeles está lleno de planes y excursiones. Si vienes desde Europa, queremos ayudarte a aprovechar el viaje. Usa esta página como guía de ideas locales, o casi locales.",
         placesTitle: "Lugares favoritos",
         placesNote: "Sitios favoritos de Lily y Carlos para comer, pasear y ver la costa.",
         lilyTopFiveTitle: "Favoritos de Lily",
@@ -1860,7 +2112,7 @@
           <p>${hotel.address}</p>
           <p>${localized(hotel, "note")}</p>
           <div class="hotel-meta">
-            <span>${translations[currentLanguage].summerPrice}: ${hotel.price}</span>
+            <span>${translations[currentLanguage].summerPrice}: <strong class="hotel-price">${hotel.price}</strong></span>
           </div>
           <a href="${mapsUrl(hotel)}" target="_blank" rel="noopener">${translations[currentLanguage].mapLink}</a>
         </article>
@@ -1883,17 +2135,9 @@
     function renderActivities() {
       const list = document.getElementById("activityList");
       const activities = activitiesByLanguage[currentLanguage];
-      const doodles = (index) => `
-        <div class="notebook-doodles theme-${index}" aria-hidden="true">
-          <span class="doodle sun"></span>
-          <span class="doodle board"></span>
-          <span class="doodle wave"></span>
-          <span class="doodle arrow"></span>
-        </div>
-      `;
       list.innerHTML = `
         <div class="notebook">
-          <div class="notebook-tabs" role="tablist" aria-label="Things to do sections">
+          <div class="notebook-tabs" role="tablist" aria-label="Activities sections">
             ${activities.map((item, index) => `
               <button class="notebook-tab ${index === 0 ? "active" : ""}" type="button" data-activity-index="${index}">
                 ${item.title}
@@ -1901,9 +2145,19 @@
             `).join("")}
           </div>
           <article class="notebook-page" id="activityPage">
-            ${doodles(0)}
+            <img class="journal-image" src="${activities[0].image}" alt="${activities[0].alt}">
+            <span class="journal-kicker">${activities[0].kicker}</span>
             <h3>${activities[0].title}</h3>
-            ${activities[0].text.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+            ${activities[0].intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+            <div class="activity-ideas">
+              ${activities[0].ideas.map((idea) => `
+                <div class="activity-idea">
+                  <strong>${idea.name}</strong>
+                  <p>${idea.description}</p>
+                  ${idea.meta ? `<span>${idea.meta}</span>` : ""}
+                </div>
+              `).join("")}
+            </div>
           </article>
         </div>
       `;
@@ -1924,14 +2178,19 @@
       }
 
       page.innerHTML = `
-        <div class="notebook-doodles theme-${index}" aria-hidden="true">
-          <span class="doodle sun"></span>
-          <span class="doodle board"></span>
-          <span class="doodle wave"></span>
-          <span class="doodle arrow"></span>
-        </div>
+        <img class="journal-image" src="${activity.image}" alt="${activity.alt}">
+        <span class="journal-kicker">${activity.kicker}</span>
         <h3>${activity.title}</h3>
-        ${activity.text.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+        ${activity.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+        <div class="activity-ideas">
+          ${activity.ideas.map((idea) => `
+            <div class="activity-idea">
+              <strong>${idea.name}</strong>
+              <p>${idea.description}</p>
+              ${idea.meta ? `<span>${idea.meta}</span>` : ""}
+            </div>
+          `).join("")}
+        </div>
       `;
     }
 
@@ -2010,11 +2269,12 @@
       }).addTo(referenceMap);
 
       mapAreas.forEach((area) => {
-        const areaColor = "#f7d976";
+        const isPalosVerdes = area.type === "palos";
+        const areaColor = isPalosVerdes ? "#f5b8ac" : "#f7d976";
         L.polygon(area.points, {
-          color: "#d9a92f",
+          color: isPalosVerdes ? "#df7a68" : "#d9a92f",
           fillColor: areaColor,
-          fillOpacity: 0.42,
+          fillOpacity: isPalosVerdes ? 0.5 : 0.42,
           opacity: 0.95,
           weight: 4
         }).addTo(referenceMap);
@@ -2046,8 +2306,8 @@
       });
 
       const bounds = L.latLngBounds([
-        [33.700, -118.470],
-        [33.945, -118.235]
+        [33.390, -118.860],
+        [34.160, -117.560]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
       resizeReferenceMap();
