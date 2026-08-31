@@ -251,13 +251,14 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.32fr) minmax(310px, 0.68fr);
-      gap: 28px;
-      align-items: center;
-      padding: 18px 0 34px;
+      gap: 22px;
+      justify-items: center;
+      padding: 22px 0 38px;
+      text-align: center;
     }
 
     .video-frame {
+      width: min(860px, 100%);
       overflow: hidden;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -273,18 +274,16 @@
     }
 
     .hero-copy {
-      padding: 12px 0;
+      display: grid;
+      justify-items: center;
+      padding: 0;
       overflow: visible;
     }
 
     .engaged {
-      margin: 0 0 58px;
+      margin: 0 0 18px;
       padding: 0.28em 0 0.18em;
-      color: var(--coastal);
-      background: linear-gradient(115deg, var(--coastal) 0%, var(--golf) 58%, var(--coral) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #174f69;
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(3.8rem, 10vw, 7rem);
       font-weight: 500;
@@ -294,7 +293,7 @@
 
     .intro {
       margin: 0;
-      max-width: 34rem;
+      max-width: 48rem;
       font-size: clamp(1.35rem, 2vw, 1.65rem);
     }
 
@@ -310,16 +309,23 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
-      margin: 10px 0 34px;
+      margin: 6px 0 42px;
       padding: clamp(22px, 4vw, 38px);
-      border: 1px solid rgba(87, 127, 86, 0.18);
+      border: 1px solid rgba(245, 184, 172, 0.36);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(255, 250, 240, 0.92), rgba(255, 255, 255, 0.72)),
+        rgba(255, 255, 255, 0.78);
+      box-shadow: 0 18px 44px rgba(88, 90, 67, 0.1);
     }
 
     .planning-card h2 {
       grid-column: 1 / -1;
+      color: var(--coastal);
+      font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(3rem, 6vw, 4.6rem);
+      font-weight: 500;
+      text-align: center;
     }
 
     .planning-card h3 {
@@ -336,16 +342,23 @@
     }
 
     .planning-card .cta-link {
-      grid-column: 1 / -1;
-      justify-self: start;
+      justify-self: center;
       display: inline-flex;
-      border: 1px solid rgba(87, 127, 86, 0.22);
+      margin-top: 18px;
+      border: 1px solid rgba(47, 92, 75, 0.28);
       border-radius: 999px;
-      background: var(--sun);
+      background: #6f927f;
       padding: 10px 16px;
-      color: var(--ink);
+      color: #fffdf7;
       font-weight: 700;
       text-decoration: none;
+    }
+
+    .planning-plans {
+      display: grid;
+      align-content: start;
+      justify-items: center;
+      text-align: center;
     }
 
     .tabs-wrap {
@@ -794,6 +807,41 @@
       font-weight: 700;
     }
 
+    .travel-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .travel-note,
+    .hotel-section {
+      border: 1px solid rgba(87, 127, 86, 0.16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 12px 30px rgba(88, 90, 67, 0.08);
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .travel-note h3 {
+      margin: 0 0 8px;
+      color: var(--coastal);
+      font-size: clamp(1.8rem, 3vw, 2.35rem);
+      line-height: 1.05;
+    }
+
+    .travel-note p {
+      margin: 0;
+      color: rgba(57, 65, 60, 0.78);
+    }
+
+    .hotel-section {
+      grid-column: 1 / -1;
+    }
+
+    .hotel-section .hotel-subheading {
+      margin-bottom: 14px;
+    }
+
     .notebook {
       grid-column: 1 / -1;
       display: grid;
@@ -1194,7 +1242,8 @@
 
       .hotel-grid,
       .activity-grid,
-      .places-grid {
+      .places-grid,
+      .travel-layout {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1290,7 +1339,8 @@
 
       .hotel-grid,
       .activity-grid,
-      .places-grid {
+      .places-grid,
+      .travel-layout {
         grid-template-columns: 1fr;
       }
 
@@ -1322,11 +1372,10 @@
     <div class="page-shell topbar">
       <div class="names">Lily & Carlos</div>
       <div class="tabs" role="tablist" aria-label="Travel categories">
-        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">We're engaged</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">Home</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Hotels</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Activities</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="places" id="tab-places" data-tab="places" data-i18n="tabPlaces">Places</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Travel</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
       </div>
       <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
         <span aria-hidden="true">🇪🇸</span>
@@ -1340,6 +1389,14 @@
     <section class="page-shell tabs-wrap" aria-label="Wedding travel details">
       <section class="tab-panel active" role="tabpanel" id="engaged" aria-labelledby="tab-engaged">
         <div class="hero" aria-label="Wedding announcement">
+          <div class="hero-copy">
+            <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
+            <div class="intro" data-i18n-html="intro">
+              <p>We'd love for you to join us for our wedding in California in 2027! Because of our <a class="media-link" href="https://lilyjudge.carloslagoa.com/media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>, we may not know the exact wedding date until relatively close to the big day, potentially with only about four months' notice.</p>
+              <p>We know that's not much time to plan a trip, so we've created this website to give you a head start. Here, you can explore the area, get a sense of travel and accommodation options, and start thinking about whether you might be able to make the journey to California and celebrate with us.</p>
+            </div>
+          </div>
+
           <div class="video-frame">
             <iframe
               src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
@@ -1348,18 +1405,10 @@
               allowfullscreen>
             </iframe>
           </div>
-
-          <div class="hero-copy">
-            <h1 class="engaged" data-i18n="headline">We're engaged!</h1>
-            <div class="intro" data-i18n-html="intro">
-              <p>We'd love for you to join us for our wedding in California in 2027! Because of our <a class="media-link" href="https://lilyjudge.carloslagoa.com/media/visa.png" data-image="media/visa.png" data-description="Our visa process">visa process</a>, we may not know the exact wedding date until relatively close to the big day, potentially with only about four months' notice.</p>
-              <p>We know that's not much time to plan a trip, so we've created this website to give you a head start. Here, you can explore the area, get a sense of travel and accommodation options, and start thinking about whether you might be able to make the journey to California and celebrate with us.</p>
-            </div>
-          </div>
         </div>
 
-        <section class="planning-card" aria-label="A little planning ahead">
-          <h2 data-i18n="planningTitle">A little planning ahead</h2>
+        <section class="planning-card" aria-label="Our Wedding Plans">
+          <h2 data-i18n="planningTitle">Our Wedding Plans</h2>
           <div>
             <h3 data-i18n="planningPlaceTitle">Los Angeles, California</h3>
             <p data-i18n="planningPlaceText">We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.</p>
@@ -1368,17 +1417,16 @@
             <h3 data-i18n="planningDateTitle">The date</h3>
             <p data-i18n="planningDateText">We expect to have around four months' notice once our date is confirmed. Until then, we'll keep you posted here.</p>
           </div>
-          <div>
+          <div class="planning-plans">
             <h3 data-i18n="planningPlansTitle">Your plans</h3>
             <p data-i18n="planningPlansText">If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. It will help us plan, too.</p>
+            <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
           </div>
-          <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
         </section>
 
         <div class="panel-heading">
           <div>
             <h2 data-i18n="howWeMetTitle">Our Story</h2>
-            <p class="muted" data-i18n="howWeMetNote">A little bit of our story before the party planning begins.</p>
           </div>
         </div>
         <div class="story-card">
@@ -1415,12 +1463,24 @@
       <section class="tab-panel" role="tabpanel" id="hotels" aria-labelledby="tab-hotels">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="hotelsTitle">Hotels</h2>
-            <p class="muted" data-i18n="hotelsNote">A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.</p>
+            <h2 data-i18n="hotelsTitle">Travel</h2>
           </div>
         </div>
 
-        <div class="hotel-grid" id="hotelList"></div>
+        <div class="travel-layout">
+          <article class="travel-note">
+            <h3 data-i18n="flightTitle">Flying into LAX</h3>
+            <p data-i18n="flightText">Los Angeles International Airport is the simplest arrival point for most international guests. Palos Verdes, Redondo Beach, and Torrance are usually around 30-60 minutes away by car, depending on traffic.</p>
+          </article>
+          <article class="travel-note">
+            <h3 data-i18n="carTitle">Rental car estimate</h3>
+            <p data-i18n="carText">For planning, expect roughly $45-$85 per day for a standard rental car before insurance, parking, and fuel. LA is spread out, so sharing a car can make beach days and day trips much easier.</p>
+          </article>
+          <section class="hotel-section">
+            <h3 class="hotel-subheading" data-i18n="hotelSectionTitle">Hotels</h3>
+            <div class="hotel-grid" id="hotelList"></div>
+          </section>
+        </div>
       </section>
 
       <section class="tab-panel" role="tabpanel" id="things-to-do" aria-labelledby="tab-things-to-do">
@@ -1433,24 +1493,6 @@
         <div class="activity-grid" id="activityList"></div>
       </section>
 
-      <section class="tab-panel" role="tabpanel" id="places" aria-labelledby="tab-places">
-        <div class="panel-heading">
-          <div>
-            <h2 data-i18n="placesTitle">Favorite places</h2>
-            <p class="muted" data-i18n="placesNote">A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.</p>
-          </div>
-        </div>
-        <div class="places-panel">
-          <article class="idea-card wide">
-            <h3 data-i18n="lilyTopFiveTitle">Lily's top five</h3>
-            <div class="places-grid" id="lilyPlacesList"></div>
-          </article>
-          <article class="idea-card wide">
-            <h3 data-i18n="carlosTopFiveTitle">Carlos's favorites</h3>
-            <div class="places-grid" id="carlosPlacesList"></div>
-          </article>
-        </div>
-      </section>
     </section>
   </main>
 
@@ -1565,7 +1607,7 @@
           ]
         },
         {
-          title: "Manhattan Beach, Redondo Beach & Hermosa Beach",
+          title: "Beach Cities",
           kicker: "When in California, go to the beach.",
           image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
           alt: "Beach bike path near Manhattan Beach",
@@ -1578,7 +1620,7 @@
           ]
         },
         {
-          title: "Santa Monica & Venice",
+          title: "Santa Monica",
           kicker: "The classic LA day out.",
           image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
           alt: "Venice Beach boardwalk",
@@ -1617,7 +1659,7 @@
           ]
         },
         {
-          title: "Make a Day of It",
+          title: "Day Trips",
           kicker: "Because you're coming all this way...",
           image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
           alt: "Sleeping Beauty Castle at Disneyland",
@@ -1629,7 +1671,7 @@
           ]
         },
         {
-          title: "California Things",
+          title: "California Culture",
           kicker: "Don't just sightsee.",
           image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
           alt: "In-N-Out burger",
@@ -1658,7 +1700,7 @@
           ]
         },
         {
-          title: "Manhattan Beach, Redondo Beach y Hermosa Beach",
+          title: "Beach Cities",
           kicker: "Si estás en California, ve a la playa.",
           image: "https://images1.apartments.com/i2/Iv5v_Io9l5ONCW6NDvIlnVM1bLfkFDdVd0qq5vVGpHE/111/los-angeles-ca-the-marvin-braude-bike-trail-in-nearby-m.jpg",
           alt: "Carril bici junto a Manhattan Beach",
@@ -1671,7 +1713,7 @@
           ]
         },
         {
-          title: "Santa Monica y Venice",
+          title: "Santa Monica",
           kicker: "El día clásico de LA.",
           image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
           alt: "Paseo marítimo de Venice Beach",
@@ -1710,7 +1752,7 @@
           ]
         },
         {
-          title: "Plan de día completo",
+          title: "Excursiones",
           kicker: "Ya que vienes hasta aquí...",
           image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
           alt: "Castillo de Disneyland",
@@ -1722,7 +1764,7 @@
           ]
         },
         {
-          title: "Cosas de California",
+          title: "Cultura californiana",
           kicker: "No todo tiene que ser turismo.",
           image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
           alt: "Hamburguesa de In-N-Out",
@@ -2009,16 +2051,16 @@
         translate: "Traducir",
         headline: "We're engaged!",
         intro: "<p>We'd love for you to join us for our wedding in California in 2027! Because of our <a class=\"media-link\" href=\"https://lilyjudge.carloslagoa.com/media/visa.png\" data-image=\"media/visa.png\" data-description=\"Our visa process\">visa process</a>, we may not know the exact wedding date until relatively close to the big day, potentially with only about four months' notice.</p><p>We know that's not much time to plan a trip, so we've created this website to give you a head start. Here, you can explore the area, get a sense of travel and accommodation options, and start thinking about whether you might be able to make the journey to California and celebrate with us.</p>",
-        tabEngaged: "We're engaged",
+        tabEngaged: "Home",
         tabHowWeMet: "Our Story",
         tabMap: "Map",
-        tabHotels: "Hotels",
-        tabThingsToDo: "Activities",
+        tabHotels: "Travel",
+        tabThingsToDo: "Things to do",
         tabPlaces: "Places",
         howWeMetTitle: "Our Story",
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>Lily came to Spain drawn by languages, travel, and the feeling of trying life somewhere new. She had already spent time in Poland and Seville, so Madrid felt like another step into something she loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p><p>Our wedding might be a little unconventional, but we hope you'll be part of it.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
-        planningTitle: "A little planning ahead",
+        planningTitle: "Our Wedding Plans",
         planningPlaceTitle: "Los Angeles, California",
         planningPlaceText: "We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.",
         planningDateTitle: "The date",
@@ -2029,8 +2071,13 @@
         comingSoon: "Details coming soon.",
         mapTitle: "A Different, More Local Map of Los Angeles",
         mapNote: "A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.",
-        hotelsTitle: "Hotels",
+        hotelsTitle: "Travel",
         hotelsNote: "A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.",
+        flightTitle: "Flying into LAX",
+        flightText: "Los Angeles International Airport is the simplest arrival point for most international guests. Palos Verdes, Redondo Beach, and Torrance are usually around 30-60 minutes away by car, depending on traffic.",
+        carTitle: "Rental car estimate",
+        carText: "For planning, expect roughly $45-$85 per day for a standard rental car before insurance, parking, and fuel. LA is spread out, so sharing a car can make beach days and day trips much easier.",
+        hotelSectionTitle: "Hotels",
         hotelTopPicks: "Our hotel top picks",
         summerPrice: "Summer estimate",
         otherHotels: "Other hotel options",
@@ -2043,22 +2090,26 @@
         placesNote: "A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.",
         lilyTopFiveTitle: "Lily's favorites",
         carlosTopFiveTitle: "Carlos's favorites",
+        lilyPlacesKicker: "One of Lily's favorites.",
+        lilyPlacesIntro: "Food, views, beach walks, and the places Lily would happily send you.",
+        carlosPlacesKicker: "One of Carlos's favorites.",
+        carlosPlacesIntro: "A few Carlos-approved stops, including aviation, old streets, and very serious burrito business.",
         mapLink: "Open in Google Maps"
       },
       es: {
         translate: "Translate",
         headline: "¡Estamos comprometidos!",
         intro: "<p>Nos encantaría que vinieras a nuestra boda en California en 2027. Por nuestro <a class=\"media-link\" href=\"https://lilyjudge.carloslagoa.com/media/visa.png\" data-image=\"media/visa.png\" data-description=\"Nuestro proceso de visado\">proceso de visado</a>, puede que no sepamos la fecha exacta hasta bastante cerca del gran día, quizá con solo unos cuatro meses de aviso.</p><p>Sabemos que no es mucho tiempo para preparar un viaje, así que hemos creado esta web para ayudarte a empezar. Aquí puedes explorar la zona, ver opciones de viaje y alojamiento, y pensar si podrías venir a California a celebrarlo con nosotros.</p>",
-        tabEngaged: "Estamos comprometidos",
+        tabEngaged: "Inicio",
         tabHowWeMet: "Nuestra historia",
         tabMap: "Mapa",
-        tabHotels: "Hoteles",
-        tabThingsToDo: "Actividades",
+        tabHotels: "Viaje",
+        tabThingsToDo: "Planes",
         tabPlaces: "Lugares",
         howWeMetTitle: "Nuestra historia",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Lily llegó a España atraída por los idiomas, los viajes y la idea de probar una vida en otro lugar. Ya había pasado tiempo en Polonia y Sevilla, así que Madrid fue otro paso hacia algo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidieron seguir con una relación a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Lily está construyendo su carrera en Madrid en educación y programas de estudios en el extranjero, donde le está yendo muy bien. Carlos trabaja en Marple junto a grandes amigos y, en algún momento, también empezará su carrera como piloto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para siempre.</p><p>Nuestra boda puede ser algo poco convencional, pero nos encantaría que formaras parte de ella.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
-        planningTitle: "Un poco de planificación",
+        planningTitle: "Nuestros planes de boda",
         planningPlaceTitle: "Los Ángeles, California",
         planningPlaceText: "Celebraremos en Palos Verdes, la ciudad de Lily. Hemos reunido ideas de alojamiento, planes y formas de aprovechar el viaje.",
         planningDateTitle: "La fecha",
@@ -2069,8 +2120,13 @@
         comingSoon: "Detalles próximamente.",
         mapTitle: "Un mapa más local de Los Ángeles",
         mapNote: "Un mapa sencillo para ubicar playas, casa base, aeropuertos y excursiones.",
-        hotelsTitle: "Hoteles",
+        hotelsTitle: "Viaje",
         hotelsNote: "Una lista sencilla de favoritos primero, y después algunas alternativas. Los precios de verano son orientativos.",
+        flightTitle: "Llegar a LAX",
+        flightText: "El Aeropuerto Internacional de Los Ángeles suele ser la opción más sencilla para quienes vienen de fuera. Palos Verdes, Redondo Beach y Torrance suelen estar a 30-60 minutos en coche, según el tráfico.",
+        carTitle: "Estimación de coche de alquiler",
+        carText: "Para hacer números, calcula unos $45-$85 al día por un coche estándar, antes de seguro, parking y gasolina. LA es muy grande, así que compartir coche puede facilitar playas y excursiones.",
+        hotelSectionTitle: "Hoteles",
         hotelTopPicks: "Hoteles favoritos",
         summerPrice: "Estimación de verano",
         otherHotels: "Otras opciones de hotel",
@@ -2083,6 +2139,10 @@
         placesNote: "Sitios favoritos de Lily y Carlos para comer, pasear y ver la costa.",
         lilyTopFiveTitle: "Favoritos de Lily",
         carlosTopFiveTitle: "Favoritos de Carlos",
+        lilyPlacesKicker: "Favoritos de Lily.",
+        lilyPlacesIntro: "Comida, vistas, paseos de playa y sitios que Lily recomienda.",
+        carlosPlacesKicker: "Favoritos de Carlos.",
+        carlosPlacesIntro: "Algunos sitios aprobados por Carlos, con aviones, calles antiguas y burritos serios.",
         mapLink: "Abrir en Google Maps"
       }
     };
@@ -2132,52 +2192,42 @@
       `;
     }
 
-    function renderActivities() {
-      const list = document.getElementById("activityList");
-      const activities = activitiesByLanguage[currentLanguage];
-      list.innerHTML = `
-        <div class="notebook">
-          <div class="notebook-tabs" role="tablist" aria-label="Activities sections">
-            ${activities.map((item, index) => `
-              <button class="notebook-tab ${index === 0 ? "active" : ""}" type="button" data-activity-index="${index}">
-                ${item.title}
-              </button>
-            `).join("")}
-          </div>
-          <article class="notebook-page" id="activityPage">
-            <img class="journal-image" src="${activities[0].image}" alt="${activities[0].alt}">
-            <span class="journal-kicker">${activities[0].kicker}</span>
-            <h3>${activities[0].title}</h3>
-            ${activities[0].intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
-            <div class="activity-ideas">
-              ${activities[0].ideas.map((idea) => `
-                <div class="activity-idea">
-                  <strong>${idea.name}</strong>
-                  <p>${idea.description}</p>
-                  ${idea.meta ? `<span>${idea.meta}</span>` : ""}
-                </div>
-              `).join("")}
-            </div>
-          </article>
-        </div>
-      `;
+    function favoriteActivityPages() {
+      return [
+        {
+          title: translations[currentLanguage].lilyTopFiveTitle,
+          kicker: translations[currentLanguage].lilyPlacesKicker,
+          intro: [translations[currentLanguage].lilyPlacesIntro],
+          places: lilyPlacesByLanguage[currentLanguage]
+        },
+        {
+          title: translations[currentLanguage].carlosTopFiveTitle,
+          kicker: translations[currentLanguage].carlosPlacesKicker,
+          intro: [translations[currentLanguage].carlosPlacesIntro],
+          places: carlosPlacesByLanguage[currentLanguage]
+        }
+      ];
     }
 
-    function showActivityPage(index) {
-      const activities = activitiesByLanguage[currentLanguage];
-      const activity = activities[index];
-      const page = document.getElementById("activityPage");
-      if (!activity || !page) {
-        return;
+    function activityPageContent(activity) {
+      if (activity.places) {
+        return `
+          <span class="journal-kicker">${activity.kicker}</span>
+          <h3>${activity.title}</h3>
+          ${activity.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+          <div class="places-grid journal-places">
+            ${activity.places.map((place) => `
+              <article class="place-card">
+                <img src="${place.image}" alt="${place.alt}" loading="lazy">
+                <h4>${place.title}</h4>
+                <p>${place.text}</p>
+              </article>
+            `).join("")}
+          </div>
+        `;
       }
 
-      document.querySelectorAll(".notebook-tab").forEach((tab) => tab.classList.remove("active"));
-      const activeTab = document.querySelector(`[data-activity-index="${index}"]`);
-      if (activeTab) {
-        activeTab.classList.add("active");
-      }
-
-      page.innerHTML = `
+      return `
         <img class="journal-image" src="${activity.image}" alt="${activity.alt}">
         <span class="journal-kicker">${activity.kicker}</span>
         <h3>${activity.title}</h3>
@@ -2192,6 +2242,42 @@
           `).join("")}
         </div>
       `;
+    }
+
+    function renderActivities() {
+      const list = document.getElementById("activityList");
+      const activities = activitiesByLanguage[currentLanguage].concat(favoriteActivityPages());
+      list.innerHTML = `
+        <div class="notebook">
+          <div class="notebook-tabs" role="tablist" aria-label="Activities sections">
+            ${activities.map((item, index) => `
+              <button class="notebook-tab ${index === 0 ? "active" : ""}" type="button" data-activity-index="${index}">
+                ${item.title}
+              </button>
+            `).join("")}
+          </div>
+          <article class="notebook-page" id="activityPage">
+            ${activityPageContent(activities[0])}
+          </article>
+        </div>
+      `;
+    }
+
+    function showActivityPage(index) {
+      const activities = activitiesByLanguage[currentLanguage].concat(favoriteActivityPages());
+      const activity = activities[index];
+      const page = document.getElementById("activityPage");
+      if (!activity || !page) {
+        return;
+      }
+
+      document.querySelectorAll(".notebook-tab").forEach((tab) => tab.classList.remove("active"));
+      const activeTab = document.querySelector(`[data-activity-index="${index}"]`);
+      if (activeTab) {
+        activeTab.classList.add("active");
+      }
+
+      page.innerHTML = activityPageContent(activity);
     }
 
     function renderPlaceList(elementId, places) {
