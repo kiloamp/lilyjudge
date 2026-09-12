@@ -253,7 +253,7 @@
       display: grid;
       gap: 22px;
       justify-items: center;
-      padding: 22px 0 38px;
+      padding: 0 0 38px;
       text-align: center;
     }
 
@@ -282,7 +282,7 @@
 
     .engaged {
       margin: 0 0 18px;
-      padding: 0.28em 0 0.18em;
+      padding: 0.06em 0 0.18em;
       color: #174f69;
       font-family: "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
       font-size: clamp(3.8rem, 10vw, 7rem);
@@ -342,9 +342,10 @@
     }
 
     .planning-card .cta-link {
+      grid-column: 1 / -1;
       justify-self: center;
       display: inline-flex;
-      margin-top: 18px;
+      margin-top: 4px;
       border: 1px solid rgba(47, 92, 75, 0.28);
       border-radius: 999px;
       background: #6f927f;
@@ -357,8 +358,6 @@
     .planning-plans {
       display: grid;
       align-content: start;
-      justify-items: center;
-      text-align: center;
     }
 
     .tabs-wrap {
@@ -1373,9 +1372,9 @@
       <div class="names">Lily & Carlos</div>
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">Home</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Travel</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
       </div>
       <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
         <span aria-hidden="true">🇪🇸</span>
@@ -1420,8 +1419,8 @@
           <div class="planning-plans">
             <h3 data-i18n="planningPlansTitle">Your plans</h3>
             <p data-i18n="planningPlansText">If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. Please fill out this form when you can. It will help us plan, too.</p>
-            <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
           </div>
+          <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
         </section>
 
         <div class="panel-heading">
@@ -1451,7 +1450,7 @@
       <section class="tab-panel" role="tabpanel" id="map" aria-labelledby="tab-map">
         <div class="panel-heading">
           <div>
-            <h2 data-i18n="mapTitle">A Different, More Local Map of Los Angeles</h2>
+            <h2 data-i18n="mapTitle">LA is spread out, and there is lots to see</h2>
             <p class="muted" data-i18n="mapNote">A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.</p>
           </div>
         </div>
@@ -1646,7 +1645,7 @@
           ]
         },
         {
-          title: "Hollywood, Griffith & Downtown",
+          title: "Hollywood",
           kicker: "For your first taste of the big city.",
           image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
           alt: "Griffith Observatory",
@@ -1656,32 +1655,6 @@
             { name: "Hollywood", description: "Walk the Walk of Fame, see the Chinese Theatre, and experience one of LA's most famous and touristy neighborhoods.", meta: "Time: 2-3 hours · Price: Free-$$" },
             { name: "Getty Center", description: "Beautiful art, architecture, gardens, and incredible views of the city.", meta: "Time: 3-4 hours · Price: Free-$" },
             { name: "Downtown LA", description: "Museums, architecture, food, and some of the city's oldest neighborhoods.", meta: "Time: Half day-full day · Price: $-$$" }
-          ]
-        },
-        {
-          title: "Excursiones",
-          kicker: "Because you're coming all this way...",
-          image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
-          alt: "Sleeping Beauty Castle at Disneyland",
-          intro: ["If you've never been to Disneyland, this might be your excuse. Orange County and Joshua Tree are also easy ways to turn the wedding into a bigger California trip."],
-          ideas: [
-            { name: "Disneyland", description: "A full-day adventure and a very California way to spend a day. Check the park calendar and tickets well in advance.", meta: "Time: Full day · Price: $$$-$$$$" },
-            { name: "Orange County", description: "Laguna Beach, Newport Beach, and Huntington Beach all offer a different version of Southern California.", meta: "Time: Full day · Price: $-$$$" },
-            { name: "Joshua Tree", description: "Desert landscapes, huge rock formations, and wide-open skies about two hours from LA.", meta: "Time: Full day or overnight · Price: $-$$" }
-          ]
-        },
-        {
-          title: "California Culture",
-          kicker: "Don't just sightsee.",
-          image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
-          alt: "In-N-Out burger",
-          intro: ["Some of our favorite California experiences aren't really attractions. They're just things that feel different when you're visiting from Europe."],
-          ideas: [
-            { name: "Watch the sunset at the ocean", description: "Bring a jacket, find a viewpoint, and stay until the sun disappears.", meta: "" },
-            { name: "Try an In-N-Out burger", description: "A California classic. We don't make the rules.", meta: "" },
-            { name: "Have a proper American brunch", description: "Go hungry. Portions are part of the experience.", meta: "" },
-            { name: "Eat tacos", description: "LA has incredible Mexican food, from tiny taco stands to sit-down restaurants.", meta: "" },
-            { name: "Visit a farmers market", description: "Fresh produce, flowers, food stalls, and a very Californian Saturday morning.", meta: "" }
           ]
         }
       ],
@@ -1739,7 +1712,7 @@
           ]
         },
         {
-          title: "Hollywood, Griffith y Downtown",
+          title: "Hollywood",
           kicker: "Para probar la ciudad grande.",
           image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
           alt: "Griffith Observatory",
@@ -1749,32 +1722,6 @@
             { name: "Hollywood", description: "Walk of Fame, Chinese Theatre y uno de los barrios más famosos y turísticos de LA.", meta: "Tiempo: 2-3 h · Precio: gratis-$$" },
             { name: "Getty Center", description: "Arte, arquitectura, jardines y vistas de la ciudad.", meta: "Tiempo: 3-4 h · Precio: gratis-$" },
             { name: "Downtown LA", description: "Museos, arquitectura, comida y algunos de los barrios más antiguos de la ciudad.", meta: "Tiempo: medio día-día completo · Precio: $-$$" }
-          ]
-        },
-        {
-          title: "Day Trips",
-          kicker: "Ya que vienes hasta aquí...",
-          image: "https://p19-lemon8-sign-useast5.tiktokcdn-us.com/tos-useast5-v-3931-tx/ok0mZoD2IFDnQrChGAESAM1AD3pZft9No2fEg6~tplv-pyavlv3z7u-text-logo%3AQHN0ZXBoeXdheWNv%3Aq75.jpeg?lk3s=c7f08e79&source=lemon8_seo&x-expires=1775044800&x-signature=RDqzR0cVJLcZJm6wpNPP2CumnJA%3D",
-          alt: "Castillo de Disneyland",
-          intro: ["Si nunca has ido a Disneyland, esta puede ser la excusa. Orange County y Joshua Tree también son buenas opciones para alargar el viaje."],
-          ideas: [
-            { name: "Disneyland", description: "Un día completo y una forma muy californiana de pasar el día. Mira calendario y entradas con antelación.", meta: "Tiempo: día completo · Precio: $$$-$$$$" },
-            { name: "Orange County", description: "Laguna Beach, Newport Beach y Huntington Beach ofrecen otra versión del sur de California.", meta: "Tiempo: día completo · Precio: $-$$$" },
-            { name: "Joshua Tree", description: "Desierto, rocas enormes y cielo abierto a unas dos horas de LA.", meta: "Tiempo: día completo o noche · Precio: $-$$" }
-          ]
-        },
-        {
-          title: "Cultura de California",
-          kicker: "No todo tiene que ser turismo.",
-          image: "https://images.squarespace-cdn.com/content/v1/53cc1616e4b0f4361f8ace24/1471213182280-JK3FXIMWWNXICEWFXXTO/image-asset.jpeg",
-          alt: "Hamburguesa de In-N-Out",
-          intro: ["Algunas de nuestras experiencias favoritas de California no son atracciones. Son cosas que se sienten distintas cuando vienes de Europa."],
-          ideas: [
-            { name: "Ver el atardecer junto al mar", description: "Lleva chaqueta, busca un mirador y quédate hasta que desaparezca el sol.", meta: "" },
-            { name: "Probar In-N-Out", description: "Un clásico de California.", meta: "" },
-            { name: "Tomar un brunch americano", description: "Ve con hambre. Las raciones son parte de la experiencia.", meta: "" },
-            { name: "Comer tacos", description: "LA tiene comida mexicana increíble, desde puestos pequeños hasta restaurantes.", meta: "" },
-            { name: "Visitar un farmers market", description: "Fruta, flores, puestos de comida y sábado muy californiano.", meta: "" }
           ]
         }
       ]
@@ -2019,14 +1966,6 @@
         connectorCoords: [33.770, -118.194],
         points: [[33.835, -118.230], [33.815, -118.135], [33.745, -118.120], [33.705, -118.170], [33.725, -118.250], [33.790, -118.265]]
       },
-      {
-        name: "Orange County",
-        nameEs: "Orange County",
-        type: "area",
-        labelCoords: [33.610, -117.760],
-        connectorCoords: [33.720, -117.830],
-        points: [[33.920, -118.060], [33.860, -117.670], [33.560, -117.600], [33.440, -117.910], [33.610, -118.130]]
-      }
     ];
 
     const mapPins = [
@@ -2042,8 +1981,7 @@
       { name: "Catalina Airport", kind: "attraction", label: "Catalina Airport", labelEs: "Catalina Airport", coords: [33.4049, -118.4159], note: "Airport in the Sky", noteEs: "Airport in the Sky" },
       { name: "Torrance Airport", kind: "attraction", label: "Torrance Airport", labelEs: "Torrance Airport", coords: [33.8034, -118.3396], note: "Zamperini Field", noteEs: "Zamperini Field" },
       { name: "Malibu", kind: "attraction", label: "Malibu", labelEs: "Malibu", coords: [34.0259, -118.7798], note: "Coast drive and beaches", noteEs: "Ruta de costa y playas" },
-      { name: "Long Beach", kind: "attraction", label: "Long Beach", labelEs: "Long Beach", coords: [33.7701, -118.1937], note: "Harbor city south of LA", noteEs: "Ciudad portuaria al sur de LA" },
-      { name: "Orange County", kind: "attraction", label: "Orange County", labelEs: "Orange County", coords: [33.7175, -117.8311], note: "Beaches and Disneyland direction", noteEs: "Playas y zona de Disneyland" }
+      { name: "Long Beach", kind: "attraction", label: "Long Beach", labelEs: "Long Beach", coords: [33.7701, -118.1937], note: "Harbor city south of LA", noteEs: "Ciudad portuaria al sur de LA" }
     ];
 
     const translations = {
@@ -2069,7 +2007,7 @@
         planningPlansText: "If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. Please fill out this form when you can. It will help us plan, too.",
         planningCta: "Tell us your plans",
         comingSoon: "Details coming soon.",
-        mapTitle: "A Different, More Local Map of Los Angeles",
+        mapTitle: "LA is spread out, and there is lots to see",
         mapNote: "A simple reference map so everyone can see where the beach towns, home base, airports, and day-trip ideas sit.",
         hotelsTitle: "Travel",
         hotelsNote: "A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.",
@@ -2118,7 +2056,7 @@
         planningPlansText: "Si ya tienes una idea de si podrás venir a California, nos encantará saberlo. Rellena este formulario cuando puedas. También nos ayuda a planificar.",
         planningCta: "Cuéntanos tus planes",
         comingSoon: "Detalles próximamente.",
-        mapTitle: "Un mapa más local de Los Ángeles",
+        mapTitle: "LA es grande y hay mucho que ver",
         mapNote: "Un mapa sencillo para ubicar playas, casa base, aeropuertos y excursiones.",
         hotelsTitle: "Viaje",
         hotelsNote: "Una lista sencilla de favoritos primero, y después algunas alternativas. Los precios de verano son orientativos.",
@@ -2318,6 +2256,30 @@
       });
     }
 
+    function smoothClosedShape(points, iterations = 2) {
+      let smoothed = points.map((point) => [point[0], point[1]]);
+
+      for (let iteration = 0; iteration < iterations; iteration += 1) {
+        const next = [];
+
+        smoothed.forEach((point, index) => {
+          const following = smoothed[(index + 1) % smoothed.length];
+          next.push([
+            point[0] * 0.75 + following[0] * 0.25,
+            point[1] * 0.75 + following[1] * 0.25
+          ]);
+          next.push([
+            point[0] * 0.25 + following[0] * 0.75,
+            point[1] * 0.25 + following[1] * 0.75
+          ]);
+        });
+
+        smoothed = next;
+      }
+
+      return smoothed;
+    }
+
     function resizeReferenceMap() {
       if (!referenceMap) {
         return;
@@ -2357,12 +2319,13 @@
       mapAreas.forEach((area) => {
         const isPalosVerdes = area.type === "palos";
         const areaColor = isPalosVerdes ? "#f5b8ac" : "#f7d976";
-        L.polygon(area.points, {
+        L.polygon(smoothClosedShape(area.points), {
           color: isPalosVerdes ? "#df7a68" : "#d9a92f",
           fillColor: areaColor,
           fillOpacity: isPalosVerdes ? 0.5 : 0.42,
           opacity: 0.95,
-          weight: 4
+          weight: 4,
+          lineJoin: "round"
         }).addTo(referenceMap);
 
         L.polyline([area.labelCoords, area.connectorCoords], {
@@ -2393,7 +2356,7 @@
 
       const bounds = L.latLngBounds([
         [33.390, -118.860],
-        [34.160, -117.560]
+        [34.160, -117.880]
       ]);
       referenceMap.fitBounds(bounds, { padding: [22, 22] });
       resizeReferenceMap();
