@@ -260,10 +260,10 @@
 
     .hero-feature {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: clamp(20px, 4vw, 44px);
-      width: min(1120px, 100%);
-      align-items: center;
+      width: min(1180px, 100%);
+      align-items: stretch;
       justify-content: center;
     }
 
@@ -372,15 +372,29 @@
 
     .hero-feature .planning-card {
       grid-template-columns: 1fr;
+      align-content: center;
       margin: 0;
       text-align: left;
+      min-width: 0;
     }
 
     .hero-feature .planning-card h2 {
       grid-column: auto;
       text-align: left;
-      white-space: nowrap;
-      font-size: clamp(2.55rem, 4.4vw, 4rem);
+      overflow-wrap: anywhere;
+      white-space: normal;
+      font-size: clamp(2.35rem, 3.45vw, 3.45rem);
+      line-height: 0.98;
+    }
+
+    .hero-feature .planning-card h3 {
+      font-size: clamp(1.15rem, 1.7vw, 1.32rem);
+    }
+
+    .hero-feature .planning-card p {
+      font-size: clamp(0.96rem, 1.25vw, 1.05rem);
+      line-height: 1.3;
+      overflow-wrap: anywhere;
     }
 
     .hero-feature .planning-card .cta-link {
@@ -1454,29 +1468,6 @@
               </div>
               <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
             </section>
-          </div>
-        </div>
-
-        <div class="panel-heading">
-          <div>
-            <h2 data-i18n="howWeMetTitle">Our Story</h2>
-          </div>
-        </div>
-        <div class="story-card">
-          <div class="story-copy" data-i18n-html="howWeMetStory">
-            <p>Lily came to Spain drawn by languages, travel, and the feeling of trying life somewhere new. She had already spent time in Poland and Seville, so Madrid felt like another step into something she loved.</p>
-            <p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p>
-            <p>Lily later moved to Boise, Idaho, while <a class="media-link" href="media/carlos-license.png" data-image="media/carlos-license.png" data-description="Carlos finally receives his license">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p>
-            <p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p>
-            <p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p>
-            <p>Our wedding might be a little unconventional, but we hope you'll be part of it.</p>
-            <p>With love,<br><span class="signature">Lily and Carlos</span></p>
-          </div>
-          <div class="story-photos" aria-hidden="true">
-            <div class="pinned-photo"><img src="media/1.png" alt=""></div>
-            <div class="pinned-photo"><img src="media/2.png" alt=""></div>
-            <div class="pinned-photo"><img src="media/3.png" alt=""></div>
-            <div class="pinned-photo"><img src="media/celebrate.png" alt=""></div>
           </div>
         </div>
       </section>
