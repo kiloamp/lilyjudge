@@ -11,7 +11,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='8' fill='%23f0cf75'/%3E%3Cellipse cx='32' cy='15' rx='9' ry='15' fill='%23f9c8ba'/%3E%3Cellipse cx='32' cy='49' rx='9' ry='15' fill='%23f9c8ba'/%3E%3Cellipse cx='15' cy='32' rx='15' ry='9' fill='%23f9c8ba'/%3E%3Cellipse cx='49' cy='32' rx='15' ry='9' fill='%23f9c8ba'/%3E%3Cellipse cx='20' cy='20' rx='8' ry='13' fill='%23fffaf0' transform='rotate(-45 20 20)'/%3E%3Cellipse cx='44' cy='44' rx='8' ry='13' fill='%23fffaf0' transform='rotate(-45 44 44)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <style>
@@ -41,13 +41,14 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 8%, rgba(255, 232, 168, 0.55), transparent 30%),
-        radial-gradient(circle at 88% 14%, rgba(249, 200, 186, 0.42), transparent 28%),
-        linear-gradient(180deg, rgba(234, 245, 238, 0.74), rgba(255, 250, 240, 0.96) 390px),
-        var(--paper);
-      font-family: "Sorts Mill Goudy", Georgia, "Times New Roman", serif;
+        radial-gradient(circle at 14% 4%, rgba(185, 229, 226, 0.62), transparent 32%),
+        radial-gradient(circle at 88% 12%, rgba(130, 191, 204, 0.38), transparent 30%),
+        linear-gradient(180deg, rgba(207, 236, 239, 0.94) 0%, rgba(229, 244, 243, 0.92) 340px, rgba(247, 252, 249, 0.94) 760px, rgba(255, 250, 240, 0.9) 100%),
+        #e2f3f5;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       font-size: 1.32rem;
       line-height: 1.42;
+      font-weight: 400;
     }
 
     .flower-wash {
@@ -64,8 +65,8 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
-      opacity: 0.11;
-      filter: saturate(0.9);
+      opacity: 0.18;
+      filter: saturate(1.22) contrast(1.04);
     }
 
     .flower-wash span:nth-child(1) {
@@ -210,7 +211,7 @@
       top: 0;
       z-index: 12;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 250, 240, 0.9);
+      background: rgba(233, 247, 248, 0.9);
       box-shadow: 0 10px 26px rgba(88, 90, 67, 0.08);
       backdrop-filter: blur(14px);
     }
@@ -257,8 +258,17 @@
       text-align: center;
     }
 
+    .hero-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
+      gap: clamp(20px, 4vw, 44px);
+      width: min(1120px, 100%);
+      align-items: center;
+      justify-content: center;
+    }
+
     .video-frame {
-      width: min(860px, 100%);
+      width: 100%;
       overflow: hidden;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -358,6 +368,22 @@
     .planning-plans {
       display: grid;
       align-content: start;
+    }
+
+    .hero-feature .planning-card {
+      grid-template-columns: 1fr;
+      margin: 0;
+      text-align: left;
+    }
+
+    .hero-feature .planning-card h2 {
+      grid-column: auto;
+      text-align: left;
+    }
+
+    .hero-feature .planning-card .cta-link {
+      grid-column: auto;
+      justify-self: start;
     }
 
     .tabs-wrap {
@@ -479,7 +505,7 @@
     }
 
     .leaflet-container {
-      font-family: "Sorts Mill Goudy", Georgia, "Times New Roman", serif;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       font-size: 1.14rem;
     }
 
@@ -510,7 +536,7 @@
       background: rgba(255, 250, 240, 0.94);
       color: var(--golf);
       box-shadow: 0 8px 18px rgba(57, 65, 60, 0.14);
-      font-family: "Sorts Mill Goudy", Georgia, "Times New Roman", serif;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       padding: 5px 10px;
       font-size: 1.32rem;
       font-weight: 700;
@@ -554,7 +580,7 @@
       background: rgba(255, 250, 240, 0.9);
       color: var(--ink);
       box-shadow: 0 8px 18px rgba(57, 65, 60, 0.12);
-      font-family: "Sorts Mill Goudy", Georgia, "Times New Roman", serif;
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
       padding: 4px 9px;
       font-size: 1.08rem;
       font-weight: 700;
@@ -1235,6 +1261,10 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-feature {
+        grid-template-columns: 1fr;
+      }
+
       .hero-copy {
         padding-top: 0;
       }
@@ -1373,7 +1403,7 @@
       <div class="tabs" role="tablist" aria-label="Travel categories">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="engaged" id="tab-engaged" data-tab="engaged" data-i18n="tabEngaged">Home</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="hotels" id="tab-hotels" data-tab="hotels" data-i18n="tabHotels">Travel</button>
-        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things to do</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="things-to-do" id="tab-things-to-do" data-tab="things-to-do" data-i18n="tabThingsToDo">Things To Do</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="map" id="tab-map" data-tab="map" data-i18n="tabMap">Map</button>
       </div>
       <button class="language-toggle" type="button" id="languageToggle" aria-label="Translate page">
@@ -1396,32 +1426,34 @@
             </div>
           </div>
 
-          <div class="video-frame">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
-              title="Lily and Carlos wedding announcement video"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+          <div class="hero-feature">
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/MnrJzXM7a6o?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3"
+                title="Lily and Carlos wedding announcement video"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <section class="planning-card" aria-label="Our Wedding Plans">
+              <h2 data-i18n="planningTitle">Our Wedding Plans</h2>
+              <div>
+                <h3 data-i18n="planningPlaceTitle">Los Angeles, California</h3>
+                <p data-i18n="planningPlaceText">We'll be celebrating near Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.</p>
+              </div>
+              <div>
+                <h3 data-i18n="planningDateTitle">The Date</h3>
+                <p data-i18n="planningDateText">We expect to have around four months' notice once our visa is confirmed. Until then, we'll keep you posted here.</p>
+              </div>
+              <div class="planning-plans">
+                <h3 data-i18n="planningPlansTitle">Your Plans</h3>
+                <p data-i18n="planningPlansText">If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. Please fill out this form when you can. It will help us plan, too.</p>
+              </div>
+              <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
+            </section>
           </div>
         </div>
-
-        <section class="planning-card" aria-label="Our Wedding Plans">
-          <h2 data-i18n="planningTitle">Our Wedding Plans</h2>
-          <div>
-            <h3 data-i18n="planningPlaceTitle">Los Angeles, California</h3>
-            <p data-i18n="planningPlaceText">We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.</p>
-          </div>
-          <div>
-            <h3 data-i18n="planningDateTitle">The date</h3>
-            <p data-i18n="planningDateText">We expect to have around four months' notice once our date is confirmed. Until then, we'll keep you posted here.</p>
-          </div>
-          <div class="planning-plans">
-            <h3 data-i18n="planningPlansTitle">Your plans</h3>
-            <p data-i18n="planningPlansText">If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. Please fill out this form when you can. It will help us plan, too.</p>
-          </div>
-          <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd169gAacQwdY8IZWrCHkoerF6BG4SSnN-XNEYwHHkZ3Bhx1A/viewform?usp=publish-editor" target="_blank" rel="noopener" data-i18n="planningCta">Tell us your plans</a>
-        </section>
 
         <div class="panel-heading">
           <div>
@@ -1472,7 +1504,7 @@
             <p data-i18n="flightText">Los Angeles International Airport is the simplest arrival point for most international guests. Palos Verdes, Redondo Beach, and Torrance are usually around 30-60 minutes away by car, depending on traffic.</p>
           </article>
           <article class="travel-note">
-            <h3 data-i18n="carTitle">Rental car estimate</h3>
+            <h3 data-i18n="carTitle">Rental Car Estimate</h3>
             <p data-i18n="carText">For planning, expect roughly $45-$85 per day for a standard rental car before insurance, parking, and fuel. LA is spread out, so sharing a car can make beach days and day trips much easier.</p>
           </article>
           <section class="hotel-section">
@@ -1544,17 +1576,9 @@
         tier: "top",
         name: "Howard Johnson by Wyndham Torrance",
         address: "3673 Torrance Boulevard, Torrance, CA 90503",
-        price: "$110-$135/night",
+        price: "$120/night estimate",
         note: "Simple Torrance option near Del Amo, and one of the easier budget picks.",
         noteEs: "Opción sencilla en Torrance, cerca de Del Amo y con precio más cómodo."
-      },
-      {
-        tier: "other",
-        name: "Riviera Village area",
-        address: "Riviera Village, Redondo Beach, CA 90277",
-        price: "Confirm exact hotel",
-        note: "Placeholder until the exact Riviera hotel is confirmed.",
-        noteEs: "Pendiente de confirmar el hotel exacto en Riviera."
       },
       {
         tier: "other",
@@ -1568,7 +1592,7 @@
         tier: "top",
         name: "The Portofino Hotel & Marina",
         address: "260 Portofino Way, Redondo Beach, CA 90277",
-        price: "$240-$450/night",
+        price: "$400/night estimate",
         note: "Marina hotel on the Redondo waterfront.",
         noteEs: "Hotel en la marina de Redondo, junto al agua."
       },
@@ -1584,7 +1608,7 @@
         tier: "top",
         name: "Sonesta Redondo Beach & Marina",
         address: "300 N Harbor Drive, Redondo Beach, CA 90277",
-        price: "$180-$450/night",
+        price: "$200/night estimate",
         note: "Waterfront option near the pier and marina.",
         noteEs: "Opción junto al agua, cerca del pier y la marina."
       }
@@ -1597,12 +1621,11 @@
           kicker: "A little California magic, right where we'll be celebrating.",
           image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
           alt: "Palos Verdes coastline near Terranea",
-          intro: ["Palos Verdes is all about dramatic ocean views, winding coastal roads, beautiful gardens, and some of the best sunsets in the area. This is the place to slow down, take a walk, and enjoy the California coast without going too far."],
+          intro: ["Lily's hometown"],
           ideas: [
-            { name: "Terranea", description: "Walk the grounds, enjoy the ocean views, grab a bite, or stay for sunset.", meta: "Time: 2-4 hours · Price: $-$$" },
-            { name: "Point Vicente", description: "One of our favorite spots for dramatic coastline and ocean views.", meta: "Time: 1-2 hours · Price: Free" },
-            { name: "Abalone Cove", description: "Coastal trails and beautiful scenery for a more active afternoon.", meta: "Time: 2-3 hours · Price: $" },
-            { name: "Palos Verdes coastline drive", description: "Put on some music and follow the coast. Sometimes the best activity is just seeing where the road takes you.", meta: "Time: 1-2 hours · Price: Free" }
+            { name: "Terranea", description: "Walk the grounds, enjoy the ocean views, grab a bite, or stay for sunset.", meta: "Time: 2-4 hours · Price: Free-$$$" },
+            { name: "Point Vicente", description: "Beautiful lighthouse and bluff trail walk, great spot whale watching and picnicing.", meta: "Time: 1-2 hours · Price: Free" },
+            { name: "Abalone Cove", description: "Coastal trails and beautiful scenery for a more active afternoon.", meta: "Time: 2-3 hours · Price: Free" }
           ]
         },
         {
@@ -1612,7 +1635,7 @@
           alt: "Beach bike path near Manhattan Beach",
           intro: ["You don't need a whole day or a complicated plan. Pick a beach, walk along the water, grab lunch, and see where the afternoon takes you."],
           ideas: [
-            { name: "Manhattan Beach", description: "A charming beach town with a long sandy beach, pier, shops, restaurants, and plenty of places to sit and watch the world go by.", meta: "Time: 2-5 hours · Price: $-$$" },
+            { name: "Manhattan Beach", description: "A charming beach town with a long sandy beach, pier, shops, restaurants, and beach volleyball.", meta: "Time: 2-5 hours · Price: $-$$" },
             { name: "Hermosa Beach", description: "A little more laid-back and lively, with a great beach walk and plenty of casual places to eat and drink.", meta: "Time: 2-4 hours · Price: $-$$" },
             { name: "Redondo Beach", description: "Closest to Palos Verdes and an easy option if you want a relaxed afternoon by the water.", meta: "Time: 2-4 hours · Price: $-$$" },
             { name: "Beach bike ride", description: "Rent bikes and follow the beach path for a quintessential Southern California experience.", meta: "Time: 1-3 hours · Price: $$" }
@@ -1623,7 +1646,7 @@
           kicker: "The classic LA day out.",
           image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
           alt: "Venice Beach boardwalk",
-          intro: ["If you want to experience the LA you've probably seen in movies, head west. Santa Monica and Venice offer beaches, palm trees, shops, restaurants, street performers, and plenty of people-watching."],
+          intro: ["If you want to experience the LA you've probably seen in movies, head to Santa Monica and Venice. They offer beaches, palm trees, shops, restaurants, street performers, and plenty of people-watching."],
           ideas: [
             { name: "Santa Monica Pier", description: "Walk the pier, explore the beach, and take in the views from the end of Route 66.", meta: "Time: 2-4 hours · Price: Free-$$" },
             { name: "Venice Beach & Abbot Kinney", description: "A fun combination of beach, street life, independent shops, restaurants, and one of LA's most famous boardwalks.", meta: "Time: 3-5 hours · Price: $-$$" },
@@ -1647,14 +1670,13 @@
         {
           title: "Hollywood",
           kicker: "For your first taste of the big city.",
-          image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
-          alt: "Griffith Observatory",
-          intro: ["Los Angeles is huge, and there's no way to see all of it in one trip. If you've never been before, these are some of the places that give you a taste of the city's history, culture, and slightly ridiculous scale."],
+          image: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg",
+          alt: "Hollywood Sign",
+          intro: ["Los Angeles is huge, and there's no way to see all of it in one trip. If you've never been before, these are some of the places that give you a taste of the city's history, culture, and experience it all."],
           ideas: [
-            { name: "Griffith Observatory", description: "One of the best views over Los Angeles, especially around sunset.", meta: "Time: 2-3 hours · Price: Free" },
+            { name: "Hollywood Sign", description: "Classic LA views and a photo everyone recognizes.", meta: "Time: 2-3 hours · Price: Free" },
             { name: "Hollywood", description: "Walk the Walk of Fame, see the Chinese Theatre, and experience one of LA's most famous and touristy neighborhoods.", meta: "Time: 2-3 hours · Price: Free-$$" },
-            { name: "Getty Center", description: "Beautiful art, architecture, gardens, and incredible views of the city.", meta: "Time: 3-4 hours · Price: Free-$" },
-            { name: "Downtown LA", description: "Museums, architecture, food, and some of the city's oldest neighborhoods.", meta: "Time: Half day-full day · Price: $-$$" }
+            { name: "Getty Center", description: "Beautiful art, architecture, gardens, and incredible views of the city.", meta: "Time: 3-4 hours · Price: Free-$" }
           ]
         }
       ],
@@ -1664,12 +1686,11 @@
           kicker: "Un poco de magia californiana, justo donde celebraremos.",
           image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
           alt: "Costa de Palos Verdes cerca de Terranea",
-          intro: ["Palos Verdes son vistas al mar, carreteras de costa, jardines bonitos y algunos de los mejores atardeceres de la zona. Es el sitio para ir sin prisa y disfrutar de la costa sin alejarse demasiado."],
+          intro: ["La ciudad de Lily."],
           ideas: [
-            { name: "Terranea", description: "Pasea por el recinto, mira el mar, toma algo o quédate al atardecer.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
-            { name: "Point Vicente", description: "Uno de nuestros sitios favoritos para ver acantilados y océano.", meta: "Tiempo: 1-2 h · Precio: gratis" },
-            { name: "Abalone Cove", description: "Senderos junto al mar y paisaje para una tarde más activa.", meta: "Tiempo: 2-3 h · Precio: $" },
-            { name: "Ruta por la costa de Palos Verdes", description: "Pon música y sigue la costa. A veces el mejor plan es dejarse llevar.", meta: "Tiempo: 1-2 h · Precio: gratis" }
+            { name: "Terranea", description: "Pasea por el recinto, mira el mar, toma algo o quédate al atardecer.", meta: "Tiempo: 2-4 h · Precio: gratis-$$$" },
+            { name: "Point Vicente", description: "Faro precioso y paseo por los acantilados, buen sitio para ver ballenas y hacer picnic.", meta: "Tiempo: 1-2 h · Precio: gratis" },
+            { name: "Abalone Cove", description: "Senderos junto al mar y paisaje para una tarde más activa.", meta: "Tiempo: 2-3 h · Precio: gratis" }
           ]
         },
         {
@@ -1679,7 +1700,7 @@
           alt: "Carril bici junto a Manhattan Beach",
           intro: ["No hace falta un día entero ni un plan complicado. Elige una playa, pasea junto al agua, come algo y deja que la tarde fluya."],
           ideas: [
-            { name: "Manhattan Beach", description: "Playa amplia, pier, tiendas, restaurantes y sitios para sentarse a mirar el ambiente.", meta: "Tiempo: 2-5 h · Precio: $-$$" },
+            { name: "Manhattan Beach", description: "Playa amplia, pier, tiendas, restaurantes y vóley playa.", meta: "Tiempo: 2-5 h · Precio: $-$$" },
             { name: "Hermosa Beach", description: "Más relajada y animada, con paseo de playa y sitios informales para comer o beber.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
             { name: "Redondo Beach", description: "La más cercana a Palos Verdes y una opción fácil para una tarde junto al agua.", meta: "Tiempo: 2-4 h · Precio: $-$$" },
             { name: "Paseo en bici por la playa", description: "Alquila bicis y sigue el carril de la costa.", meta: "Tiempo: 1-3 h · Precio: $$" }
@@ -1690,7 +1711,7 @@
           kicker: "El día clásico de LA.",
           image: "https://static.toiimg.com/thumb/76369797/LA.jpg?height=900&width=1200",
           alt: "Paseo marítimo de Venice Beach",
-          intro: ["Si quieres ver el LA de las películas, ve hacia el oeste. Santa Monica y Venice tienen playa, palmeras, tiendas, restaurantes, artistas callejeros y mucho ambiente."],
+          intro: ["Si quieres ver el LA de las películas, ve a Santa Monica y Venice. Tienen playa, palmeras, tiendas, restaurantes, artistas callejeros y mucho ambiente."],
           ideas: [
             { name: "Santa Monica Pier", description: "Pasea por el pier, baja a la playa y mira las vistas desde el final de la Route 66.", meta: "Tiempo: 2-4 h · Precio: gratis-$$" },
             { name: "Venice Beach y Abbot Kinney", description: "Playa, tiendas independientes, restaurantes y uno de los paseos más famosos de LA.", meta: "Tiempo: 3-5 h · Precio: $-$$" },
@@ -1714,14 +1735,13 @@
         {
           title: "Hollywood",
           kicker: "Para probar la ciudad grande.",
-          image: "https://cdn.businessyab.com/assets/uploads/3a20992bd194b50d73e3495c8e382784__united_states_california_los_angeles_county_los_angeles_crystal_springs_drive_4730_griffith_parkhtml.jpg",
-          alt: "Griffith Observatory",
-          intro: ["Los Ángeles es enorme y no se puede ver todo en un viaje. Si nunca has ido, estos sitios dan una primera idea de su historia, cultura y tamaño algo absurdo."],
+          image: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg",
+          alt: "Hollywood Sign",
+          intro: ["Los Ángeles es enorme y no se puede ver todo en un viaje. Si nunca has ido, estos sitios dan una primera idea de su historia, cultura y de todo lo que ofrece."],
           ideas: [
-            { name: "Griffith Observatory", description: "Una de las mejores vistas de Los Ángeles, sobre todo al atardecer.", meta: "Tiempo: 2-3 h · Precio: gratis" },
+            { name: "Hollywood Sign", description: "Vistas clásicas de LA y una foto que todo el mundo reconoce.", meta: "Tiempo: 2-3 h · Precio: gratis" },
             { name: "Hollywood", description: "Walk of Fame, Chinese Theatre y uno de los barrios más famosos y turísticos de LA.", meta: "Tiempo: 2-3 h · Precio: gratis-$$" },
-            { name: "Getty Center", description: "Arte, arquitectura, jardines y vistas de la ciudad.", meta: "Tiempo: 3-4 h · Precio: gratis-$" },
-            { name: "Downtown LA", description: "Museos, arquitectura, comida y algunos de los barrios más antiguos de la ciudad.", meta: "Tiempo: medio día-día completo · Precio: $-$$" }
+            { name: "Getty Center", description: "Arte, arquitectura, jardines y vistas de la ciudad.", meta: "Tiempo: 3-4 h · Precio: gratis-$" }
           ]
         }
       ]
@@ -1818,7 +1838,7 @@
           title: "Malaga Cove Plaza",
           image: "https://images.squarespace-cdn.com/content/v1/5b64c5548f5130fa86e2fb2e/1598567169652-RDN6Q38BCEOAOKOPSX2R/1.jpg",
           alt: "Malaga Cove Plaza",
-          text: "A quiet Palos Verdes stop with old California charm."
+          text: "Coffee shops, frozen yogurt, and at the entrance of Palos Verdes."
         },
         {
           title: "Huge burrito at Riviera Mexican",
@@ -1830,7 +1850,7 @@
           title: "Terranea Hotel",
           image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
           alt: "Terranea Resort on the Palos Verdes coast",
-          text: "Ocean views and a very convincing place to pretend you are just stopping by."
+          text: "Coastal hike with beautiful views."
         },
         {
           title: "San Pedro Downtown",
@@ -1842,7 +1862,7 @@
           title: "Old Torrance",
           image: "https://discovertorrance.com/wp-content/uploads/2026/05/Old-Torrance.jpg",
           alt: "Old Torrance street view",
-          text: "Quiet streets, small businesses, and local South Bay charm."
+          text: "Try Foster's Freeze and Red Car Brewery."
         }
       ],
       es: [
@@ -1856,7 +1876,7 @@
           title: "Malaga Cove Plaza",
           image: "https://images.squarespace-cdn.com/content/v1/5b64c5548f5130fa86e2fb2e/1598567169652-RDN6Q38BCEOAOKOPSX2R/1.jpg",
           alt: "Malaga Cove Plaza",
-          text: "Una parada tranquila de Palos Verdes con encanto clásico."
+          text: "Cafeterías, frozen yogurt y la entrada a Palos Verdes."
         },
         {
           title: "Burrito enorme en Riviera Mexican",
@@ -1868,7 +1888,7 @@
           title: "Terranea Hotel",
           image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit%2Ch_1200%2Cq_75%2Cw_1200/v1/crm/alhitx/Hero-1_C227BA2F-7C0E-4DEC-A30CEBBFB33A6E76_5231b336-998a-4a04-ac751c8c54a10bf1.jpg",
           alt: "Terranea Resort en la costa de Palos Verdes",
-          text: "Vistas al mar y buen sitio para fingir que solo pasabas por allí."
+          text: "Sendero costero con vistas preciosas."
         },
         {
           title: "Downtown San Pedro",
@@ -1880,7 +1900,7 @@
           title: "Old Torrance",
           image: "https://discovertorrance.com/wp-content/uploads/2026/05/Old-Torrance.jpg",
           alt: "Calle de Old Torrance",
-          text: "Calles tranquilas, comercios pequeños y encanto local."
+          text: "Prueba Foster's Freeze y Red Car Brewery."
         }
       ]
     };
@@ -1993,17 +2013,17 @@
         tabHowWeMet: "Our Story",
         tabMap: "Map",
         tabHotels: "Travel",
-        tabThingsToDo: "Things to do",
+        tabThingsToDo: "Things To Do",
         tabPlaces: "Places",
         howWeMetTitle: "Our Story",
         howWeMetNote: "A little bit of our story before the party planning begins.",
         howWeMetStory: "<p>Lily came to Spain drawn by languages, travel, and the feeling of trying life somewhere new. She had already spent time in Poland and Seville, so Madrid felt like another step into something she loved.</p><p>She became a teaching assistant in Madrid, and during the final month of that academic year, we met. By the end of it, we had completely fallen for each other. When Lily returned to the US, they decided to keep dating long distance. Carlos visited her that same summer, and the following year Lily taught in the Canary Islands while Carlos commuted from Madrid whenever he could.</p><p>Lily later moved to Boise, Idaho, while <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos wrapped up his pilot training</a>. After a year apart, Lily decided to move back to Spain, this time to Madrid. Sorry Kevin and Caroline!</p><p>Lily is now building her career in education and study abroad programs in Madrid, where she has become very successful in her field. Carlos works at Marple alongside some great friends and at some point will begin his flying career as well.</p><p>This became our new normal, driving from house to house to enjoy dinners together, watch movies, and make plans with friends. From today, from you reading this, a new normal begins for us, becoming partners and best friends forever.</p><p>Our wedding might be a little unconventional, but we hope you'll be part of it.</p><p>With love,<br><span class=\"signature\">Lily and Carlos</span></p>",
         planningTitle: "Our Wedding Plans",
         planningPlaceTitle: "Los Angeles, California",
-        planningPlaceText: "We'll be celebrating in Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.",
-        planningDateTitle: "The date",
-        planningDateText: "We expect to have around four months' notice once our date is confirmed. Until then, we'll keep you posted here.",
-        planningPlansTitle: "Your plans",
+        planningPlaceText: "We'll be celebrating near Lily's hometown, Palos Verdes. We've gathered some ideas for places to stay, things to do, and ways to make a trip out of it.",
+        planningDateTitle: "The Date",
+        planningDateText: "We expect to have around four months' notice once our visa is confirmed. Until then, we'll keep you posted here.",
+        planningPlansTitle: "Your Plans",
         planningPlansText: "If you already have a sense of whether you'd be able to make the trip to California, we'd love to hear from you. Please fill out this form when you can. It will help us plan, too.",
         planningCta: "Tell us your plans",
         comingSoon: "Details coming soon.",
@@ -2013,10 +2033,9 @@
         hotelsNote: "A calmer shortlist first, then a few backups. Summer prices are rough planning ranges and will move around.",
         flightTitle: "Flying into LAX",
         flightText: "Los Angeles International Airport is the simplest arrival point for most international guests. Palos Verdes, Redondo Beach, and Torrance are usually around 30-60 minutes away by car, depending on traffic.",
-        carTitle: "Rental car estimate",
+        carTitle: "Rental Car Estimate",
         carText: "For planning, expect roughly $45-$85 per day for a standard rental car before insurance, parking, and fuel. LA is spread out, so sharing a car can make beach days and day trips much easier.",
         hotelSectionTitle: "Hotels",
-        hotelTopPicks: "Our hotel top picks",
         summerPrice: "Summer estimate",
         otherHotels: "Other hotel options",
         airbnbTitle: "Explore Airbnb too!",
@@ -2026,8 +2045,8 @@
         thingsNote: "Los Angeles is full of fun activities and excursions. If you are making your way from Europe, we want to help you take advantage of everything. Use this page as a guide for local(ish) ideas.",
         placesTitle: "Favorite places",
         placesNote: "A few Lily and Carlos-approved stops for food, views, walks, and beach-town wandering.",
-        lilyTopFiveTitle: "Lily's favorites",
-        carlosTopFiveTitle: "Carlos's favorites",
+        lilyTopFiveTitle: "Lily's Favorites",
+        carlosTopFiveTitle: "Carlos's Favorites",
         lilyPlacesKicker: "Live the local experience",
         lilyPlacesIntro: "Food, views, beach walks, and the places Lily would happily send you.",
         carlosPlacesKicker: "Live the Carlos way",
@@ -2042,16 +2061,16 @@
         tabHowWeMet: "Nuestra historia",
         tabMap: "Mapa",
         tabHotels: "Viaje",
-        tabThingsToDo: "Planes",
+        tabThingsToDo: "Things To Do",
         tabPlaces: "Lugares",
         howWeMetTitle: "Nuestra historia",
         howWeMetNote: "Un poco de nuestra historia antes de empezar con los planes de celebración.",
         howWeMetStory: "<p>Lily llegó a España atraída por los idiomas, los viajes y la idea de probar una vida en otro lugar. Ya había pasado tiempo en Polonia y Sevilla, así que Madrid fue otro paso hacia algo que ya le encantaba.</p><p>Se convirtió en auxiliar de conversación en Madrid, y durante el último mes de aquel curso nos conocimos. Para cuando terminó, ya nos habíamos enamorado por completo. Cuando Lily volvió a Estados Unidos, decidieron seguir con una relación a distancia. Carlos la visitó ese mismo verano, y al año siguiente Lily enseñó en las Islas Canarias mientras Carlos viajaba desde Madrid siempre que podía.</p><p>Más tarde, Lily se mudó a Boise, Idaho, mientras <a class=\"media-link\" href=\"media/carlos-license.png\" data-image=\"media/carlos-license.png\" data-description=\"Carlos finally receives his license\">Carlos terminó su formación de piloto</a>. Después de un año separados, Lily decidió volver a España, esta vez a Madrid. Sorry Kevin and Caroline!</p><p>Lily está construyendo su carrera en Madrid en educación y programas de estudios en el extranjero, donde le está yendo muy bien. Carlos trabaja en Marple junto a grandes amigos y, en algún momento, también empezará su carrera como piloto.</p><p>Esta se convirtió en nuestra nueva normalidad, ir de una casa a otra para cenar juntos, ver películas y hacer planes con amigos. Desde hoy, desde que estás leyendo esto, empieza una nueva normalidad para nosotros, convertirnos en compañeros y mejores amigos para siempre.</p><p>Nuestra boda puede ser algo poco convencional, pero nos encantaría que formaras parte de ella.</p><p>Con cariño,<br><span class=\"signature\">Lily y Carlos</span></p>",
         planningTitle: "Nuestros planes de boda",
         planningPlaceTitle: "Los Ángeles, California",
-        planningPlaceText: "Celebraremos en Palos Verdes, la ciudad de Lily. Hemos reunido ideas de alojamiento, planes y formas de aprovechar el viaje.",
+        planningPlaceText: "Celebraremos cerca de Palos Verdes, la ciudad de Lily. Hemos reunido ideas de alojamiento, planes y formas de aprovechar el viaje.",
         planningDateTitle: "La fecha",
-        planningDateText: "Esperamos tener unos cuatro meses de aviso cuando se confirme la fecha. Hasta entonces, iremos actualizando la web.",
+        planningDateText: "Esperamos tener unos cuatro meses de aviso cuando se confirme el visado. Hasta entonces, iremos actualizando la web.",
         planningPlansTitle: "Tus planes",
         planningPlansText: "Si ya tienes una idea de si podrás venir a California, nos encantará saberlo. Rellena este formulario cuando puedas. También nos ayuda a planificar.",
         planningCta: "Cuéntanos tus planes",
@@ -2065,7 +2084,6 @@
         carTitle: "Estimación de coche de alquiler",
         carText: "Para hacer números, calcula unos $45-$85 al día por un coche estándar, antes de seguro, parking y gasolina. LA es muy grande, así que compartir coche puede facilitar playas y excursiones.",
         hotelSectionTitle: "Hoteles",
-        hotelTopPicks: "Hoteles favoritos",
         summerPrice: "Estimación de verano",
         otherHotels: "Otras opciones de hotel",
         airbnbTitle: "¡Mira Airbnb también!",
@@ -2099,7 +2117,7 @@
 
     function renderList() {
       const list = document.getElementById("hotelList");
-      const topOrder = ["The Portofino Hotel & Marina", "Sonesta Redondo Beach & Marina", "Howard Johnson by Wyndham Torrance"];
+      const topOrder = ["Sonesta Redondo Beach & Marina", "Howard Johnson by Wyndham Torrance", "The Portofino Hotel & Marina"];
       const topHotels = hotels
         .filter((hotel) => hotel.tier === "top")
         .sort((a, b) => topOrder.indexOf(a.name) - topOrder.indexOf(b.name));
@@ -2108,7 +2126,6 @@
         <article class="hotel-card ${hotel.tier === "top" ? "top-pick" : ""}">
           <h3>${hotel.name}</h3>
           <p>${hotel.address}</p>
-          <p>${localized(hotel, "note")}</p>
           <div class="hotel-meta">
             <span>${translations[currentLanguage].summerPrice}: <strong class="hotel-price">${hotel.price}</strong></span>
           </div>
@@ -2117,7 +2134,6 @@
       `;
 
       list.innerHTML = `
-        <h3 class="hotel-subheading">${translations[currentLanguage].hotelTopPicks}</h3>
         ${topHotels.map(hotelCard).join("")}
         <aside class="airbnb-note">
           <p><strong>${translations[currentLanguage].airbnbTitle}</strong> ${translations[currentLanguage].airbnbText}</p>
